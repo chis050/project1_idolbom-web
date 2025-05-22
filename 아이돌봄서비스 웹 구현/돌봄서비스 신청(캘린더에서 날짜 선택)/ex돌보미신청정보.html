@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>돌봄 서비스 예약</title>
+  <link rel="stylesheet" href="메인화면_only header.css"> <!-- 이 부분 반드시 필요 -->
+  <link rel="stylesheet" href="ex돌보미신청정보.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo-area">
+      <img src="아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
+      <a href="../메인페이지/메인화면.html"><span>아이돌봄</span></a>
+    </div>
+
+    <nav class="nav-center">
+      <a href="../게시판/공지사항.html">공지사항</a>
+      <a href="../게시판/정보마당.html">정보마당</a>
+      <a href="../게시판/사용자이용.html">사용자이용</a>
+    </nav>
+
+    <div class="user-area">
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+
+      <div class="user-area">
+        <button class="logout-btn">로그아웃</button>
+        <strong>내향아이들 님</strong>
+        <div class="user-avatar">👤</div>
+      </div>
+  </header>
+
+  <div class="container">
+    <div class="sidebar">
+      <div style="font-weight: bold; color: #7DCD8C; margin-bottom: 8px;">내 프로필</div>
+      <div class="profile-name">Sophia</div>
+      <div class="stars">★★★★☆</div>
+      <div>현재예약 4건</div>
+      <div>최근 리뷰 45개</div>
+      <div>내 아이 1명</div>
+    </div>
+
+    <div class="calendar">
+      <h3 style="text-align: center; margin-bottom: 16px;">돌봄 서비스 예약</h3>
+      <div class="month-nav">
+        <button onclick="changeMonth(-1)" style="cursor:pointer">&lt;</button>
+        <div id="monthLabel">2025년 5월</div>
+        <button onclick="changeMonth(1)" style="cursor:pointer">&gt;</button>
+      </div>
+      <div class="calendar-grid" id="calendarDays"></div>
+    </div>
+
+    <div class="times">
+      <h4>시간 선택</h4>
+      <div id="selected-date" style="margin-bottom: 12px; color: #7DCD8C;">날짜 선택 필요</div>
+      <div class="time-list" id="timeList"></div>
+      <div class="duration" id="durationDisplay"></div>
+      <!-- <button class="confirm-button" onclick="confirmSelection()">선택하기</button> -->
+      <a href="../돌봄서비스 신청(돌보미 찾기)/ex돌보미찾기1.html"><button class="confirm-button">선택하기</button></a>
+    </div>
+  </div>
+  <script src="ex돌보미신청정보.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>아이돌봄 로그인</title>
+  <link rel="stylesheet" href="login.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo-area">
+        <div class="hamburger">☰</div>
+        <div class="logo">아이돌봄 <span>👶</span></div>
+      </div>
+      <nav>
+        <a href="#">공지사항</a>
+        <a href="#">정보마당</a>
+        <a href="#">사용자이용</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="login-box">
+      <h2>로그인</h2>
+      <form>
+        <input type="text" placeholder="ID" required>
+        <div class="pw-container">
+          <input type="password" placeholder="PW" required>
+          <span class="eye">👁️</span>
+        </div>
+        <button type="submit">login</button>
+      </form>
+      <div class="link-row">
+        <a href="#">회원가입</a>
+        <a href="#">비밀번호 찾기</a>
+      </div>
+      <div class="social-login">
+        <img src="https://img.icons8.com/ios-filled/50/kakaotalk.png" alt="KakaoTalk" class="social-icon">
+        <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google" class="social-icon">
+      </div>
+    </div>
+  </main>
+
+</body>
+
+</html>

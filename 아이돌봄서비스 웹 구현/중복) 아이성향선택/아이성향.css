@@ -1,0 +1,143 @@
+body {
+    background: #fafbfa;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 48px auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(88, 160, 110, 0.08);
+    padding: 36px 40px 28px 40px;
+}
+
+.form-section {
+    margin-bottom: 28px;
+}
+
+.form-section label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.age-gender-group,
+.trait-buttons,
+.purpose-buttons,
+.place-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+.trait-buttons,
+.purpose-buttons,
+.place-buttons {
+    margin-top: 8px;
+}
+
+.trait-btn,
+.purpose-btn,
+.place-btn,
+.gender-btn {
+    border: 1.5px solid #b7d9c2;
+    background: #fff;
+    color: #58A06E;
+    border-radius: 18px;
+    padding: 8px 22px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+}
+
+.trait-btn.selected,
+.purpose-btn.selected,
+.place-btn.selected,
+.gender-btn.selected {
+    background: #58A06E;
+    color: #fff;
+    border-color: #58A06E;
+}
+
+.gender-btn {
+    min-width: 60px;
+}
+
+.info-box {
+    background: #f3f5f3;
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #888;
+    font-size: 0.98rem;
+    margin-bottom: 8px;
+    margin-top: 6px;
+}
+
+.input-box,
+.textarea-box {
+    width: 100%;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    background: #fafbfa;
+}
+
+.textarea-box {
+    min-height: 54px;
+    resize: vertical;
+}
+
+.date-time-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.date-time-group input[type="date"],
+.date-time-group input[type="time"] {
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    background: #fafbfa;
+}
+
+.date-time-group .fa-calendar-days {
+    color: #58A06E;
+    margin-left: 4px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.step-btn {
+    background: #e3f3e7;
+    color: #58A06E;
+    border: none;
+    border-radius: 18px;
+    padding: 10px 32px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s;
+}
+
+.step-btn:last-child {
+    background: #b7d9c2;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+    .form-container {
+        padding: 16px 4vw;
+    }
+}

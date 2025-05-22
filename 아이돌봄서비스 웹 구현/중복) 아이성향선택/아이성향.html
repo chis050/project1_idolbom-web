@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이돌봄 신청서</title>
+    <link rel="stylesheet" href="메인화면_only header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="아이성향.css">
+    <script defer src="아이성향.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo-area">
+            <img src="./images/아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
+            <span>아이돌봄</span>
+        </div>
+        <nav>
+            <a href="#">공지사항</a>
+            <a href="#">정보마당</a>
+            <a href="#">사용자이용</a>
+        </nav>
+        <div class="user-area">
+            <form class="search-form" onsubmit="handleSearch(event)">
+                <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <div id="google_translate_element"></div>
+            <button class="logout-btn">로그아웃</button>
+            <strong>내향아이들 님</strong>
+            <div class="user-avatar">👤</div>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <!-- 아이 정보 -->
+        <div class="form-section">
+            <label>아이 정보</label>
+            <div class="age-gender-group">
+                <select class="input-box" style="max-width:110px;">
+                    <option>만 12세</option>
+                    <option>만 11세</option>
+                    <option>만 10세</option>
+                    <option>만 9세</option>
+                    <option>만 8세</option>
+                    <option>만 7세</option>
+                    <option>만 6세</option>
+                    <option>만 5세</option>
+                    <option>만 4세</option>
+                    <option>만 3세</option>
+                    <option>만 2세</option>
+                    <option>만 1세 이하</option>
+                </select>
+                <button class="gender-btn selected">남자</button>
+                <button class="gender-btn">여자</button>
+            </div>
+            <div style="margin-top:10px;">
+                <label style="font-weight:500;">아이의 성격 <span style="font-size:0.95em;color:#888;">(최대 5가지 선택
+                        가능)</span></label>
+                <div class="trait-buttons" style="margin-top:6px;">
+                    <button class="trait-btn selected">활발</button>
+                    <button class="trait-btn">내성적</button>
+                    <button class="trait-btn">산만함</button>
+                    <button class="trait-btn">질문 많음</button>
+                    <button class="trait-btn">독립적인 편</button>
+                    <button class="trait-btn">기타</button>
+                </div>
+            </div>
+            <div class="info-box">
+                돌봄이가 참고하면 좋을 아이의 특이사항이나 유의할 점이 있다면 입력해주세요.<br>
+                예) 알레르기, 약 복용, 행동 특성 등
+            </div>
+            <textarea class="textarea-box" placeholder="특이사항을 입력해주세요."></textarea>
+        </div>
+        <!-- 요일 시간 -->
+        <div class="form-section">
+            <label>요일 시간</label>
+            <div class="date-time-group">
+                <input type="date" value="2025-05-20">
+                <span>화요일</span>
+                <label>시작 시간: <input type="time" id="startTime" value="14:00"></label> ~
+                <label>종료 시간: <input type="time" id="endTime" value="18:00"></label>
+                <span id="totalTime">(총 4시간)</span>
+                <i class="fa-regular fa-calendar-days"></i>
+            </div>
+        </div>
+        <!-- 돌봄 목적 -->
+        <div class="form-section">
+            <label>돌봄 목적</label>
+            <div class="purpose-buttons">
+                <button class="purpose-btn selected">외출</button>
+                <button class="purpose-btn">육아휴식</button>
+                <button class="purpose-btn">재택근무</button>
+                <button class="purpose-btn">기타</button>
+            </div>
+        </div>
+        <!-- 돌봄 장소 -->
+        <div class="form-section">
+            <label>돌봄 장소</label>
+            <div class="place-buttons">
+                <button class="place-btn selected">자택</button>
+                <button class="place-btn">조부모댁</button>
+                <button class="place-btn">기타(직접입력)</button>
+            </div>
+        </div>
+        <!-- 요청사항 -->
+        <div class="form-section">
+            <label>요청사항</label>
+            <textarea class="textarea-box" placeholder="요청사항을 입력해주세요."></textarea>
+        </div>
+        <!-- 버튼 -->
+        <div class="btn-group">
+            <button class="step-btn">이전 단계</button>
+            <button class="step-btn">신청완료</button>
+        </div>
+    </div>
+</body>
+
+</html>

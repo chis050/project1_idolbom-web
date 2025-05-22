@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>아이돌봄</title>
+    <link rel="stylesheet" href="메인화면.css"> <!-- 이 부분 반드시 필요 -->
+</head>
+
+<body>
+    <header>
+        <div class="logo-area">
+            <img src="아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
+            <a href="../메인페이지/메인화면.html"><span>아이돌봄</span></a>
+        </div>
+        <nav>
+            <a href="../게시판/공지사항.html">공지사항</a>
+            <a href="../게시판/정보마당.html">정보마당</a>
+            <a href="../게시판/사용자이용.html">사용자이용</a>
+        </nav>
+        <div class="user-area">
+            <form class="search-form" onsubmit="handleSearch(event)">
+                <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <div id="google_translate_element"></div>
+
+            <!-- 로그인 버튼 -->
+            <a href="../로그인/로그인.html" id="login-link">
+                <button class="login-btn">로그인</button>
+            </a>
+            <!-- 로그아웃 UI (초기에는 숨겨짐) -->
+            <div id="user-info" style="display: none;">
+                <strong id="user-name">사용자</strong>
+                <div class="user-avatar">👤</div>
+                <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 신청 버튼들 -->
+        <section id="apply">
+            <h2>SERVICE 신청</h2>
+
+            <div class="apply-buttons">
+                <div class="apply-card">
+                    <img src="ICON2.png" alt="아이돌봄서비스 아이콘" class="apply-icon-img" />
+                    <a href="../돌봄서비스 신청(캘린더에서 날짜 선택)/ex돌보미신청정보.html"><button class="apply-btn">아이돌봄서비스 신청</button></a>
+                </div>
+                <div class="apply-card">
+                    <img src="ICON1.png" alt="아이돌보미 아이콘" class="apply-icon-img" />
+                    <a href="#"><button class="apply-btn">아이돌보미 신청</button></a>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 목적 영역 -->
+        <section id="purpose">
+            <h2>SERVICE 목적</h2>
+            <div class="purpose-list">
+                <div class="purpose-item">
+                    <div class="icon-area">👶</div>
+                    <p><strong>영아 및 발달 후 아동 돌봄</strong><br>개별 발달 과정의 아동 특성을 고려하여 돌봄이 필요한 아이돌봄서비스 제공</p>
+                </div>
+                <div class="purpose-item">
+                    <div class="icon-area">👪</div>
+                    <p><strong>부모의 일·가정 양립</strong><br>양육 공백 발생 시 긴급 돌봄 및 일시·정기 돌봄 등 수요자가 원하는 서비스 제공</p>
+                </div>
+                <div class="purpose-item">
+                    <div class="icon-area">🧴</div>
+                    <p><strong>돌봄 자원 활용</strong><br>육아, 돌봄 역량이 있는 자에게 교육지원 후, 적합한 제공자에게 서비스 자격을 연계 제공</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 통계 영역 -->
+        <section id="statistics">
+            <h2>SERVICE 통계</h2>
+            <div class="statistics-graphs">
+                <img src="assets/stat1.png" alt="파이 차트" />
+                <img src="assets/stat2.png" alt="막대 차트" />
+            </div>
+        </section>
+
+        <footer>
+            ⓒ 2025 아이돌봄 | 고객센터 1577-8136 | 개인정보처리방침
+        </footer>
+
+
+    </main>
+
+</body>
+
+</html>

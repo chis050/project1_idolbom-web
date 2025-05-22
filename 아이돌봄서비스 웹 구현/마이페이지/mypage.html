@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="../메인화면_only header.css"> <!-- 이 부분 반드시 필요 -->
+    <link rel="stylesheet" href="mypage.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img src="아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
+            <a href="../메인페이지/메인화면.html"><span>아이돌봄</span></a>
+        </div>
+
+        <nav class="nav-center">
+            <a href="#">공지사항</a>
+            <a href="#">정보마당</a>
+            <a href="#">사용자이용</a>
+        </nav>
+
+        <div class="user-area">
+            <form class="search-form" onsubmit="handleSearch(event)">
+                <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+
+            <div class="user-area">
+                <button class="logout-btn">로그아웃</button>
+                <strong>내향아이들 님</strong>
+                <div class="user-avatar">👤</div>
+            </div>
+    </header>
+
+
+
+    <div class="profile-section">
+        <img src="https://img.icons8.com/ios-filled/50/search.png" alt="아이콘" class="edit-icon" style="cursor:pointer;">
+        <div class="profile-info">
+            <strong id="nickname">내향아이들</strong>
+            <span id="edit-icon2">✏️</span>
+            <strong>돌보미 님</strong><br>
+            <span>hello1234@gmail.com</span>
+        </div>
+        <button class="setting-btn">계정설정</button>
+    </div>
+
+    <div class="section-list">
+        <div class="section">
+            <strong>아이돌봄 포인트</strong>
+            <a href="/point-shop.html" class="item">포인트 샵 <span class="arrow">›</span></a>
+            <a href="/point-history.html" class="item">적립/사용내역 <span class="arrow">›</span></a>
+        </div>
+
+        <div class="section">
+            <strong>돌보미 캘린더</strong>
+            <a href="/calendar.html" class="item">캘린더 <span class="arrow">›</span></a>
+        </div>
+
+        <div class="section">
+            <strong>평가목록</strong>
+            <a href="/review.html" class="item">리뷰/평점 <span class="arrow">›</span></a>
+        </div>
+
+        <div class="section">
+            <strong>활동</strong>
+            <a href="/activity-time.html" class="item">활동 시간내역 <span class="arrow">›</span></a>
+            <a href="/status-change.html" class="item">상태변경 <span class="arrow">›</span></a>
+        </div>
+
+        <div class="section">
+            <strong>설정</strong>
+            <a href="/alerts.html" class="item">알림 <span class="arrow">›</span></a>
+            <a href="/profile-privacy.html" class="item">내 프로필 공개 <span class="arrow">›</span></a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="/delete-account.html" class="delete-link">회원탈퇴</a>
+    </div>
+    </div>
+
+    <script>
+        document.getElementById('edit-icon2').addEventListener('click', enableNicknameEdit);
+    </script>
+</body>
+
+</html>

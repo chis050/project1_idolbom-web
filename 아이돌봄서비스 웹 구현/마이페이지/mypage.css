@@ -1,0 +1,117 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.mypage-container {
+  max-width: 720px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.mypage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #eee;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #7DCD8C;
+}
+
+.main-nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+}
+
+.profile-icon {
+  font-weight: bold;
+}
+
+.profile-section,
+.section-list,
+.footer {
+  max-width: 800px;
+  margin: 0 auto; /* 가운데 정렬 */
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
+}
+
+.profile-section img {
+  width: 40px;
+  margin-right: 15px;
+}
+
+.profile-info {
+  flex-grow: 1;
+}
+
+.setting-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  background-color: #ddd;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.section-list {
+  margin-top: 20px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+}
+
+.item:hover {
+  background-color: #f5fff9;
+}
+
+.arrow {
+  font-size: 18px;
+  color: #999;
+}
+
+.footer {
+  text-align: right;
+  margin-top: 40px;
+}
+
+.delete-link {
+  font-size: 14px;
+  color: #999;
+  text-decoration: none;
+}

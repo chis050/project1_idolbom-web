@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>아이돌봄서비스 신청 현황</title>
+    <link rel="stylesheet" href="메인화면_only header.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        .status-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 32px;
+            border: 1px solid #ddd;
+            border-radius: 16px;
+        }
+
+        .status-container h2 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #222;
+        }
+
+        .status-box {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .step-left {
+            display: flex;
+            gap: 12px;
+        }
+
+        .step-line {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 4px;
+        }
+
+        .step-line .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+        }
+
+        .step-item.complete .step-line .dot {
+            background-color: #7DCD8C;
+        }
+
+        .step-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .step-title {
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .step-progress {
+            background-color: #f0f5ff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #333;
+        }
+
+        .search-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .step-status {
+            font-size: 14px;
+            font-weight: bold;
+            color: #111;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="status-container">
+        <h2>아이돌봄서비스 신청 현황</h2>
+
+        <div class="status-box">
+            <div class="step-item complete">
+                <div class="step-left">
+                    <div class="step-line">
+                        <div class="dot"></div>
+                    </div>
+                    <div class="step-info">
+                        <div class="step-title">국민행복카드 발급</div>
+                        <div class="step-desc">1일 소요</div>
+                        <div class="step-progress">
+                            <span>승인 완료</span>
+                            <button class="search-btn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-status">완료</div>
+            </div>
+        </div>
+    </div>
+    <div class="status-box">
+        <div class="step-item complete">
+            <div class="step-left">
+                <div class="step-line">
+                    <div class="dot"></div>
+                </div>
+                <div class="step-info">
+                    <div class="step-title">아이돌봄 서비스 신청</div>
+                    <div class="step-desc">1일 소요</div>
+                    <div class="step-progress">
+                        <span>승인 완료</span>
+                        <button class="search-btn"><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="step-status">완료</div>
+        </div>
