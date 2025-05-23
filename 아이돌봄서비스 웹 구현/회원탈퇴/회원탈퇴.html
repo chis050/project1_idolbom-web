@@ -47,7 +47,7 @@
             </div>
             <div>
                 <label><input type="radio" name="withdraw_check" checked> 계정 비활성화</label>
-                <label><input type="radio" name="withdraw_check" > 회원 탈퇴</label>
+                <label><input type="radio" name="withdraw_check"> 회원 탈퇴</label>
             </div>
         </div>
 
@@ -81,7 +81,8 @@
         <div class="withdraw-section section3">
             <p>• 아래 '회원탈퇴'를 입력해주세요.</p>
             <input type="text" id="withdraw-text" placeholder="회원탈퇴" required>
-            <button onclick="submitWithdrawText()">확인</button>
+            <!-- <input type="button" id="withdraw-checkBtn" value="확인"></input> -->
+            <button id="withdraw-checkBtn" type="button">확인</button>
         </div>
 
         <div class="withdraw-agree">
