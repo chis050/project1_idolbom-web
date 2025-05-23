@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원탈퇴</title>
+    <link rel="stylesheet" href="회원탈퇴.css">
+    <link rel="stylesheet" href="../메인화면_only header.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body id="main">
+    <header>
+        <div class="logo-area">
+            <img src="아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
+            <a href="../메인페이지/메인화면.html"><span>아이 돌봄 서비스</span></a>
+        </div>
+        <nav>
+            <a href="../게시판/공지사항.html">공지사항</a>
+            <a href="../게시판/정보마당.html">정보마당</a>
+            <a href="../게시판/사용자이용.html">사용자이용</a>
+        </nav>
+        <div class="user-area">
+            <form class="search-form" onsubmit="handleSearch(event)">
+                <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <div id="google_translate_element"></div>
+        </div>
+        <div class="profile">
+            <span class="logout">로그아웃</span>
+            <span class="username">내향아이들 님</span>
+            <div class="alarm"></div>
+        </div>
+        <button id="translateBtn">번역</button>
+    </header>
+
+    <div class="withdraw-box">
+        <h2 class="withdraw-title">회원탈퇴 유의사항</h2>
+
+        <div class="withdraw-section section1">
+            <div>
+                <p>• 탈퇴 시, 이용 내역 및 저장된 정보는 복구되지 않습니다.</p>
+            </div>
+            <div>
+                <label><input type="radio" name="withdraw_check" checked> 계정 비활성화</label>
+                <label><input type="radio" name="withdraw_check" > 회원 탈퇴</label>
+            </div>
+        </div>
+
+        <div class="withdraw-section section2">
+            <div>
+                <p>• 회원을 탈퇴하려는 이유를 말씀해주세요. 서비스 개선에 도움이 됩니다.</p>
+            </div>
+            <div>
+                <label><input type="checkbox" id="checkbox1"> 서비스 이용이 불편해서</label><br>
+                <label><input type="checkbox" id="checkbox2"> 원하는 기능이 없어서</label><br>
+                <label><input type="checkbox" id="checkbox3"> 돌봄이 매칭에 불만족</label><br>
+                <label><input type="checkbox" id="checkbox4"> 고객센터 응대 불만족</label><br>
+                <label><input type="checkbox" id="checkbox5"> 기타 (직접 입력)</label>
+            </div>
+        </div>
+
+        <div class="withdraw-section section3">
+            <div>
+                <p>• 회원 탈퇴 시 아래의 정보가 모두 삭제됩니다.</p>
+            </div>
+            <div>
+                <ul>
+                    <li>돌봄이 예약 내역 및 리뷰</li>
+                    <li>결제 내역 및 포인트</li>
+                    <li>사용자 프로필 및 설정 정보</li>
+                </ul>
+            </div>
+            <p>** 삭제된 정보는 복구되지 않습니다.</p>
+        </div>
+
+        <div class="withdraw-section section3">
+            <p>• 아래 '회원탈퇴'를 입력해주세요.</p>
+            <input type="text" id="withdraw-text" placeholder="회원탈퇴" required>
+            <button onclick="submitWithdrawText()">확인</button>
+        </div>
+
+        <div class="withdraw-agree">
+            <label><input type="checkbox"> 상기 내용을 모두 확인하였으며, 회원 탈퇴에 동의합니다.</label>
+        </div>
+
+        <button class="withdraw-button">탈퇴하기</button>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 아이돌봄 서비스. All rights reserved.</p>
+            <p>이용약관 | 개인정보처리방침</p>
+        </div>
+        <div class="footer-logo">
+            <img src="아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
+        </div>
+    </footer>
+
+    <script src="회원탈퇴.js"></script>
+    <script src="../번역/translate.js">번역</script>
+</body>
+
+</html>

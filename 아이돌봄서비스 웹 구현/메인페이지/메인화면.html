@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="메인화면.css"> <!-- 이 부분 반드시 필요 -->
 </head>
 
-<body>
+<body id="main">
     <header>
         <div class="logo-area">
             <img src="아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
-            <a href="../메인페이지/메인화면.html"><span>아이돌봄</span></a>
+            <a href="../메인페이지/메인화면.html"><span>아이 돌봄 서비스</span></a>
         </div>
         <nav>
             <a href="../게시판/공지사항.html">공지사항</a>
@@ -37,6 +37,7 @@
                 <div class="user-avatar">👤</div>
                 <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
             </div>
+            <button id="translateBtn">번역</button>
         </div>
     </header>
 
@@ -52,7 +53,7 @@
                 </div>
                 <div class="apply-card">
                     <img src="ICON1.png" alt="아이돌보미 아이콘" class="apply-icon-img" />
-                    <a href="#"><button class="apply-btn">아이돌보미 신청</button></a>
+                    <a href="#"><button class="apply-btn">아이 돌보미 신청</button></a>
                 </div>
             </div>
 
@@ -90,9 +91,9 @@
             ⓒ 2025 아이돌봄 | 고객센터 1577-8136 | 개인정보처리방침
         </footer>
 
-
+        
     </main>
-
+    <script src="../번역/translate.js"></script>
 </body>
 
 </html>
