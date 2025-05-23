@@ -1,3 +1,6 @@
+div a{
+  text-decoration-line: none;
+}
 
 .signup-container {
   max-width: 600px;
@@ -43,6 +46,7 @@
   font-size: 12px;
   color: #666;
   margin-bottom: 14px;
+  margin-left: 10px;
 }
 
 .row {
@@ -59,13 +63,14 @@
 .check-btn {
   background: #7DCD8C;
   color: #fff;
-  padding: 11px 14px;
+  padding: 14px 14px;
   border: none;
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
   font-size: 14px;
   white-space: nowrap;
+  margin-bottom: 10px;
 }
 
 .submit-btn {

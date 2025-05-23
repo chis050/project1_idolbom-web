@@ -16,21 +16,6 @@ client = translate.Client()
 def home():
     return 'Flask 번역 서버가 실행 중입니다.'
 
-# @app.route('/translate', methods=['POST'])
-# def translate_text():
-
-#     data = request.get_json()
-#     text = data['text']
-#     target_lang = data['lang']
-
-#     result = client.translate(
-#         text,
-#         target_language=target_lang,
-#         format_='html'  # HTML 태그 유지
-#     )
-
-#     return jsonify({'translated': result['translatedText']})
-
 @app.route('/translate', methods=['POST'])
 def translate_text():
     data = request.get_json()
