@@ -5,6 +5,27 @@
   --section-title-bg: #e9f8ef;
 }
 
+.login-btn {
+  background-color: #32a37b;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.login-btn:hover {
+  background-color: #277d5f;
+}
+
+.btn-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 body {
   font-family: 'Noto Sans KR', sans-serif;
   background-color: #f9f9f9;
@@ -130,3 +151,87 @@ nav a {
   color: var(--main-color);
 }
 
+#translateBtn {
+  top: 20px;
+  width: 40x;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  background-image: url('images/translate-icon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.translate-wrapper {
+  position: relative; /* 기준 기준점 */
+  display: inline-block;
+}
+
+
+.language-box {
+  margin-top: 8px;
+  border: 2px solid #80cc99;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 60px;
+  text-align: center;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-weight: bold;
+  color: #555;
+  overflow: hidden;
+}
+
+.lang-option {
+  padding: 10px 0;
+  cursor: pointer;
+  border-top: 1px solid #80cc99;
+}
+
+.lang-option:first-child {
+  border-top: none;
+}
+
+.hidden {
+  display: none;
+}
+
+
+.main-footer {
+    background-color: #e2f7ef;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #646464;
+    border-top: 1px solid #ccc;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-links {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #32a37b;
+    text-decoration: none;
+    margin: 0 6px;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.footer-logo {
+    height: 80px;
+    margin-top: 4px;
+}

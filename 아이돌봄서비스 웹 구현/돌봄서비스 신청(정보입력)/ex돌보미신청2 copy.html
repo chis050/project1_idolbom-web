@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <title>아이돌봄 서비스 예약 신청</title>
+  <link rel="stylesheet" href="메인화면_header_bottom.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    :root {
+      --main-color: #7DCD8C;
+      --bg-light: #f7f7f7;
+      --border-color: #ccc;
+      --text-gray: #888;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 40px 20px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      padding: 32px;
+    }
+
+    h3 {
+      color: var(--main-color);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      background-color: #fefefe;
+    }
+
+    textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    .note {
+      color: var(--text-gray);
+      font-size: 13px;
+      margin-left: 4px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      background: var(--bg-light);
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .tag.selected {
+      background: var(--main-color);
+      border-color: var(--main-color);
+      color: #fff;
+    }
+
+    .custom-input {
+      display: none;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <body id="main">
+    <header>
+    <div class="logo-area">
+      <img src="../아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
+      <a href="../메인페이지/메인화면.html"><span>아이 돌봄 서비스</span></a>
+    </div>
+    <nav>
+      <a href="../게시판/공지사항.html">공지사항</a>
+      <a href="../게시판/정보마당.html">정보마당</a>
+      <a href="../게시판/사용자이용.html">사용자이용</a>
+    </nav>
+    <div class="user-area">
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <div id="google_translate_element"></div>
+
+      <button class="logout-btn">로그아웃</button>
+      <strong>내향아이들 님</strong>
+      <div class="user-avatar">👤</div>
+    </div>
+    <button id="translateBtn"><img src="#" alt="#"></button>
+  </header>
+
+    <main>
+      <div class="form-group">
+        <h3>아이 정보</h3>
+        <label>연령</label>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <input id="age-value" placeholder="숫자 입력" type="number" />
+          <select id="age-unit">
+            <option value="month">개월</option>
+            <option selected value="year">만 세</option>
+          </select>
+        </div>
+        <span class="note">* 생후 3개월 ~ 24개월 또는 만 1세 ~ 12세</span>
+      </div>
+
+      <div class="form-group">
+        <label>아이의 성격 <span class="note">(최대 5개 선택 가능)</span></label>
+        <div class="tags personality-tags">
+          <button class="tag" type="button">활발</button>
+          <button class="tag" type="button">내성적</button>
+          <button class="tag" type="button">산만함</button>
+          <button class="tag" type="button">질문 많음</button>
+          <button class="tag" type="button">독립적인 편</button>
+          <button class="tag" data-other="personality" type="button">기타</button>
+        </div>
+        <input class="custom-input custom-personality" placeholder="기타 성격 입력" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label>유의사항 <span class="note">돌봄 시 참고할 점이 있다면 입력해주세요.</span></label>
+        <textarea placeholder="유의사항을 입력하세요."></textarea>
+      </div>
+
+      <div class="form-group">
+        <h3>요일 시간</h3>
+        <input id="schedulePicker" placeholder="날짜와 시간 범위를 선택하세요" type="text" />
+        <div class="note">예: 2025-05-20 14:00 ~ 18:00</div>
+        <input id="startTimePicker" placeholder="시작 시간">
+        <input id="endTimePicker" placeholder="종료 시간">
+        <button id="submitBtn">예약 정보 제출</button>
+      </div>
+
+      <div class="form-group">
+        <h3>돌봄 목적</h3>
+        <div class="tags purpose-tags">
+          <button class="tag" type="button">외출</button>
+          <button class="tag" type="button">육아휴식</button>
+          <button class="tag" type="button">재택근무</button>
+          <button class="tag" data-other="purpose" type="button">기타</button>
+        </div>
+        <input class="custom-input custom-purpose" placeholder="기타 목적 입력" type="text" />
+      </div>
+
+      <div class="form-group">
+        <h3>돌봄 장소</h3>
+        <div class="tags location-tags">
+          <button class="tag" type="button">자택</button>
+          <button class="tag" type="button">조부모댁</button>
+          <button class="tag" data-other="location" type="button">기타(직접입력)</button>
+        </div>
+        <input class="custom-input custom-location" placeholder="직접 입력하세요" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label>요청사항</label>
+        <textarea placeholder="요청사항을 입력하세요."></textarea>
+      </div>
+      <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#">개인정보처리방침</a> |
+        <a href="#">이용약관</a> |
+        <a href="#">안내센터 1588-1234</a>
+      </div>
+      <div class="footer-info">
+        <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
+        <img src="여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
+      </div>
+    </div>
+  </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      flatpickr("#schedulePicker", {
+        enableTime: true,
+        mode: "single",
+        dateFormat: "Y-m-d",
+        minDate: "today",
+      });
+
+      // 시작 시간 선택
+      flatpickr("#startTimePicker", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true,
+        minuteIncrement: 15
+      });
+
+      // 종료 시간 선택
+      flatpickr("#endTimePicker", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true,
+        minuteIncrement: 15
+      });
+
+
+      const ageInput = document.getElementById('age-value');
+      const ageUnit = document.getElementById('age-unit');
+
+      function validateAgeInput() {
+        const value = parseInt(ageInput.value, 10);
+        const unit = ageUnit.value;
+        if (unit === 'month') {
+          if (value < 3) ageInput.value = 3;
+          if (value > 24) ageInput.value = 24;
+        } else {
+          if (value < 1) ageInput.value = 1;
+          if (value > 12) ageInput.value = 12;
+        }
+      }
+
+      ageInput.addEventListener('input', validateAgeInput);
+      ageUnit.addEventListener('change', validateAgeInput);
+
+      // 전체 스크립트 내 목적/장소 선택 로직만 수정
+      function setupTagToggle(wrapperSelector, maxCount = Infinity) {
+        const wrapper = document.querySelector(wrapperSelector);
+        const tags = wrapper.querySelectorAll('.tag');
+
+        tags.forEach(tag => {
+          tag.addEventListener('click', () => {
+            const isOther = tag.dataset.other;
+            const inputSelector = `.custom-${isOther}`;
+            const input = isOther ? document.querySelector(inputSelector) : null;
+            const alreadySelected = tag.classList.contains('selected');
+
+            // 성격: 최대 5개까지 선택 가능
+            if (!alreadySelected && maxCount !== Infinity) {
+              const selected = Array.from(tags).filter(t => t.classList.contains('selected'));
+              if (selected.length >= maxCount) return;
+            }
+
+            // 목적/장소: 하나만 선택 가능, 기타 포함, 다시 클릭 시 해제
+            if (maxCount === 1) {
+              if (alreadySelected) {
+                tag.classList.remove('selected');
+              } else {
+                tags.forEach(t => t.classList.remove('selected'));
+                tag.classList.add('selected');
+              }
+            } else {
+              tag.classList.toggle('selected');
+            }
+
+            if (input) {
+              const visible = tag.classList.contains('selected');
+              input.style.display = visible ? 'block' : 'none';
+              if (!visible) input.value = '';
+            }
+          });
+        });
+      }
+      // ✅ 제출 및 이전 버튼 생성
+      const footer = document.createElement('div');
+      footer.className = 'form-actions';
+      footer.style.cssText = 'display: flex; justify-content: flex-end; gap: 12px; margin-top: 40px;';
+
+      const prevBtn = document.createElement('button');
+      prevBtn.className = 'prev-btn';
+      prevBtn.textContent = '이전 단계';
+      prevBtn.style.cssText = 'padding: 10px 20px; font-size: 15px; border: none; border-radius: 4px; background: #f0f0f0; cursor: pointer;';
+
+      const submitBtn = document.createElement('button');
+      submitBtn.className = 'submit-btn';
+      submitBtn.textContent = '신청 완료';
+      submitBtn.style.cssText = 'padding: 10px 20px; font-size: 15px; background: var(--main-color); color: white; border: none; border-radius: 4px; cursor: pointer; opacity: 0.5;';
+      submitBtn.disabled = true;
+
+      submitBtn.addEventListener('click', () => {
+        if (!submitBtn.disabled) {
+          alert('신청이 완료되었습니다!');
+        }
+      });
+
+      footer.appendChild(prevBtn);
+      footer.appendChild(submitBtn);
+      document.querySelector('main').appendChild(footer);
+
+      function validateForm() {
+        const ageValue = document.getElementById('age-value').value.trim();
+        const scheduleValue = document.getElementById('schedulePicker').value.trim();
+        const startTime = document.getElementById("startTimePicker").value;
+        const endTime = document.getElementById("endTimePicker").value;
+        const personalityCount = document.querySelectorAll('.personality-tags .tag.selected').length;
+        const purposeSelected = document.querySelector('.purpose-tags .tag.selected');
+        const locationSelected = document.querySelector('.location-tags .tag.selected');
+
+        const allFilled = ageValue !== '' && scheduleValue !== '' && personalityCount > 0 && purposeSelected && locationSelected;
+
+        submitBtn.disabled = !allFilled;
+        submitBtn.style.opacity = allFilled ? '1' : '0.5';
+
+        if (!date || !startTime || !endTime) {
+          alert("날짜와 시작/종료 시간을 모두 선택해주세요.");
+          return;
+        }
+
+        if (startTime >= endTime) {
+          alert("시작 시간은 종료 시간보다 이전이어야 합니다.");
+          return;
+        }
+
+        const schedule = `${date} ${startTime} ~ ${endTime}`;
+        console.log("선택한 일정:", schedule);
+      }
+
+      // 초기화 및 모든 입력 요소에 이벤트 연결
+      ['input', 'change'].forEach(eventType => {
+        document.querySelectorAll('#age-value, #schedulePicker').forEach(el => {
+          el.addEventListener(eventType, validateForm);
+        });
+      });
+
+      setupTagToggle('.personality-tags', 5);
+      setupTagToggle('.purpose-tags', 1);
+      setupTagToggle('.location-tags', 1);
+    </script>
+  </body>
+
+</html>

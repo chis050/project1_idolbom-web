@@ -6,45 +6,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>아이돌봄 로그인</title>
+  <link rel="stylesheet" href="../공통메인/메인화면_header_bottom.css">
   <link rel="stylesheet" href="로그인.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 </head>
 
-<body>
-   <header>
-        <div class="logo-area">
-            <img src="../메인페이지/아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
-            <a href="../메인페이지/메인화면.html"><span>아이돌봄</span></a>
-        </div>
-        <nav>
-            <a href="../게시판/공지사항.html">공지사항</a>
-            <a href="../게시판/정보마당.html">정보마당</a>
-            <a href="../게시판/사용자이용.html">사용자이용</a>
-        </nav>
-        <div class="user-area">
-            <form class="search-form" onsubmit="handleSearch(event)">
-                <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
-                <button type="submit" class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-            <div id="google_translate_element"></div>
+<body id="main">
+  <header>
+    <div class="logo-area">
+      <img src="../공통메인/아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
+      <a href="../메인페이지/메인페이지.html"><span>아이 돌봄서비스</span></a>
+    </div>
+    <nav>
+      <a href="../게시판/공지사항.html">공지사항</a>
+      <a href="../게시판/정보마당.html">정보마당</a>
+      <a href="../게시판/사용자이용.html">사용자이용</a>
+    </nav>
+    <div class="user-area">
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="search...." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <div id="google_translate_element"></div>
 
-            <!-- 로그인 버튼 -->
-            <a href="../로그인/로그인.html" id="login-link">
+      <!-- 로그인 버튼 -->
+      <!-- <a href="../로그인/로그인.html" id="login-link">
                 <button class="login-btn">로그인</button>
-            </a>
-            <!-- 로그아웃 UI (초기에는 숨겨짐) -->
-            <div id="user-info" style="display: none;">
+            </a> -->
+      <!-- 로그아웃/프로필 UI -->
+      <!-- <div id="user-info" style="display: none;">
                 <strong id="user-name">사용자</strong>
                 <div class="user-avatar">👤</div>
                 <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
-            </div>
-            <button id="translateBtn">번역</button>
-        </div>
-    </header>
+            </div> -->
+      <button id="translateBtn">
+        <img src="../공통메인/번역버튼.png" style="width: 24px; height: 24px;">
+      </button>
+    </div>
+  </header>
 
   <main>
     <div class="login-box">
@@ -53,7 +56,7 @@
         <input type="text" id="id" placeholder="ID" required>
         <div class="pw-container">
           <input type="password" id="pw" placeholder="PW" required>
-          <span class="eye">👁️</span>
+          <span class="eye" id="eye">#</span>
         </div>
         <button type="submit" id="login_btn">login</button>
       </form>
@@ -69,6 +72,7 @@
   </main>
 
   <script src="로그인.js"></script>
+  <script src="../번역api/translate.js"></script>
 </body>
 
 </html>

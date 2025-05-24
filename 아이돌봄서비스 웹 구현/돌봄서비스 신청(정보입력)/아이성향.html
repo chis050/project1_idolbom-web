@@ -13,28 +13,30 @@
 
 <body>
     <header>
-        <div class="logo-area">
-            <img src="./images/아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
-            <span>아이돌봄</span>
-        </div>
-        <nav>
-            <a href="#">공지사항</a>
-            <a href="#">정보마당</a>
-            <a href="#">사용자이용</a>
-        </nav>
-        <div class="user-area">
-            <form class="search-form" onsubmit="handleSearch(event)">
-                <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
-                <button type="submit" class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-            <div id="google_translate_element"></div>
-            <button class="logout-btn">로그아웃</button>
-            <strong>내향아이들 님</strong>
-            <div class="user-avatar">👤</div>
-        </div>
-    </header>
+    <div class="logo-area">
+      <img src="../아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
+      <a href="../메인페이지/메인화면.html"><span>아이 돌봄 서비스</span></a>
+    </div>
+    <nav>
+      <a href="../게시판/공지사항.html">공지사항</a>
+      <a href="../게시판/정보마당.html">정보마당</a>
+      <a href="../게시판/사용자이용.html">사용자이용</a>
+    </nav>
+    <div class="user-area">
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <div id="google_translate_element"></div>
+
+      <button class="logout-btn">로그아웃</button>
+      <strong>내향아이들 님</strong>
+      <div class="user-avatar">👤</div>
+    </div>
+    <button id="translateBtn"><img src="#" alt="#"></button>
+  </header>
 
     <div class="form-container">
         <!-- 아이 정보 -->
@@ -118,6 +120,21 @@
             <button class="step-btn">신청완료</button>
         </div>
     </div>
+    <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#">개인정보처리방침</a> |
+        <a href="#">이용약관</a> |
+        <a href="#">안내센터 1588-1234</a>
+      </div>
+      <div class="footer-info">
+        <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
+        <img src="여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
+      </div>
+    </div>
+  </footer>
+  <script src="../번역api/translate.js"></script>
+  <script src="../로그인/로그인.js"></script>
 </body>
 
 </html>
