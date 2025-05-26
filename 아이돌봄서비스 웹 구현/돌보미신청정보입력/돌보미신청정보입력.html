@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <title>아이돌봄 서비스 예약 신청</title>
+  <link rel="stylesheet" href="메인화면_header_bottom.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="돌보미신청정보입력.css ">
+
+</head>
+
+
+  <body id="main">
+      <header>
+    <div class="logo-area">
+      <img alt="아이돌봄 로고" src="아이돌봄서비스-메인로고.png" />
+      <a href="메인페이지.html"><span>아이 돌봄</span></a>
+    </div>
+    <nav class="menu">
+      <a href="../게시판/공지사항.html">공지사항</a>
+      <a href="../게시판/정보마당.html">정보마당</a>
+      <a href="../게시판/사용자이용.html">사용자이용</a>
+    </nav>
+
+
+    <div class="user-area">
+      <div class="translate-wrapper">
+        <button id="translateBtn">
+          <img src="번역버튼.png" alt="번역 아이콘" style="width: 24px; height: 24px;" />
+        </button>
+        <div id="languageDropdown" class="language-box hidden">
+          <div class="lang-option" onclick="setLanguage('kr')">KR</div>
+          <div class="lang-option" onclick="setLanguage('en')">EN</div>
+          <div class="lang-option" onclick="setLanguage('cn')">CN</div>
+        </div>
+      </div>
+
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <div id="google_translate_element"></div>
+
+      <!-- 로그인 버튼 -->
+      <a href="../로그인/로그인.html" id="login-link">
+        <button class="login-btn">로그인</button>
+      </a>
+      <!-- 로그아웃 UI (초기에는 숨겨짐) -->
+      <div id="user-info" style="display: none;">
+        <strong id="user-name">사용자</strong>
+        <div class="user-avatar">👤</div>
+        <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+      </div>
+
+    </div>
+  </header>
+
+    <main>
+      <div class="form-group">
+        <h3>아이 정보</h3><br>
+
+
+        <div>
+          <label for="child-name">아이 이름</label>
+          <input type="text" id="child-name" placeholder="아이 이름을 입력하세요" />
+        </div><br>
+
+
+        <label>연령</label>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <input id="age-value" placeholder="숫자 입력" type="number" />
+          <select id="age-unit">
+            <option value="month">개월</option>
+            <option selected value="year">만 세</option>
+          </select>
+        </div>
+        <span class="note">* 생후 3개월 ~ 24개월 또는 만 1세 ~ 12세</span>
+      </div>
+
+
+      <div>
+        <label for="child-address">돌봄 주소</label>
+        <input type="text" id="child-address" placeholder="주소를 검색하려면 클릭하세요" readonly onclick="execDaumPostcode()" />
+      </div>
+      <div>
+        <label for="child-detail">상세 주소</label>
+        <input type="text" id="child-detail" placeholder="상세 주소를 입력하세요 (예: 101동 202호)" />
+      </div>
+      <br>
+
+
+      <div class="form-group">
+        <label>아이의 성격 <span class="note">(최대 5개 선택 가능)</span></label>
+        <div class="tags personality-tags">
+          <button class="tag" type="button">활발</button>
+          <button class="tag" type="button">내성적</button>
+          <button class="tag" type="button">산만함</button>
+          <button class="tag" type="button">질문 많음</button>
+          <button class="tag" type="button">독립적인 편</button>
+          <button class="tag" data-other="personality" type="button">기타</button>
+        </div>
+        <input class="custom-input custom-personality" placeholder="기타 성격 입력" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label>유의사항 <span class="note">돌봄 시 참고할 점이 있다면 입력해주세요.</span></label>
+        <textarea placeholder="유의사항을 입력하세요."></textarea>
+      </div>
+
+      <div class="form-group">
+        <h3>요일 시간</h3>
+        <div class="note">예: 2025-05-20 14:00 ~ 18:00</div><br>
+
+        <input id="schedulePicker" placeholder="날짜와 시간 범위를 선택하세요" type="text" />
+        <input id="startTimePicker" placeholder="시작 시간">
+        <input id="endTimePicker" placeholder="종료 시간">
+        <button id="submitBtn">예약 정보 제출</button>
+      </div>
+
+      <div class="form-group">
+        <h3>돌봄 목적</h3>
+        <div class="tags purpose-tags">
+          <button class="tag" type="button">외출</button>
+          <button class="tag" type="button">육아휴식</button>
+          <button class="tag" type="button">재택근무</button>
+          <button class="tag" data-other="purpose" type="button">기타</button>
+        </div>
+        <input class="custom-input custom-purpose" placeholder="기타 목적 입력" type="text" />
+      </div>
+
+      <div class="form-group">
+        <h3>돌봄 장소</h3>
+        <div class="tags location-tags">
+          <button class="tag" type="button">자택</button>
+          <button class="tag" type="button">조부모댁</button>
+          <button class="tag" data-other="location" type="button">기타(직접입력)</button>
+        </div>
+        <input class="custom-input custom-location" placeholder="직접 입력하세요" type="text" />
+      </div>
+
+      <div class="form-group">
+        <label>요청사항</label>
+        <textarea placeholder="요청사항을 입력하세요."></textarea>
+      </div>
+    </main>
+
+    <footer class="main-footer">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="#">개인정보처리방침</a> |
+          <a href="#">이용약관</a> |
+          <a href="#">안내센터 1588-1234</a>
+        </div>
+        <div class="footer-info">
+          <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
+          <img src="여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
+        </div>
+      </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="돌보미신청정보입력.js"></script>
+    <script src="../번역/translate.js" defer></script>
+  </body>
+
+</html>

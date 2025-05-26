@@ -1,17 +1,105 @@
+.container {
+    display: flex;
+    max-width: 1100px;
+    margin: 40px auto;
+    gap: 24px;
+}
 
-    .container { display: flex; max-width: 1100px; margin: 40px auto; gap: 24px; }
-    .sidebar, .calendar, .times { background: white; border-radius: 8px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .sidebar { width: 200px; }
-    .calendar { flex: 1; }
-    .times { width: 200px; }
-    .profile-name { font-weight: bold; font-size: 18px; }
-    .stars { color: orange; margin: 4px 0; }
-    .month-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; }
-    .calendar-grid div { text-align: center; padding: 12px 0; background: #eee; border-radius: 6px; cursor: pointer; }
-    .calendar-grid div.selected { background: #7DCD8C; color: white; font-weight: bold; }
-    .time-list { max-height: 400px; overflow-y: auto; }
-    .time-slot { padding: 10px; margin-bottom: 8px; background: #eee; text-align: center; border-radius: 4px; cursor: pointer; }
-    .time-slot.selected { background: #7DCD8C; color: white; font-weight: bold; }
-    .confirm-button { margin-top: 12px; width: 100%; padding: 10px; background: #7DCD8C; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; }
-    .duration { margin-top: 10px; text-align: center; color: #555; font-size: 14px; }
+.sidebar,
+.calendar,
+.times {
+    background: white;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar {
+    width: 200px;
+}
+
+.calendar {
+    flex: 1;
+}
+
+.times {
+    width: 200px;
+}
+
+.profile-name {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.stars {
+    color: orange;
+    margin: 4px 0;
+}
+
+.month-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.calendar-grid div {
+    text-align: center;
+    padding: 12px 0;
+    background: #eee;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.calendar-grid div.selected {
+    background: #7DCD8C;
+    color: white;
+    font-weight: bold;
+}
+
+.time-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.time-slot {
+    padding: 10px;
+    margin-bottom: 8px;
+    background: #eee;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.time-slot.selected {
+    background: #7DCD8C;
+    color: white;
+    font-weight: bold;
+}
+
+.confirm-button {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px;
+    background: #7DCD8C;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.duration {
+    margin-top: 10px;
+    text-align: center;
+    color: #555;
+    font-size: 14px;
+}a{
+    text-decoration-line: none;
+}

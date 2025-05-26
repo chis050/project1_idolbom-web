@@ -36,6 +36,10 @@ input {
     transition: transform 0.2s;
 }
 
+a {
+    text-decoration-line: none !important;
+}
+
 .card:hover {
     transform: translateY(-4px);
 }

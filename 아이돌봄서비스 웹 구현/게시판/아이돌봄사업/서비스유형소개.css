@@ -1,0 +1,66 @@
+:root {
+      --main-color: #4CAF50; /* 트렌디한 초록색 */
+      --bg-color: #f0fdf4;
+      --text-color: #333;
+      --accent-color: #81c784; /* 연한 포인트 초록 */
+    }
+
+    body {
+      font-family: 'SUIT', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      color: var(--main-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .section {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: var(--main-color);
+      color: white;
+    }
+
+    .highlight {
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      td {
+        padding: 8px 0;
+        border-bottom: none;
+      }
+    }

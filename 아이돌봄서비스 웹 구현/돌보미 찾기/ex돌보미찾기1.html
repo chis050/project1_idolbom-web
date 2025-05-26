@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>돌보미 찾기</title>
+  <link rel="stylesheet" href="메인화면_only header.css"> <!-- 이 부분 반드시 필요 -->
+  <style>
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 32px;
+    }
+
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    select,
+    input {
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .card p {
+      margin: 6px 0;
+    }
+
+    .rating {
+      color: #f39c12;
+      font-weight: bold;
+    }
+
+    .tag {
+      display: inline-block;
+      background-color: #e8f0fe;
+      color: var(--main-color);
+      padding: 4px 8px;
+      margin-top: 8px;
+      font-size: 12px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo-area">
+      <img src="아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
+      <span>돌보미 서비스</span>
+    </div>
+    <nav>
+      <a href="#">공지사항</a>
+      <a href="#">정보마당</a>
+      <a href="#">사용자이용</a>
+    </nav>
+    <div class="user-area">
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      
+      <div class="user-area">
+        <button class="logout-btn">로그아웃</button>
+        <strong>내향아이들 님</strong>
+        <div class="user-avatar">👤</div>
+      </div>
+  </header>
+
+  <h1>돌보미 찾기</h1>
+
+  <div class="filter-bar">
+    <input type="text" id="searchInput" placeholder="이름 또는 키워드를 입력하세요" oninput="searchCaregivers()">
+    <select id="regionFilter" onchange="searchCaregivers()">
+      <option value="">지역</option>
+      <option value="광주 북구">광주 북구</option>
+      <option value="광주 동구">광주 동구</option>
+      <option value="광주 서구">광주 서구</option>
+    </select>
+    <select id="typeFilter" onchange="searchCaregivers()">
+      <option value="">유형</option>
+      <option value="시간제">시간제</option>
+      <option value="긴급돌봄">긴급돌봄</option>
+      <option value="연계">연계</option>
+    </select>
+    <select id="nationalityFilter" onchange="searchCaregivers()">
+      <option value="">국적</option>
+      <option value="한국">한국</option>
+      <option value="필리핀">필리핀</option>
+      <option value="베트남">베트남</option>
+      <option value="중국">중국</option>
+    </select>
+  </div>
+
+  <div class="card-container" id="results"></div>
+  <script src="ex돌보미찾기1.js"></script>
+
+
+</body>
+
+</html>

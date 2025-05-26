@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>캘린더</title>
+
+    <!-- 외부 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="캘린더_스타일.css" />
+    <link href="../메인페이지/메인화면_header_bottom.css" rel="stylesheet" />
+    <script src="../메인페이지/메인페이지.js"></script>
+
+</head>
+
+<body id="main">
+    <!-- ✅ 헤더 영역 -->
+    <header>
+        <div class="logo-area">
+            <img alt="아이돌봄 로고" src="./img/아이돌봄서비스-메인로고.png">
+            <a href="../메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
+        </div>
+
+        <nav class="menu">
+            <a href="../게시판/공지사항.html">공지사항</a>
+            <a href="../게시판/정보마당.html">정보마당</a>
+            <a href="../게시판/사용자이용.html">사용자이용</a>
+        </nav>
+
+        <div class="user-area">
+            <div class="translate-wrapper">
+                <button id="translateBtn">
+                    <img src="img/번역버튼.png" style="width: 24px; height: 24px;">
+                </button>
+                <div id="languageDropdown" class="language-box hidden">
+                    <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+                    <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+                    <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
+                </div>
+            </div>
+
+            <form class="search-form" onsubmit="handleSearch(event)">
+                <input type="text" class="search-box" placeholder="search...." id="searchInput" />
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+
+            <div id="google_translate_element"></div>
+
+            <a href="../로그인/로그인.html" id="login-link">
+                <button class="login-btn">로그인</button>
+            </a>
+            <div id="user-info" style="display: none;">
+                <strong id="user-name">사용자</strong>
+                <!-- <div class="user-avatar">👤</div> -->
+                <div class="user-avatar">👧🏻</div>
+                <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ✅ 캘린더 영역 -->
+        <script src="./dist/index.global.js"></script>
+        <script src="마이페이지_캘린더.js" defer></script>
+        <div id="calendar"></div>
+
+        <!-- ✅ 일정 카드 리스트 -->
+        <script src="더미데이터_카드.js"></script>
+        <section id="event-list" class="event-list">
+            <!-- JavaScript에서 일정 데이터를 받아서 여기에 카드로 삽입 -->
+        </section>
+    </main>
+    <script src="../번역api/translate.js"></script>
+</body>
+
+</html>

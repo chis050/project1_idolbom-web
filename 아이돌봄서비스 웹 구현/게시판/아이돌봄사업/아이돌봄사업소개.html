@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <title>아이돌봄 서비스</title>
+  <link href="/메인페이지/아이돌봄서비스_메인페이지.css" rel="stylesheet">
+  <link href="/메인페이지/메인화면_header_bottom.css" rel="stylesheet">
+  <link rel="stylesheet" href="아이돌봄사업소개.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body id="main">
+  <!-- 1. 헤더 -->
+  <header>
+    <div class="logo-area">
+      <img alt="아이돌봄 로고" src="./img/아이돌봄서비스-메인로고.png">
+      <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
+    </div>
+
+    <nav>
+  <ul class="menu">
+    <li class="menu-item">
+      <a href="#">아이돌봄 사업</a>
+      <ul class="submenu">
+        <li><a href="아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
+        <li><a href="#">아이돌봄 사업현황</a></li>
+        <li><a href="서비스유형소개.html">서비스 유형 소개</a></li>
+      </ul>
+    </li>
+    <li class="menu-item">
+      <a href="#">서비스 이용</a>
+      <ul class="submenu">
+        <li><a href="서비스신청안내.html">정부지원 신청안내</a></li>
+        <li><a href="#">신청 전 사전 준비안내</a></li>
+      </ul>
+    </li>
+    <li class="menu-item">
+      <a href="#">정보마당</a>
+      <ul class="submenu">
+        <li><a href="#">공지사항</a></li>
+        <li><a href="자주하는질문.html">자주하는 질문</a></li>
+      </ul>
+    </li>
+    <li class="menu-item">
+      <a href="/게시판/글쓰기.html">자유게시판</a>
+    </li>
+
+  </ul>
+</nav>
+
+    <div class="user-area">
+      <div class="translate-wrapper">
+        <button id="translateBtn">
+          <img src="img/번역버튼.png" style="width: 24px; height: 24px;">
+        </button>
+        <div id="languageDropdown" class="language-box hidden">
+          <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+          <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+          <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
+        </div>
+      </div>
+
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="search...." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+
+      <div id="google_translate_element"></div>
+
+      <a href="/로그인/로그인.html" id="login-link">
+        <button class="login-btn">로그인</button>
+      </a>
+      <div id="user-info" style="display: none;">
+        <a href="/마이페이지/mypage.html">
+          <strong id="user-name">사용자</strong>
+          <!-- <div class="user-avatar">👤</div> -->
+          <div class="user-avatar">👧🏻</div>
+        </a>
+        <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+      </div>
+    </div>
+  </header>
+
+  <div id="content">
+    <main>
+      <section class="service-intro">
+        <h1>아이돌봄 사업</h1>
+        <nav class="breadcrumb">
+          <span><strong>아이돌봄서비스</strong></span> &gt; <span><strong>아이돌봄사업</strong></span> &gt; <span><strong>아이돌봄 사업소개</strong></span>
+        </nav>
+        <div class="intro-box">
+          <p>부모의 맞벌이 등으로 양육 공백이 발생한 가정의 만 12세 이하 아동을 대상으로 아이돌보미가 찾아가는 돌봄 서비스를 제공합니다.</p>
+        </div>
+      </section>
+
+      <section class="goals">
+        <h2>아이돌봄 지원사업 목적</h2>
+        <p>아이돌봄 지원사업은 가정의 아이돌봄을 지원하여 아동의 복지증진과 보호자의 일·가정 양립을 돕는 가족 구성원의 삶의 질 향상과 양육친화적인 사회 환경을 조성하는 데 목적이 있습니다.</p>
+
+        <div class="goal-cards">
+          <div class="card">
+            <h3>아동의 안전한 보호</h3>
+            <p>영아 및 방과 후 아동 돌봄</p>
+          </div>
+          <div class="card">
+            <h3>부모의 일·가정 양립</h3>
+            <p>취업 부모 지원</p>
+          </div>
+          <div class="card">
+            <h3>돌봄 자원 창출</h3>
+            <p>아이돌보미 양성 및 교육</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="support">
+        <h2>법령 및 지침</h2>
+        <div class="law-buttons">
+          <span>법령</span>
+          <a href="https://www.law.go.kr/lsInfoP.do?lsId=011537#0000"><button>아이돌봄 지원법</button></a>
+          <a href="https://www.law.go.kr/lsInfoP.do?lsiSeq=238665#0000"><button>아이돌봄 지원법 시행령</button></a>
+          <a href="https://www.law.go.kr/lsInfoP.do?lsId=011676#0000"><button>아이돌봄 지원법 시행규칙</button></a>
+        </div>
+        <div class="notice-buttons">
+          <span>행정규칙</span>
+          <a href="https://www.mogef.go.kr/mp/pcd/mp_pcd_s001d.do?mid=plc503&bbtSn=705010"><button>아이돌봄사업 비용 및
+              지원기준</button></a>
+          <a href="https://www.law.go.kr/admRulLsInfoP.do?admRulSeq=2100000099809"><button>사회보장제의 관련 공통지침에 관한
+              고시</button></a>
+        </div>
+        <div class="guidance-buttons">
+          <span>지침</span>
+          <a href="https://www.mogef.go.kr/mp/pcd/mp_pcd_s001d.do?mid=plc503&bbtSn=705017"><button>아이돌봄 지원사업
+              안내</button></a>
+          <a href="https://www.mogef.go.kr/mp/pcd/mp_pcd_s001d.do?mid=plc503&bbtSn=9"><button>아이돌보미 양성 및
+              교육과정</button></a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- 3. 푸터 -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#">개인정보처리방침</a> |
+        <a href="#">이용약관</a> |
+        <a href="#">안내센터 1588-1234</a>
+      </div>
+      <div class="footer-info">
+        <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
+        <img src="img/여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
+      </div>
+    </div>
+  </footer>
+
+  <script src="/메인페이지/메인페이지.js"></script>
+  <script src="/번역api/translate.js"></script>
+  <script src="../로그인/로그인.js"></script>
+  <script src="./아이돌봄사업.js"></script>
+</body>
+
+</html>

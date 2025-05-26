@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지 | 아이돌봄 서비스</title>
+    <meta name="viewport" content="width=1200">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../resources/static/css/common.css">
+    <link rel="stylesheet" href="../resources/static/css/reset.css">
+    <link rel="stylesheet" href="../resources/static/css/header.css">
+    <link rel="stylesheet" href="../resources/static/css/mypage/main.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+            font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+            color: #222;
+        }
+
+        .main_content {
+            display: flex;
+            margin: 40px auto;
+            width: 1200px;
+            height: 700px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(60, 60, 100, 0.12);
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .mypage-left {
+            width: 400px;
+            background: linear-gradient(135deg, #E8F9F4 0%, #CDEDE3 100%);
+            color: #2C4A47;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 24px 24px 24px;
+        }
+
+        .user-info-box {
+            width: 100%;
+            text-align: center;
+        }
+
+        .user-avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: #fff;
+            margin: 0 auto 16px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #7DCD8C;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .user-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .user-email {
+            font-size: 1rem;
+            color: #5E7E7A;
+            ;
+            margin-bottom: 24px;
+        }
+
+        .modify-btn-box {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .modification-button,
+        .modificationOK-button {
+            color: #fff;
+            background: #7DCD8C;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 20px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .modification-button:hover,
+        .modificationOK-button:enabled:hover {
+            background: #005A82;
+        }
+
+        .modificationOK-button:disabled {
+            background: #bdbdbd;
+            cursor: not-allowed;
+        }
+
+        .del-user-box {
+            margin-top: auto;
+            text-align: left;
+        }
+
+        .del-user-box a {
+            color: #fff;
+            background: #F87272;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+            margin-top: auto
+        }
+
+        .del-user-box a:hover {
+            background: #250033;
+        }
+
+        .mypage-right {
+            width: 800px;
+            padding: 40px 32px 32px 32px;
+            background: #f8fafc;
+            overflow-y: auto;
+        }
+
+        .board-info-box,
+        .reply-info-box {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(60, 60, 100, 0.06);
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .board-info-text,
+        .reply-info-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #7DCD8C;
+            margin-bottom: 16px;
+        }
+
+        .board-table-box,
+        .reply-table-box {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+        }
+
+        thead {
+            background: #7DCD8C;
+            color: #fff;
+        }
+
+        th,
+        td {
+            padding: 12px 10px;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        th {
+            font-weight: 500;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f3f6fa;
+        }
+
+        .delete-board-btn button,
+        .delete-reply-btn button {
+            background: #b9b9b9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 12px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+            
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .delete-board-btn button:hover,
+        .delete-reply-btn button:hover {
+            background: #841111;
+        }
+
+        .page-controller-board,
+        .page-controller-reply {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 18px 0 0 0;
+            gap: 8px;
+        }
+
+        .page-numbers-board li,
+        .page-numbers-reply li {
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        .page-numbers-board li span,
+        .page-numbers-reply li span {
+            display: block;
+            padding: 6px 14px;
+            border-radius: 4px;
+            background: #e0e7ef;
+            color: #7DCD8C;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .page-numbers-board li span.active,
+        .page-numbers-reply li span.active {
+            background: #7DCD8C;
+            color: #fff;
+        }
+
+        @media (max-width: 1300px) {
+            .main_content {
+                width: 1000px;
+            }
+
+            .mypage-left {
+                width: 320px;
+            }
+
+            .mypage-right {
+                width: 680px;
+            }
+        }
+
+        @media (max-width: 1050px) {
+            .main_content {
+                flex-direction: column;
+                width: 98vw;
+                height: auto;
+            }
+
+            .mypage-left,
+            .mypage-right {
+                width: 100%;
+            }
+
+            .mypage-left {
+                border-radius: 24px 24px 0 0;
+            }
+
+            .mypage-right {
+                border-radius: 0 0 24px 24px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .main_content {
+                width: 100vw;
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .mypage-left,
+            .mypage-right {
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header-box">
+        <!-- 헤더 내용 (사이트 로고, 네비게이션 등) -->
+    </header>
+    <main>
+        <div class="main_content">
+            <!-- 왼쪽: 프로필/수정/탈퇴 -->
+            <div class="mypage-left">
+                <div class="user-info-box">
+                    <div class="user-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="user-name">홍길동</div>
+                    <div class="user-email">honggildong@email.com</div>
+                </div>
+                <div class="modify-btn-box">
+                    <button type="button" class="modification-button">수정하기</button>
+                    <button type="button" class="modificationOK-button" disabled>수정완료</button>
+                </div>
+                <div class="del-user-box">
+                    <a href="/mypage/delete">회원탈퇴</a>
+                </div>
+            </div>
+            <!-- 오른쪽: 게시글/댓글 -->
+            <div class="mypage-right">
+                <div class="board-info-box">
+                    <div class="board-info-text">
+                        <span>신청한 서비스 목록</span>
+                    </div>
+                    <div class="board-table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>제목</th>
+                                    <th>신청일</th>
+                                    <th>돌보미 일지</th>
+                                    <th>담당 돌보미</th>
+                                    <th>별점</th>
+                                    <th>삭제</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- 게시글 데이터 동적 삽입 -->
+                                <tr>
+                                    <td>1</td>
+                                    <td>아이 돌봄 서비스</td>
+                                    <td>2025-05-26</td>
+                                    <th>자세히 보기</th>
+                                    <td>손예진</td>
+                                    <td>4.5</td>
+                                    <td class="delete-board-btn"><button>삭제</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>아이 돌봄 서비스</td>
+                                    <td>2025-05-20</td>
+                                    <th>자세히 보기</th>
+                                    <td>나미라</td>
+                                    <td>4.6</td>
+                                    <td class="delete-board-btn"><button>삭제</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-controller-board">
+                        <ul class="page-numbers-board">
+                            <li><span class="active">1</span></li>
+                            <li><span>2</span></li>
+                            <li><span>3</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="reply-info-box">
+                    <div class="reply-info-text">
+                        <span>내가 쓴 게시글 목록</span>
+                    </div>
+                    <div class="reply-table-box">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>게시글 번호</th>
+                                    <th>제목</th>
+                                    <th>내용</th>
+                                    <th>작성일</th>
+                                    <th>삭제</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- 댓글 데이터 동적 삽입 -->
+                                <tr>
+                                    <td>1</td>
+                                    <td>아이 돌봄 서비스 외국인 돌보미 후기</td>
+                                    <td>자세히 보기</td>
+                                    <td>2025-05-25</td>
+                                    <td class="delete-reply-btn"><button>삭제</button></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>이런 경우에 어떻게 해야 하나요?</td>
+                                    <td>자세히 보기</td>
+                                    <td>2025-05-21</td>
+                                    <td class="delete-reply-btn"><button>삭제</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="page-controller-reply">
+                        <ul class="page-numbers-reply">
+                            <li><span class="active">1</span></li>
+                            <li><span>2</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="/static/js/principal/principal.js"></script>
+    <script src="/static/js/header/header.js"></script>
+    <script src="/static/js/mypage/mypage.js"></script>
+</body>
+
+</html>

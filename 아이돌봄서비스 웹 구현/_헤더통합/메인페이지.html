@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <title>아이돌봄 서비스</title>
+  <link href="메인화면_header_bottom.css" rel="stylesheet" />
+  <link href="아이돌봄서비스_메인페이지.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+
+<body id="main">
+  <!-- 1. 헤더 -->
+  <div id="header"></div>
+  <script>
+    $(function () {
+      $('#header').load("헤더.html");
+    })
+  </script>
+
+  <!-- 2. 메인 콘텐츠 -->
+  <main>
+    <section class="hero-section">
+      <div class="circle pink-circle"></div>
+      <div class="circle gray-circle"></div>
+      <img alt="마스코트" class="mascot" onclick="shootStars(event)" src="./img/메인페이지별.png" />
+      <div class="green-oval">
+        <h2 class="hero-title">아이 돌봄 서비스 신청</h2>
+        <div class="card-box">
+          <div onclick="handleServiceClick('parent')" class="btn-link">
+            <div class="service-box">
+              <img class="service-icon" src="./img/ICON1.png" />
+              <div class="service-btn">아이 돌봄 서비스 신청</div>
+            </div>
+          </div>
+          <!-- <a href="../돌봄서비스 신청(돌보미 찾기)/ex돌보미찾기1.html" onclick="handleServiceClick('parent')" class="btn-link">
+            <div class="service-box">
+              <img class="service-icon" src="./img/ICON1.png" />
+              <div class="service-btn">아이 돌봄 서비스 신청</div>
+            </div>
+          </a> -->
+          <div class="service-box" onclick="alert('아이돌보미 신청')">
+            <img class="service-icon" src="./img/ICON2.png" />
+            <button class="service-btn">아이 돌보미 신청</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-content">
+        <!-- 왼쪽 목적 타이틀 + 카드 묶음 -->
+        <div class="purpose-block">
+          <div class="section-title">SERVICE<br /><span style="color:#32a37b">목적</span></div>
+          <div class="purpose-cards">
+            <div class="purpose-card">
+              <div class="card-icon"><img alt="icon1" src="./img/목적1.png" /></div>
+              <div class="card-title">영아 및 방과 후 아동 돌봄</div>
+              <p>개별 가정 특성 및 아동 발달을 고려하여<br />아동의 집에서 아이돌봄서비스 제공</p>
+            </div>
+            <div class="purpose-card">
+              <div class="card-icon"><img alt="icon2" src="./img/목적 로고2.png" /></div>
+              <div class="card-title">부모의 일·가정 양립</div>
+              <p>야간·주말 등 틈새 시간<br />일시 돌봄 및 육아 공백 돌봄 등<br />수요자가 원하는 서비스 확충</p>
+            </div>
+            <div class="purpose-card">
+              <div class="card-icon"><img alt="icon3" src="./img/목적 로고3.png" /></div>
+              <div class="card-title">돌봄 자원 창출</div>
+              <p>육아, 돌봄 의사가 있는 자에게<br />교육지원과 능력 개발을 제공하여<br />사회서비스 수요와 연계 활성화</p>
+            </div>
+          </div>
+        </div>
+        <!-- 오른쪽 엄마와 아이 이미지 -->
+        <div class="section-image">
+          <img alt="엄마와 아이" src="./img/목적 부분 사진.png" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section dashboard-section">
+      <div class="section-content">
+        <div class="dashboard-block">
+          <div class="dashboard-title">SERVICE<br><span style="color:#32a37b">Dashboard</span></div>
+
+          <div class="dashboard-content-wrapper">
+            <!-- 카드 영역 -->
+            <div class="dashboard-cards">
+              <div class="dashboard-card">
+                <img src="images/chart-16.png" alt="도넛형 차트" />
+                <div class="card-title">현황</div>
+                <p>아이 돌봄 서비스의 현황</p>
+              </div>
+              <div class="dashboard-card">
+                <img src="images/graph.png" alt="막대형 그래프" />
+                <div class="card-title">이용 통계</div>
+                <p>최근 4개월간의 서비스 이용 추이를 그래프로 확인할 수 있습니다.</p>
+              </div>
+              <div class="dashboard-card">
+                <img src="images/graph.png" alt="차트" />
+                <div class="card-title">이용 통계</div>
+                <p>외국인 돌보미 고용률.</p>
+              </div>
+              <div class="dashboard-card">
+                <img src="images/graph.png" alt="차트" />
+                <div class="card-title">이용 통계</div>
+                <p>아무거나 넣으시죵ㅎㅎㅎ</p>
+              </div>
+            </div>
+
+            <!-- 오른쪽 박스 콘텐츠 -->
+            <div class="dashboard-side-box">
+              <h4>서비스 팁 💡</h4><br>
+              <p>⏰ 신청은 오전 9시부터 가능합니다.</p>
+              <p>📊 실시간 매칭률은 <strong>92%</strong>입니다.</p>
+              <p>📞 문의: 1577-8136</p>
+            </div>
+
+            <div class="dashboard-extra-box">
+              <h4>이용 안내 📘</h4>
+              <p>홈페이지 이용문의</p>
+              <p>1577-8136</p>
+              <p>이용시간 : 09 ~ 18시 주말 공휴일 휴무</p>
+              <p>• 아이돌보미는 주중/주말 상관없이 매칭됩니다.</p>
+              <p>• 담당 지역은 <strong>행정동 기준</strong>입니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 3. 푸터 -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#">개인정보처리방침</a> |
+        <a href="#">이용약관</a> |
+        <a href="#">안내센터 1588-1234</a>
+      </div>
+      <div class="footer-info">
+        <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
+        <img src="여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
+      </div>
+    </div>
+  </footer>
+
+  <script src="메인페이지.js"></script>
+  <script src="../번역api/translate.js"></script>
+  <script src="../로그인/로그인.js"></script>
+  <script src="../공통메인/세션.js"></script>퓨퓨
+</body>
+
+</html>

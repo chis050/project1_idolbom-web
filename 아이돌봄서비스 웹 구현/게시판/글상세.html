@@ -1,0 +1,182 @@
+<!-- 파일명: 글상세.html -->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>글 상세보기</title>
+  <style>
+    body {
+      font-family: 'Pretendard', sans-serif;
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .meta {
+      color: gray;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    #post-content {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    #file-section h4 {
+      margin-top: 30px;
+    }
+
+    #file-list {
+      padding-left: 20px;
+      margin-bottom: 40px;
+    }
+
+    #comments-section {
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+    }
+
+    .comment {
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .comment button {
+      background: none;
+      border: none;
+      color: red;
+      cursor: pointer;
+    }
+
+    .comment-form {
+      margin-top: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 80px;
+      resize: vertical;
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .comment-form button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: #7DCD8C;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h2 id="post-title"></h2>
+  <div class="meta">
+    <span id="post-writer"></span> | <span id="post-date"></span>
+  </div>
+  <hr />
+  <div id="post-content"></div>
+
+  <div id="file-section">
+    <h4>첨부 파일</h4>
+    <ul id="file-list"></ul>
+  </div>
+
+  <div id="comments-section">
+    <h4>댓글</h4>
+    <div id="comment-list"></div>
+
+    <div class="comment-form">
+      <textarea id="comment-input" placeholder="댓글을 입력하세요"></textarea>
+      <button onclick="addComment()">댓글 달기</button>
+    </div>
+  </div>
+
+  <br />
+  <button onclick="history.back()">목록으로 돌아가기</button>
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+    const post = JSON.parse(localStorage.getItem(`post-${id}`));
+
+    if (post) {
+      document.getElementById('post-title').textContent = post.title;
+      document.getElementById('post-writer').textContent = post.writer;
+      document.getElementById('post-date').textContent = post.date;
+      document.getElementById('post-content').innerHTML = post.content;
+
+      const fileList = document.getElementById('file-list');
+      if (post.files && post.files.length > 0) {
+        post.files.forEach(file => {
+          const li = document.createElement('li');
+          li.textContent = file;
+          fileList.appendChild(li);
+        });
+      } else {
+        document.getElementById('file-section').style.display = 'none';
+      }
+
+      loadComments();
+    } else {
+      document.body.innerHTML = "<p>글을 찾을 수 없습니다.</p>";
+    }
+
+    function loadComments() {
+      const commentList = document.getElementById('comment-list');
+      commentList.innerHTML = '';
+
+      const allComments = JSON.parse(localStorage.getItem('comments') || '{}');
+      const comments = allComments[id] || [];
+
+      comments.forEach((comment, i) => {
+        const div = document.createElement('div');
+        div.className = 'comment';
+        div.innerHTML = `
+        <span>${comment}</span>
+        <button onclick="deleteComment(${i})">삭제</button>
+      `;
+        commentList.appendChild(div);
+      });
+    }
+
+    function addComment() {
+      const input = document.getElementById('comment-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const allComments = JSON.parse(localStorage.getItem('comments') || '{}');
+      const comments = allComments[id] || [];
+      comments.push(text);
+      allComments[id] = comments;
+      localStorage.setItem('comments', JSON.stringify(allComments));
+      input.value = '';
+      loadComments();
+    }
+
+    function deleteComment(commentIndex) {
+      const allComments = JSON.parse(localStorage.getItem('comments') || '{}');
+      const comments = allComments[id] || [];
+      comments.splice(commentIndex, 1);
+      allComments[id] = comments;
+      localStorage.setItem('comments', JSON.stringify(allComments));
+      loadComments();
+    }
+  </script>
+
+</body>
+
+</html>

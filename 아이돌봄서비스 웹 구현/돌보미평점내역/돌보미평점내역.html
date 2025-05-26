@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <title>서비스 후기</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../메인페이지(수정)/메인화면_header_bottom.css">
+  <link rel="stylesheet" href="./돌보미평점내역.css">
+
+</head>
+
+<body>
+  <header>
+    <div class="logo-area">
+      <img alt="아이돌봄 로고" src="../메인페이지(수정)/아이돌봄서비스-메인로고.png" />
+      <a href="../메인페이지(수정)/메인페이지.html"><span>아이 돌봄</span></a>
+    </div>
+    <nav class="menu">
+      <a href="../게시판/공지사항.html">공지사항</a>
+      <a href="../게시판/정보마당.html">정보마당</a>
+      <a href="../게시판/사용자이용.html">사용자이용</a>
+    </nav>
+
+
+    <div class="user-area">
+      <div class="translate-wrapper">
+        <button id="translateBtn">
+          <img src="번역버튼.png" alt="번역 아이콘" style="width: 24px; height: 24px;" />
+        </button>
+        <div id="languageDropdown" class="language-box hidden">
+          <div class="lang-option" onclick="setLanguage('kr')">KR</div>
+          <div class="lang-option" onclick="setLanguage('en')">EN</div>
+          <div class="lang-option" onclick="setLanguage('cn')">CN</div>
+        </div>
+      </div>
+
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <div id="google_translate_element"></div>
+
+      <!-- 로그인 버튼 -->
+      <a href="../로그인/로그인.html" id="login-link">
+        <button class="login-btn">로그인</button>
+      </a>
+      <!-- 로그아웃 UI (초기에는 숨겨짐) -->
+      <div id="user-info" style="display: none;">
+        <strong id="user-name">사용자</strong>
+        <div class="user-avatar">👤</div>
+        <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+      </div>
+
+    </div>
+  </header>
+
+
+
+  <main class="container">
+    <section class="reviews-summary">
+      <h1>서비스 후기</h1>
+      <h2>Sophia님의 후기</h2>
+      <div class="overall-rating">
+        <div class="score">4.8</div>
+        <div class="stars">
+          <span class="star on">★</span>
+          <span class="star on">★</span>
+          <span class="star on">★</span>
+          <span class="star on">★</span>
+          <span class="star half">★</span>
+        </div>
+        <div class="total">총 <span id="reviewCount">0</span>건</div>
+        <select class="sort" onchange="sortReviews(this.value)">
+          <option value="latest">최신순</option>
+          <option value="score">평점순</option>
+        </select>
+      </div>
+
+      <div class="distribution" id="distribution"></div>
+    </section>
+
+    <section class="review-list"></section>
+  </main>
+
+
+    <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#">개인정보처리방침</a> |
+        <a href="#">이용약관</a> |
+        <a href="#">안내센터 1588-1234</a>
+      </div>
+      <div class="footer-info">
+        <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
+        <img src="여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
+      </div>
+    </div>
+  </footer>
+
+  <script src="돌보미평점내역.js"></script>
+</body>
+
+</html>

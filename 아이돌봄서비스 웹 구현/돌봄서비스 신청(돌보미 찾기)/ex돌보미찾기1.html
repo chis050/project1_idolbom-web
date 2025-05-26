@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <title>돌보미 찾기</title>
-  <link rel="stylesheet" href="../공통메인/메인화면_header_bottom.css">
-  <link rel="stylesheet" href="ex돌보미찾기1.css">
+  <link rel="stylesheet" href="ex돌보미찾기.css">
+  <link href="../메인페이지/메인화면_header_bottom.css" rel="stylesheet" />
+  <script src="../메인페이지/메인페이지.js"></script>
 
 </head>
 
@@ -13,7 +14,7 @@
   <header>
     <div class="logo-area">
       <img alt="아이돌봄 로고" src="./img/아이돌봄서비스-메인로고.png">
-      <a href="메인페이지.html"><span>아이 돌봄 서비스</span></a>
+      <a href="../메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
     </div>
 
     <nav class="menu">
@@ -25,12 +26,12 @@
     <div class="user-area">
       <div class="translate-wrapper">
         <button id="translateBtn">
-          <img src="../공통메인/번역버튼.png" style="width: 24px; height: 24px;">
+          <img src="img/번역버튼.png" style="width: 24px; height: 24px;">
         </button>
         <div id="languageDropdown" class="language-box hidden">
-          <div class="lang-option" onclick="setLanguage('kr')">KR</div>
-          <div class="lang-option" onclick="setLanguage('en')">EN</div>
-          <div class="lang-option" onclick="setLanguage('cn')">CN</div>
+          <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">KR</div>
+          <div class="lang-option" id='lang-en' onclick="setLanguage('en')">EN</div>
+          <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">CN</div>
         </div>
       </div>
 
@@ -79,23 +80,12 @@
       <option value="중국">중국</option>
     </select>
   </div>
+  <a href="../돌봄서비스 신청(정보입력)/아이 돌봄 서비스 예약 신청.html">
+    <div class="card-container" id="results"></div>
+    <script src="ex돌보미찾기1.js"></script>
+  </a>
 
-  <div class="card-container" id="results"></div>
-  <footer class="main-footer">
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="#">개인정보처리방침</a> |
-        <a href="#">이용약관</a> |
-        <a href="#">안내센터 1588-1234</a>
-      </div>
-      <div class="footer-info">
-        <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
-        <img src="여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
-      </div>
-    </div>
-  </footer>
   <script src="../번역api/translate.js"></script>
-  <script src="../로그인/로그인.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>서비스 종료 안내</title>
+  <link rel="stylesheet" href="../메인페이지(수정)/메인화면_header_bottom.css" />
+  <link rel="stylesheet" href="돌보미종료후리뷰.css">
+
+</head>
+
+<body>
+  <header>
+    <div class="logo-area">
+      <img src="../메인페이지(수정)/아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
+      <a href="../메인페이지(수정)/메인페이지.html"><span>아이 돌봄</span></a>
+    </div>
+    <nav>
+      <a href="../게시판/공지사항.html">공지사항</a>
+      <a href="../게시판/정보마당.html">정보마당</a>
+      <a href="../게시판/사용자이용.html">사용자이용</a>
+    </nav>
+    <div class="user-area">
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <div id="google_translate_element"></div>
+
+      <!-- 로그인 버튼 -->
+      <a href="../로그인/로그인.html" id="login-link">
+        <button class="login-btn">로그인</button>
+      </a>
+      <!-- 로그아웃 UI (초기에는 숨겨짐) -->
+      <div id="user-info" style="display: none;">
+        <strong id="user-name">사용자</strong>
+        <div class="user-avatar">👤</div>
+        <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+      </div>
+      <button id="translateBtn"></button>
+    </div>
+  </header>
+
+
+  <div class="wrapper">
+    <div class="content">
+      <div class="header">📅 5월 22일<br><strong>14:00 ~ 18:00</strong></div>
+      <div class="title">Sophia님과의 서비스가 종료되었습니다.</div>
+      <div class="desc">돌보미 서비스가 안전하게 마무리되었어요.</div>
+
+      <div class="review-prompt">
+        ✅ <strong>리뷰 한 줄이 더 나은 돌봄을 만듭니다.</strong>
+        <div>당신의 리뷰가 다음 가족에게 큰 도움이 될 수 있어요.</div>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn primary" onclick="openModal()">리뷰 남기기</button>
+        <button class="btn secondary" onclick="alert('리뷰를 건너뛰었습니다.')">나중에 하기</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="reviewModal">
+    <div class="review-box">
+      <h3>리뷰 남기기</h3>
+      <div class="stars" id="stars">
+        <span data-score="1">☆</span>
+        <span data-score="2">☆</span>
+        <span data-score="3">☆</span>
+        <span data-score="4">☆</span>
+        <span data-score="5">☆</span>
+      </div>
+
+      <div id="questionText"><strong>어떤 점이 좋았나요?</strong></div>
+      <div class="checkbox-group" id="checkboxContainer"></div>
+
+      <div class="follow-up-choice" id="followUpChoice" style="display: none;">
+        <label><input type="checkbox" id="followCheckbox"> <span id="followText"></span></label>
+      </div>
+
+      <textarea id="freeComment" placeholder="후기를 작성해주세요"></textarea>
+      <button class="submit-btn" onclick="submitReview()">제출하기</button>
+    </div>
+  </div>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#">개인정보처리방침</a> |
+        <a href="#">이용약관</a> |
+        <a href="#">안내센터 1588-1234</a>
+      </div>
+      <div class="footer-info">
+        <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
+        <img src="../메인페이지(수정)/여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
+      </div>
+    </div>
+  </footer>
+
+  <script src="돌보미종료후리뷰.js"></script>
+</body>
+
+</html>

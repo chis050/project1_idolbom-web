@@ -1,0 +1,167 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      color: #333;
+      background: #fef7ff;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    .nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #000;
+    }
+
+    .user .username {
+      margin-right: 8px;
+    }
+
+    .user .logout {
+      text-decoration: none;
+      color: #888;
+      font-size: .875rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      /* 은은하게 */
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    .reviews-summary h1 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .reviews-summary h2 {
+      font-size: 1.25rem;
+      margin-bottom: 24px;
+    }
+
+    .overall-rating {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .score {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .stars {
+      font-size: 1.5rem;
+      color: gold;
+    }
+
+    .star.half {
+      position: relative;
+    }
+
+    .star.half::before {
+      content: '★';
+      color: gold;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50%;
+      overflow: hidden;
+    }
+
+    .star.off {
+      color: #ccc;
+    }
+
+    .total {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .sort {
+      padding: 4px 8px;
+    }
+
+    .distribution .row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .distribution .label {
+      width: 40px;
+    }
+
+    .distribution .bar {
+      flex: 1;
+      height: 10px;
+      background: #f1f1f1;
+      border-radius: 4px;
+      margin: 0 8px;
+      overflow: hidden;
+    }
+
+    .distribution .fill {
+      height: 100%;
+      background: #adadad;
+    }
+
+    .distribution .count {
+      width: 30px;
+      text-align: right;
+    }
+
+    .review-list .review {
+      border-top: 1px solid #eee;
+      padding: 24px 0;
+    }
+
+    .review-list .review:first-child {
+      border-top: none;
+    }
+
+    .review .meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .review .meta .name {
+      font-weight: bold;
+    }
+
+    .review .meta .date {
+      font-size: .875rem;
+      color: #999;
+    }
+
+    .review .text {
+      line-height: 1.5;
+    }

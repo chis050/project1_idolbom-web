@@ -1,0 +1,89 @@
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .terms-wrapper {
+            display: flex;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        .terms-container {
+            width: 100%;
+            max-width: 800px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .terms-box {
+            height: 400px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: #fafafa;
+            padding: 20px;
+            white-space: pre-line;
+            line-height: 1.8;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .terms-box table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .terms-box th,
+        .terms-box td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .terms-box .section-header {
+            background-color: #e8f1fd;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .terms-box .sub-header {
+            background-color: #f9f9f9;
+            font-weight: 500;
+            width: 80px;
+        }
+
+        .agree-checkbox {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 15px;
+        }
+
+        .terms-box::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .terms-box::-webkit-scrollbar-thumb {
+            background-color: #bbb;
+            border-radius: 4px;
+        }
+
+        .terms-box::-webkit-scrollbar-track {
+            background-color: #eee;
+        }

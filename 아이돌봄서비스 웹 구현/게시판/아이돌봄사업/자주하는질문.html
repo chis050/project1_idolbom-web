@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title>아이돌봄 서비스</title>
+    <link href="/메인페이지/아이돌봄서비스_메인페이지.css" rel="stylesheet">
+    <link href="/메인페이지/메인화면_header_bottom.css" rel="stylesheet">
+    <link rel="stylesheet" href="자주하는질문.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</head>
+
+<body id="main">
+    <!-- 1. 헤더 -->
+    <header>
+        <div class="logo-area">
+            <img alt="아이돌봄 로고" src="./img/아이돌봄서비스-메인로고.png">
+            <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li class="menu-item">
+                    <a href="#">아이돌봄 사업</a>
+                    <ul class="submenu">
+                        <li><a href="아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
+                        <li><a href="#">아이돌봄 사업현황</a></li>
+                        <li><a href="서비스유형소개.html">서비스 유형 소개</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="#">서비스 이용</a>
+                    <ul class="submenu">
+                        <li><a href="서비스신청안내.html">정부지원 신청안내</a></li>
+                        <li><a href="#">신청 전 사전 준비안내</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="#">정보마당</a>
+                    <ul class="submenu">
+                        <li><a href="#">공지사항</a></li>
+                        <li><a href="자주하는질문.html">자주하는 질문</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/글쓰기.html">자유게시판</a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="user-area">
+            <div class="translate-wrapper">
+                <button id="translateBtn">
+                    <img src="img/번역버튼.png" style="width: 24px; height: 24px;">
+                </button>
+                <div id="languageDropdown" class="language-box hidden">
+                    <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+                    <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+                    <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
+                </div>
+            </div>
+
+            <form class="search-form" onsubmit="handleSearch(event)">
+                <input type="text" class="search-box" placeholder="search...." id="searchInput" />
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+
+            <div id="google_translate_element"></div>
+
+            <a href="/로그인/로그인.html" id="login-link">
+                <button class="login-btn">로그인</button>
+            </a>
+            <div id="user-info" style="display: none;">
+                <a href="/마이페이지/mypage.html">
+                    <strong id="user-name">사용자</strong>
+                    <!-- <div class="user-avatar">👤</div> -->
+                    <div class="user-avatar">👧🏻</div>
+                </a>
+                <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. 메인 -->
+    <div id="content">
+        <main>
+
+            <section class="faq-section">
+                <h1>자주하는 질문 (FAQ)</h1>
+
+                <!-- 카테고리 선택 -->
+                <div class="faq-categories">
+                    <button class="category-btn" onclick="filterCategory('전체')">전체</button>
+                    <button class="category-btn" onclick="filterCategory('결제/환불')">결제/환불</button>
+                    <button class="category-btn" onclick="filterCategory('아이돌봄서비스')">아이돌봄서비스</button>
+                    <button class="category-btn" onclick="filterCategory('사이트 이용')">사이트 이용</button>
+                    <button class="category-btn" onclick="filterCategory('정부지원')">정부지원</button>
+                    <button class="category-btn" onclick="filterCategory('회원정보')">회원정보</button>
+                </div>
+
+                <!-- 검색창 -->
+                <form class="faq-search-form" onsubmit="handleFaqSearch(event)">
+                    <input type="text" class="faq-search-box" placeholder="검색어를 입력하세요..." id="faqSearchInput" />
+                    <button type="submit" class="faq-search-btn">검색</button>
+                </form>
+
+                <!-- Q&A 리스트 (게시판 형식) -->
+                <div class="faq-list">
+                    <table class="faq-table">
+                        <thead>
+                            <tr>
+                                <th>번호</th>
+                                <th>카테고리</th>
+                                <th>질문</th>
+                                <th>등록일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>결제/환불</td>
+                                <td><a href="#">환불 신청은 어떻게 하나요?</a></td>
+                                <td>2025-05-26</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>아이돌봄서비스</td>
+                                <td><a href="#">아이돌보미는 어떤 교육을 받나요?</a></td>
+                                <td>2025-05-25</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>사이트 이용</td>
+                                <td><a href="#">비밀번호를 잊어버렸어요. 어떻게 찾나요?</a></td>
+                                <td>2025-05-24</td>
+                            </tr>
+                            <!-- 더 많은 항목 추가 가능 -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- 3. 푸터 -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">개인정보처리방침</a> |
+                <a href="#">이용약관</a> |
+                <a href="#">안내센터 1588-1234</a>
+            </div>
+            <div class="footer-info">
+                <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
+                <img src="img/여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
+            </div>
+        </div>
+    </footer>
+
+    <script src="/메인페이지/메인페이지.js"></script>
+    <script src="/번역api/translate.js"></script>
+    <script src="../로그인/로그인.js"></script>
+    <script src="./아이돌봄사업.js"></script>
+</body>
+
+</html>

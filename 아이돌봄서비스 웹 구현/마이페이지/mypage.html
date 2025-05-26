@@ -4,23 +4,39 @@
 <head>
   <meta charset="UTF-8">
   <title>마이페이지</title>
-  <link rel="stylesheet" href="../메인화면_only header.css"> <!-- 이 부분 반드시 필요 -->
   <link rel="stylesheet" href="mypage.css">
+  <link href="../메인페이지/메인화면_header_bottom.css" rel="stylesheet" />
+  <script src="../메인페이지/메인페이지.js"></script>
+
 </head>
 
 <body>
 
   <header>
     <div class="logo-area">
-      <img src="../아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
-      <a href="../메인페이지/메인화면.html"><span>아이 돌봄 서비스</span></a>
+      <img alt="아이돌봄 로고" src="../메인페이지(수정)/아이돌봄서비스-메인로고.png" />
+      <a href="../메인페이지/메인페이지.html"><span>아이 돌봄</span></a>
     </div>
-    <nav>
+    <nav class="menu">
       <a href="../게시판/공지사항.html">공지사항</a>
       <a href="../게시판/정보마당.html">정보마당</a>
       <a href="../게시판/사용자이용.html">사용자이용</a>
+
     </nav>
+
+
     <div class="user-area">
+      <div class="translate-wrapper">
+        <button id="translateBtn">
+          <img src="../메인페이지(수정)/" alt="번역 아이콘" style="width: 24px; height: 24px;" />
+        </button>
+        <div id="languageDropdown" class="language-box hidden">
+          <div class="lang-option" onclick="setLanguage('kr')">K R</div>
+          <div class="lang-option" onclick="setLanguage('en')">E N</div>
+          <div class="lang-option" onclick="setLanguage('cn')">C N</div>
+        </div>
+      </div>
+
       <form class="search-form" onsubmit="handleSearch(event)">
         <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
         <button type="submit" class="search-btn">
@@ -29,11 +45,18 @@
       </form>
       <div id="google_translate_element"></div>
 
-      <button class="logout-btn">로그아웃</button>
-      <strong>내향아이들 님</strong>
-      <div class="user-avatar">👤</div>
+      <!-- 로그인 버튼 -->
+      <a href="../로그인/로그인.html" id="login-link">
+        <button class="login-btn">로그인</button>
+      </a>
+      <!-- 로그아웃 UI (초기에는 숨겨짐) -->
+      <div id="user-info" style="display: none;">
+        <strong id="user-name">사용자</strong>
+        <div class="user-avatar">👤</div>
+        <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+      </div>
+
     </div>
-    <button id="translateBtn"><img src="#" alt="#"></button>
   </header>
 
 
@@ -80,8 +103,7 @@
   </div>
 
   <div class="footer">
-    <a href="/delete-account.html" class="delete-link">회원탈퇴</a>
-  </div>
+    <a href="../회원탈퇴/회원탈퇴.html" class="delete-link">회원탈퇴</a>
   </div>
   <footer class="main-footer">
     <div class="footer-content">

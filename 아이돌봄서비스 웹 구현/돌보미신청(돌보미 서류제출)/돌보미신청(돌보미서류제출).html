@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <title>아이돌보미 신청</title>
+  <link href="메인화면_header_bottom.css" rel="stylesheet" />
+  <link href="돌보미신청(돌보미서류제출).css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+
+  <header>
+    <div class="logo-area">
+      <img alt="아이돌봄 로고" src="../메인페이지(수정)/아이돌봄서비스-메인로고.png" />
+      <a href="../메인페이지/메인페이지.html"><span>아이 돌봄</span></a>
+    </div>
+    <nav class="menu">
+      <a href="../게시판/공지사항.html">공지사항</a>
+      <a href="../게시판/정보마당.html">정보마당</a>
+      <a href="../게시판/사용자이용.html">사용자이용</a>
+
+    </nav>
+
+
+    <div class="user-area">
+      <div class="translate-wrapper">
+        <button id="translateBtn">
+          <img src="../메인페이지(수정)/" alt="번역 아이콘" style="width: 24px; height: 24px;" />
+        </button>
+        <div id="languageDropdown" class="language-box hidden">
+          <div class="lang-option" onclick="setLanguage('kr')">K R</div>
+          <div class="lang-option" onclick="setLanguage('en')">E N</div>
+          <div class="lang-option" onclick="setLanguage('cn')">C N</div>
+        </div>
+      </div>
+
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <div id="google_translate_element"></div>
+
+      <!-- 로그인 버튼 -->
+      <a href="../로그인/로그인.html" id="login-link">
+        <button class="login-btn">로그인</button>
+      </a>
+      <!-- 로그아웃 UI (초기에는 숨겨짐) -->
+      <div id="user-info" style="display: none;">
+        <strong id="user-name">사용자</strong>
+        <div class="user-avatar">👤</div>
+        <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <main>
+    <div class="form-wrapper">
+      <h2>아이 돌보미 신청</h2>
+      <div class="form-group"><label>이름</label><input id="nameInput" placeholder="이름" type="text" /></div>
+      <div class="form-group"><label>나이</label><select id="age">
+          <option value="">나이 선택</option>
+        </select></div>
+      <div class="form-group"><label>생년월일</label><input id="birthInput" max="2006-12-31" type="date" /></div>
+      <div class="form-group"><label>주소</label><input id="addressInput" placeholder="주소 입력" type="text" /></div>
+      <div class="form-group"><label>내외국인 구분</label>
+        <select id="nationality">
+          <option value="korean">내국인</option>
+          <option value="foreigner">외국인</option>
+        </select>
+      </div>
+
+      <div id="hope-region">
+        <div class="form-group"><label>1지망 희망 지역</label><select id="sidoSelect"></select><select
+            id="gugunSelect"></select></div>
+        <div class="form-group"><label>2지망 희망 지역</label><select id="sidoSelect2"></select><select
+            id="gugunSelect2"></select></div>
+      </div>
+
+      <div class="hidden" id="foreigner-extra">
+        <div class="form-group"><label>국적 선택</label><select id="countrySelect">
+            <option value="">국가를 선택하세요</option>
+          </select></div>
+      </div>
+
+      <div id="korean-documents">
+        <div class="form-group"><label>① 아이 돌보미 신청서</label><label class="file-upload-label" for="file1">파일
+            선택</label><input class="hidden-file" id="file1" type="file" />
+          <div class="file-name" id="file-name1"></div>
+        </div>
+        <div class="form-group"><label>② 주민등록등본</label><label class="file-upload-label" for="file2">파일 선택</label><input
+            class="hidden-file" id="file2" type="file" />
+          <div class="file-name" id="file-name2"></div>
+        </div>
+        <div class="form-group"><label>③ 수료증 사본</label><label class="file-upload-label" for="file3">파일 선택</label><input
+            class="hidden-file" id="file3" type="file" />
+          <div class="file-name" id="file-name3"></div>
+        </div>
+        <div class="form-group"><label>④ 자격증 사본</label><label class="file-upload-label" for="file4">파일 선택</label><input
+            class="hidden-file" id="file4" type="file" />
+          <div class="file-name" id="file-name4"></div>
+        </div>
+        <div class="form-group"><label>⑤ 경력 증명서</label><label class="file-upload-label" for="file5">파일 선택</label><input
+            class="hidden-file" id="file5" type="file" />
+          <div class="file-name" id="file-name5"></div>
+        </div>
+      </div>
+
+      <div class="hidden" id="foreigner-documents">
+        <div class="form-group"><label>① 사증발급인정서 또는 통합신청서</label><label class="file-upload-label" for="file6">파일
+            선택</label><input class="hidden-file" id="file6" type="file" />
+          <div class="file-name" id="file-name6"></div>
+        </div>
+        <div class="form-group"><label>② 여권 사본</label><label class="file-upload-label" for="file7">파일 선택</label><input
+            class="hidden-file" id="file7" type="file" />
+          <div class="file-name" id="file-name7"></div>
+        </div>
+        <div class="form-group"><label>③ 자격증명서 및 경력증명서</label><label class="file-upload-label" for="file8">파일
+            선택</label><input class="hidden-file" id="file8" type="file" />
+          <div class="file-name" id="file-name8"></div>
+        </div>
+        <div class="form-group"><label>④ 사업자등록증</label><label class="file-upload-label" for="file9">파일 선택</label><input
+            class="hidden-file" id="file9" type="file" />
+          <div class="file-name" id="file-name9"></div>
+        </div>
+        <div class="form-group"><label>⑤ 고용계약서 사본</label><label class="file-upload-label" for="file10">파일
+            선택</label><input class="hidden-file" id="file10" type="file" />
+          <div class="file-name" id="file-name10"></div>
+        </div>
+        <div class="form-group"><label>⑥ 신원보증서</label><label class="file-upload-label" for="file11">파일 선택</label><input
+            class="hidden-file" id="file11" type="file" />
+          <div class="file-name" id="file-name11"></div>
+        </div>
+      </div>
+
+      <div class="checkbox-group">
+        <input id="agree" type="checkbox" />
+        <label for="agree">안내에 동의하시나요?</label>
+      </div>
+
+      <div class="button-group">
+        <button class="cancel-btn" type="button" onclick="location.href='../메인페이지(수정)/메인페이지.html'">이전</button>
+        <a href="../마이페이지/mypage.html"><button class="submit-btn" disabled style="opacity:0.5">신청</button></a>
+      </div>
+    </div>
+  </main>
+
+  <!-- 3. 푸터 -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="#">개인정보처리방침</a> |
+        <a href="#">이용약관</a> |
+        <a href="#">안내센터 1588-1234</a>
+      </div>
+      <div class="footer-info">
+        <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
+        <img src="img/여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
+      </div>
+    </div>
+  </footer>
+
+  <script src="돌보미신청(돌보미서류제출).js"></script>
+  <script src="../번역api/translate.js"></script>
+  <script src="../로그인/로그인.js"></script>
+
+
+
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>아이돌봄 - 사용자 이용</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="사용자이용.css">
+    <style>
+        .notice-label {
+            background-color: #7DCD8C;
+            color: white;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo-area">
+            <img src="아이돌봄서비스-메인로고.png" alt="로고">
+            <span>아이돌봄</span>
+        </div>
+        <nav>
+            <a href="#">공지사항</a>
+            <a href="#">정보마당</a>
+            <a href="#">사용자이용</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>사용자 이용</h2>
+
+        <div class="search-box">
+            <input type="text" placeholder="검색어를 입력해주세요">
+            <button>검색</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>제목</th>
+                    <th>날짜</th>
+                    <th>작성자</th>
+                </tr>
+            </thead>
+            <tbody id="post-list">
+                <!-- JS로 게시글 삽입 예정 -->
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <button>&laquo;</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>&raquo;</button>
+        </div>
+
+        <button onclick="deleteMyTestPosts()"
+            style="margin: 20px; background: red; color: white; padding: 10px; border: none; border-radius: 6px; cursor: pointer;">
+            ❌ '보호자1' 글 삭제
+        </button>
+
+    </div>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const postList = document.getElementById("post-list");
+
+            const defaultNotices = [
+                { title: "안녕하세요", date: "2025-05-14", writer: "관리자", notice: true },
+                { title: "내향아이들입니다", date: "2025-05-13", writer: "관리자", notice: true },
+                { title: "너무 힘들어요", date: "2025-05-09", writer: "관리자", notice: true }
+            ];
+
+            const savedIds = JSON.parse(localStorage.getItem("posts") || "[]");
+
+            const savedPosts = savedIds.map(id => {
+                const post = JSON.parse(localStorage.getItem(`post-${id}`));
+                return post ? post : null;
+            }).filter(Boolean);
+
+            const allPosts = [...defaultNotices, ...savedPosts];
+
+            postList.innerHTML = allPosts.map(post => `
+            <tr>
+                <td>
+      ${post.notice ? `<span class="notice-label">공지</span>` : ''}
+      <a href="글상세.html?id=${post.id}">${post.title}</a>
+    </td>
+    <td>${post.date}</td>
+    <td>${post.writer}</td>
+  </tr>
+`).join("");
+        });
+
+
+
+    </script>
+</body>
+
+</html>

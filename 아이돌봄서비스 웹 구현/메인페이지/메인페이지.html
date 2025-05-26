@@ -5,10 +5,11 @@
 <head>
   <meta charset="utf-8" />
   <title>아이돌봄 서비스</title>
-  <link href="메인화면_header_bottom.css" rel="stylesheet" />
-  <link href="아이돌봄서비스_메인페이지.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet"/>
+  <link href="../메인페이지/메인화면_header_bottom.css" rel="stylesheet" />
+  <link href="../메인페이지/아이돌봄서비스_메인페이지.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src=""></script>
 </head>
 
 <body id="main">
@@ -28,12 +29,12 @@
     <div class="user-area">
       <div class="translate-wrapper">
         <button id="translateBtn">
-          <img src="../공통메인/번역버튼.png" style="width: 24px; height: 24px;">
+          <img src="img/번역버튼.png" style="width: 24px; height: 24px;">
         </button>
         <div id="languageDropdown" class="language-box hidden">
-          <div class="lang-option" onclick="setLanguage('kr')">KR</div>
-          <div class="lang-option" onclick="setLanguage('en')">EN</div>
-          <div class="lang-option" onclick="setLanguage('cn')">CN</div>
+          <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+          <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+          <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
         </div>
       </div>
 
@@ -50,9 +51,11 @@
         <button class="login-btn">로그인</button>
       </a>
       <div id="user-info" style="display: none;">
-        <strong id="user-name">사용자</strong>
-        <!-- <div class="user-avatar">👤</div> -->
-        <div class="user-avatar">👧🏻</div>
+        <a href="../마이페이지/mypage.html" onclick="">
+          <strong id="user-name">사용자</strong>
+          <!-- <div class="user-avatar">👤</div> -->
+          <div class="user-avatar">👧🏻</div>
+        </a>
         <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
       </div>
     </div>
@@ -73,13 +76,15 @@
               <div class="service-btn">아이 돌봄 서비스 신청</div>
             </div>
           </div>
-          <!-- <a href="../돌봄서비스 신청(돌보미 찾기)/ex돌보미찾기1.html" onclick="handleServiceClick('parent')" class="btn-link">
+          <!-- 
+          <a href="../돌봄서비스 신청(돌보미 찾기)/ex돌보미찾기1.html" onclick="handleServiceClick('parent')" class="btn-link">
             <div class="service-box">
               <img class="service-icon" src="./img/ICON1.png" />
               <div class="service-btn">아이 돌봄 서비스 신청</div>
             </div>
-          </a> -->
-          <div class="service-box" onclick="alert('아이돌보미 신청')">
+          </a>
+          -->
+          <div class="service-box">
             <img class="service-icon" src="./img/ICON2.png" />
             <button class="service-btn">아이 돌보미 신청</button>
           </div>
@@ -180,7 +185,7 @@
       </div>
       <div class="footer-info">
         <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
-        <img src="여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
+        <img src="img/여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
       </div>
     </div>
   </footer>
@@ -188,6 +193,7 @@
   <script src="메인페이지.js"></script>
   <script src="../번역api/translate.js"></script>
   <script src="../로그인/로그인.js"></script>
+  <script src="../공통메인/세션.js"></script>
 </body>
 
 </html>

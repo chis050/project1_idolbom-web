@@ -30,7 +30,7 @@ function handleServiceClick(type) {
     window.location.href = `../로그인/로그인.html?redirect=${encodeURIComponent(window.location.href)}`;
     return;
   } 
-  window.location.href = `../돌봄서비스 신청(돌보미 찾기)/ex돌보미찾기1.html`
+  window.location.href = `../돌봄서비스 신청(캘린더에서 날짜 선택)/ex돌보미신청정보.html`
   // window.location.href = `../아이돌봄서비스신청/아이돌봄서비스신청.html?type=${type}`;
   // if (type === 'applyService') {
   //   window.location.href = encodeURI('../아이돌봄서비스신청/아이돌봄서비스신청.html');

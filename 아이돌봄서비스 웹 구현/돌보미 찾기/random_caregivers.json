@@ -1,0 +1,502 @@
+[
+  {
+    "name": "한예진",
+    "region": "광주 동구",
+    "type": "긴급돌봄",
+    "nationality": "한국",
+    "rating": 4.8,
+    "desc": "다문화 가정 아이돌봄 전문.",
+    "experience": 10,
+    "gender": "여"
+  },
+  {
+    "name": "마리아 로페즈",
+    "region": "광주 서구",
+    "type": "시간제",
+    "nationality": "중국",
+    "rating": 4.9,
+    "desc": "20년 경력의 아이돌보미입니다.",
+    "experience": 15,
+    "gender": "여"
+  },
+  {
+    "name": "배수아",
+    "region": "광주 서구",
+    "type": "연계",
+    "nationality": "한국",
+    "rating": 4.6,
+    "desc": "경험 풍부한 연계 돌봄 전문가.",
+    "experience": 12,
+    "gender": "여"
+  },
+  {
+    "name": "배수아",
+    "region": "광주 동구",
+    "type": "긴급돌봄",
+    "nationality": "한국",
+    "rating": 4.9,
+    "desc": "긴급 상황에 빠르게 대응하는 베테랑.",
+    "experience": 18,
+    "gender": "남"
+  },
+  {
+    "name": "이유나",
+    "region": "광주 북구",
+    "type": "연계",
+    "nationality": "한국",
+    "rating": 4.5,
+    "desc": "긴급 상황에 빠르게 대응하는 베테랑.",
+    "experience": 8,
+    "gender": "남"
+  },
+  {
+    "name": "에이미 리",
+    "region": "광주 북구",
+    "type": "연계",
+    "nationality": "필리핀",
+    "rating": 4.4,
+    "desc": "방문 수업 및 학습 돌봄 가능.",
+    "experience": 8,
+    "gender": "여"
+  },
+  {
+    "name": "안나 김",
+    "region": "광주 동구",
+    "type": "긴급돌봄",
+    "nationality": "필리핀",
+    "rating": 4.7,
+    "desc": "활발하고 에너지 넘치는 돌보미.",
+    "experience": 17,
+    "gender": "여"
+  },
+  {
+    "name": "쯔위 린",
+    "region": "광주 북구",
+    "type": "시간제",
+    "nationality": "필리핀",
+    "rating": 4.4,
+    "desc": "경험 풍부한 연계 돌봄 전문가.",
+    "experience": 10,
+    "gender": "남"
+  },
+  {
+    "name": "노윤서",
+    "region": "광주 북구",
+    "type": "긴급돌봄",
+    "nationality": "한국",
+    "rating": 4.6,
+    "desc": "필리핀 출신 아이돌보미, 한국어 가능.",
+    "experience": 17,
+    "gender": "남"
+  },
+  {
+    "name": "응우옌 투",
+    "region": "광주 북구",
+    "type": "긴급돌봄",
+    "nationality": "필리핀",
+    "rating": 4.9,
+    "desc": "필리핀 출신 아이돌보미, 한국어 가능.",
+    "experience": 20,
+    "gender": "여"
+  },
+  {
+    "name": "정지민",
+    "region": "광주 서구",
+    "type": "긴급돌봄",
+    "nationality": "한국",
+    "rating": 4.7,
+    "desc": "문화이해도 높은 친절한 돌보미.",
+    "experience": 17,
+    "gender": "여"
+  },
+  {
+    "name": "사라 최",
+    "region": "광주 서구",
+    "type": "긴급돌봄",
+    "nationality": "필리핀",
+    "rating": 4.9,
+    "desc": "다문화 가정 아이돌봄 전문.",
+    "experience": 8,
+    "gender": "여"
+  },
+  {
+    "name": "사라 최",
+    "region": "광주 북구",
+    "type": "긴급돌봄",
+    "nationality": "중국",
+    "rating": 4.5,
+    "desc": "문화이해도 높은 친절한 돌보미.",
+    "experience": 6,
+    "gender": "여"
+  },
+  {
+    "name": "배수아",
+    "region": "광주 동구",
+    "type": "긴급돌봄",
+    "nationality": "한국",
+    "rating": 4.4,
+    "desc": "경험 풍부한 연계 돌봄 전문가.",
+    "experience": 1,
+    "gender": "남"
+  },
+  {
+    "name": "한예진",
+    "region": "광주 서구",
+    "type": "긴급돌봄",
+    "nationality": "한국",
+    "rating": 4.3,
+    "desc": "문화이해도 높은 친절한 돌보미.",
+    "experience": 14,
+    "gender": "여"
+  },
+  {
+    "name": "김지현",
+    "region": "광주 북구",
+    "type": "연계",
+    "nationality": "한국",
+    "rating": 4.8,
+    "desc": "경험 풍부한 연계 돌봄 전문가.",
+    "experience": 4,
+    "gender": "남"
+  },
+  {
+    "name": "배수아",
+    "region": "광주 동구",
+    "type": "연계",
+    "nationality": "한국",
+    "rating": 4.5,
+    "desc": "경험 풍부한 연계 돌봄 전문가.",
+    "experience": 4,
+    "gender": "여"
+  },
+  {
+    "name": "한예진",
+    "region": "광주 동구",
+    "type": "시간제",
+    "nationality": "한국",
+    "rating": 4.9,
+    "desc": "방문 수업 및 학습 돌봄 가능.",
+    "experience": 13,
+    "gender": "남"
+  },
+  {
+    "name": "한예진",
+    "region": "광주 북구",
+    "type": "긴급돌봄",
+    "nationality": "한국",
+    "rating": 4.9,
+    "desc": "경험 풍부한 연계 돌봄 전문가.",
+    "experience": 6,
+    "gender": "여"
+  },
+  {
+    "name": "줄리엔 박",
+    "region": "광주 서구",
+    "type": "연계",
+    "nationality": "중국",
+    "rating": 4.5,
+    "desc": "다문화 가정 아이돌봄 전문.",
+    "experience": 16,
+    "gender": "남"
+  },
+  {
+    "name": "리사 정",
+    "region": "광주 서구",
+    "type": "연계",
+    "nationality": "베트남",
+    "rating": 4.8,
+    "desc": "20년 경력의 아이돌보미입니다.",
+    "experience": 12,
+    "gender": "여"
+  },
+  {
+    "name": "김지현",
+    "region": "광주 북구",
+    "type": "긴급돌봄",
+    "nationality": "한국",
+    "rating": 4.6,
+    "desc": "활발하고 에너지 넘치는 돌보미.",
+    "experience": 4,
+    "gender": "여"
+  },
+  {
+    "name": "응우옌 투",
+    "region": "광주 동구",
+    "type": "시간제",
+    "nationality": "중국",
+    "rating": 4.8,
+    "desc": "방문 수업 및 학습 돌봄 가능.",
+    "experience": 6,
+    "gender": "남"
+  },
+  {
+    "name": "쯔위 린",
+    "region": "광주 북구",
+    "type": "시간제",
+    "nationality": "필리핀",
+    "rating": 4.3,
+    "desc": "방문 수업 및 학습 돌봄 가능.",
+    "experience": 12,
+    "gender": "여"
+  },
+  {
+    "name": "소피아 장",
+    "region": "광주 동구",
+    "type": "연계",
+    "nationality": "중국",
+    "rating": 4.8,
+    "desc": "경험 풍부한 연계 돌봄 전문가.",
+    "experience": 1,
+    "gender": "여"
+  },
+  {
+    "name": "한예진",
+    "region": "광주 동구",
+    "type": "긴급돌봄",
+    "nationality": "한국",
+    "rating": 4.6,
+    "desc": "필리핀 출신 아이돌보미, 한국어 가능.",
+    "experience": 2,
+    "gender": "남"
+  },
+  {
+    "name": "리사 정",
+    "region": "광주 북구",
+    "type": "긴급돌봄",
+    "nationality": "중국",
+    "rating": 5.0,
+    "desc": "방문 수업 및 학습 돌봄 가능.",
+    "experience": 16,
+    "gender": "여"
+  },
+  {
+    "name": "노윤서",
+    "region": "광주 서구",
+    "type": "시간제",
+    "nationality": "한국",
+    "rating": 4.5,
+    "desc": "필리핀 출신 아이돌보미, 한국어 가능.",
+    "experience": 6,
+    "gender": "남"
+  },
+  {
+    "name": "노윤서",
+    "region": "광주 서구",
+    "type": "연계",
+    "nationality": "한국",
+    "rating": 4.4,
+    "desc": "차분하고 섬세한 긴급돌봄 가능.",
+    "experience": 2,
+    "gender": "남"
+  },
+  {
+    "name": "홍채린",
+    "region": "광주 동구",
+    "type": "시간제",
+    "nationality": "한국",
+    "rating": 4.8,
+    "desc": "방문 수업 및 학습 돌봄 가능.",
+    "experience": 7,
+    "gender": "남"
+  },
+  {
+    "name": "박서연",
+    "region": "광주 서구",
+    "type": "연계",
+    "nationality": "한국",
+    "rating": 4.6,
+    "desc": "차분하고 섬세한 긴급돌봄 가능.",
+    "experience": 13,
+    "gender": "남"
+  },
+  {
+    "name": "린다 응우옌",
+    "region": "광주 북구",
+    "type": "연계",
+    "nationality": "중국",
+    "rating": 4.8,
+    "desc": "활발하고 에너지 넘치는 돌보미.",
+    "experience": 14,
+    "gender": "남"
+  },
+  {
+    "name": "사라 최",
+    "region": "광주 서구",
+    "type": "긴급돌봄",
+    "nationality": "필리핀",
+    "rating": 4.6,
+    "desc": "긴급 상황에 빠르게 대응하는 베테랑.",
+    "experience": 3,
+    "gender": "여"
+  },
+  {
+    "name": "마리아 로페즈",
+    "region": "광주 서구",
+    "type": "긴급돌봄",
+    "nationality": "중국",
+    "rating": 4.3,
+    "desc": "긴급 상황에 빠르게 대응하는 베테랑.",
+    "experience": 2,
+    "gender": "남"
+  },
+  {
+    "name": "배수아",
+    "region": "광주 북구",
+    "type": "연계",
+    "nationality": "한국",
+    "rating": 4.3,
+    "desc": "경험 풍부한 연계 돌봄 전문가.",
+    "experience": 14,
+    "gender": "남"
+  },
+  {
+    "name": "홍채린",
+    "region": "광주 서구",
+    "type": "연계",
+    "nationality": "한국",
+    "rating": 5.0,
+    "desc": "20년 경력의 아이돌보미입니다.",
+    "experience": 14,
+    "gender": "남"
+  },
+  {
+    "name": "안나 김",
+    "region": "광주 북구",
+    "type": "연계",
+    "nationality": "베트남",
+    "rating": 4.6,
+    "desc": "활발하고 에너지 넘치는 돌보미.",
+    "experience": 3,
+    "gender": "남"
+  },
+  {
+    "name": "홍채린",
+    "region": "광주 동구",
+    "type": "연계",
+    "nationality": "한국",
+    "rating": 4.4,
+    "desc": "경험 풍부한 연계 돌봄 전문가.",
+    "experience": 17,
+    "gender": "남"
+  },
+  {
+    "name": "쯔위 린",
+    "region": "광주 북구",
+    "type": "시간제",
+    "nationality": "필리핀",
+    "rating": 4.8,
+    "desc": "긴급 상황에 빠르게 대응하는 베테랑.",
+    "experience": 15,
+    "gender": "여"
+  },
+  {
+    "name": "에이미 리",
+    "region": "광주 서구",
+    "type": "긴급돌봄",
+    "nationality": "필리핀",
+    "rating": 4.7,
+    "desc": "필리핀 출신 아이돌보미, 한국어 가능.",
+    "experience": 11,
+    "gender": "여"
+  },
+  {
+    "name": "줄리엔 박",
+    "region": "광주 서구",
+    "type": "긴급돌봄",
+    "nationality": "베트남",
+    "rating": 4.8,
+    "desc": "긴급 상황에 빠르게 대응하는 베테랑.",
+    "experience": 18,
+    "gender": "여"
+  },
+  {
+    "name": "마리아 로페즈",
+    "region": "광주 동구",
+    "type": "긴급돌봄",
+    "nationality": "필리핀",
+    "rating": 4.6,
+    "desc": "필리핀 출신 아이돌보미, 한국어 가능.",
+    "experience": 16,
+    "gender": "여"
+  },
+  {
+    "name": "응우옌 투",
+    "region": "광주 서구",
+    "type": "연계",
+    "nationality": "중국",
+    "rating": 4.8,
+    "desc": "활발하고 에너지 넘치는 돌보미.",
+    "experience": 12,
+    "gender": "여"
+  },
+  {
+    "name": "리사 정",
+    "region": "광주 동구",
+    "type": "긴급돌봄",
+    "nationality": "필리핀",
+    "rating": 4.5,
+    "desc": "경험 풍부한 연계 돌봄 전문가.",
+    "experience": 4,
+    "gender": "남"
+  },
+  {
+    "name": "이유나",
+    "region": "광주 서구",
+    "type": "연계",
+    "nationality": "한국",
+    "rating": 5.0,
+    "desc": "방문 수업 및 학습 돌봄 가능.",
+    "experience": 1,
+    "gender": "여"
+  },
+  {
+    "name": "윤하린",
+    "region": "광주 동구",
+    "type": "연계",
+    "nationality": "한국",
+    "rating": 4.8,
+    "desc": "활발하고 에너지 넘치는 돌보미.",
+    "experience": 18,
+    "gender": "여"
+  },
+  {
+    "name": "배수아",
+    "region": "광주 서구",
+    "type": "시간제",
+    "nationality": "한국",
+    "rating": 4.9,
+    "desc": "긴급 상황에 빠르게 대응하는 베테랑.",
+    "experience": 20,
+    "gender": "여"
+  },
+  {
+    "name": "배수아",
+    "region": "광주 동구",
+    "type": "긴급돌봄",
+    "nationality": "한국",
+    "rating": 4.4,
+    "desc": "20년 경력의 아이돌보미입니다.",
+    "experience": 7,
+    "gender": "여"
+  },
+  {
+    "name": "이유나",
+    "region": "광주 북구",
+    "type": "긴급돌봄",
+    "nationality": "한국",
+    "rating": 5.0,
+    "desc": "방문 수업 및 학습 돌봄 가능.",
+    "experience": 13,
+    "gender": "남"
+  },
+  {
+    "name": "노윤서",
+    "region": "광주 서구",
+    "type": "긴급돌봄",
+    "nationality": "한국",
+    "rating": 4.5,
+    "desc": "긴급 상황에 빠르게 대응하는 베테랑.",
+    "experience": 7,
+    "gender": "남"
+  }
+]
