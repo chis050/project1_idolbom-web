@@ -1,10 +1,12 @@
 :root {
-  --main-color: #7DCD8C;
+  --main-color: #7dcd8c;
   --subtle-bg: #f0f0f0;
   --section-padding: 60px;
   --section-title-bg: #e9f8ef;
 }
-
+a{
+  text-decoration-line: none;
+}
 .login-btn {
   background-color: #32a37b;
   color: white;
@@ -30,7 +32,7 @@ body {
   font-family: 'Noto Sans KR', sans-serif;
   background-color: #f9f9f9;
   margin: 0;
-  padding: 40px 20px;
+
   line-height: 1.6;
   color: #333;
 }

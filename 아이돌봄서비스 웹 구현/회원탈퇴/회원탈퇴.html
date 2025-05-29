@@ -5,39 +5,89 @@
     <meta charset="UTF-8">
     <title>회원탈퇴</title>
     <link rel="stylesheet" href="회원탈퇴.css">
-    <link rel="stylesheet" href="../메인화면_only header.css">
+    <link rel="stylesheet" href="/메인페이지/메인화면_header_bottom.css">
+    <link rel="stylesheet" href="/게시판/아이돌봄사업/아이돌봄사업소개.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="/_헤더/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
 <body id="main">
+    <!-- 1. 헤더 -->
     <header>
         <div class="logo-area">
-            <img src="아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
-            <a href="../메인페이지/메인화면.html"><span>아이 돌봄 서비스</span></a>
+            <img alt="아이돌봄 로고" src="/img/아이돌봄서비스-메인로고.png">
+            <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
         </div>
+
         <nav>
-            <a href="../게시판/공지사항.html">공지사항</a>
-            <a href="../게시판/정보마당.html">정보마당</a>
-            <a href="../게시판/사용자이용.html">사용자이용</a>
+            <ul class="menu">
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이 돌봄 사업</a>
+                    <ul class="submenu">
+                        <li><a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이 돌봄 사업소개</a></li>
+                        <li><a href="/미완성페이지.html">아이 돌봄 사업현황</a></li>
+                        <li><a href="/게시판/아이돌봄사업/서비스유형소개.html">서비스 유형 소개</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/서비스신청안내.html">서비스 이용</a>
+                    <ul class="submenu">
+                        <li><a href="/게시판/아이돌봄사업/서비스신청안내.html">정부지원 신청안내</a></li>
+                        <li><a href="/미완성페이지.html">신청 전 사전 준비안내</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/자주하는질문.html">정보마당</a>
+                    <ul class="submenu">
+                        <li><a href="/미완성페이지.html">공지사항</a></li>
+                        <li><a href="/게시판/아이돌봄사업/자주하는질문.html">자주하는 질문</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/자유게시판/자유게시판.html">자유게시판</a>
+                </li>
+
+            </ul>
         </nav>
+
         <div class="user-area">
+            <div class="translate-wrapper">
+                <button id="translateBtn">
+                    <img src="/img/번역버튼.png" style="width: 24px; height: 24px;">
+                </button>
+                <div id="languageDropdown" class="language-box hidden">
+                    <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+                    <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+                    <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
+                </div>
+            </div>
+
             <form class="search-form" onsubmit="handleSearch(event)">
-                <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+                <input type="text" class="search-box" placeholder="search...." id="searchInput" />
                 <button type="submit" class="search-btn">
                     <i class="fas fa-search"></i>
                 </button>
             </form>
+
             <div id="google_translate_element"></div>
+
+            <a href="/로그인/로그인.html" id="login-link">
+                <button class="login-btn">로그인</button>
+            </a>
+            <div id="user-info" style="display: none;">
+                <a id="user_link" href="/마이페이지(사용자)/마이페이지(사용자).html">
+                    <strong id="user-name">사용자</strong>
+                    <!-- <div class="user-avatar">👤</div> -->
+                    <div class="user-avatar">👧🏻</div>
+                </a>
+                <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+            </div>
         </div>
-        <div class="profile">
-            <span class="logout">로그아웃</span>
-            <span class="username">내향아이들 님</span>
-            <div class="alarm"></div>
-        </div>
-        <button id="translateBtn">번역</button>
     </header>
 
+    <!-- 2. 메인 -->
     <div class="withdraw-box">
         <h2 class="withdraw-title">회원탈퇴 유의사항</h2>
 
@@ -92,19 +142,21 @@
         <button class="withdraw-button">탈퇴하기</button>
     </div>
 
-    <footer>
-        <div class="footer-content">
-            <p>© 2023 아이돌봄 서비스. All rights reserved.</p>
-            <p>이용약관 | 개인정보처리방침</p>
-        </div>
-        <div class="footer-logo">
-            <img src="아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
-        </div>
-    </footer>
+    <!-- 3. 푸터 -->
+    <div id="footer"></div>
+
+    <script>
+        $(function () {
+            $('#footer').load("/_푸터/푸터.html");
+        })
+    </script>
+
 
     <script src="회원탈퇴.js"></script>
-    <script src="../번역api/translate.js"></script>
-  <script src="../로그인/로그인.js"></script>
+    <script src="/번역api/translate.js"></script>
+    <script src="/로그인/공통로그인기능.js"></script>
+    <script src="/게시판/아이돌봄사업/아이돌봄사업소개.js"></script>
+    <script src="/메인페이지/메인페이지.js"></script>
 </body>
 
 </html>

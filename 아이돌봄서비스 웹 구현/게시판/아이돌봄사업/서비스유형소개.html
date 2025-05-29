@@ -2,209 +2,227 @@
 <html lang="ko">
 
 <head>
-    <meta charset="utf-8" />
-    <title>아이돌봄 서비스</title>
-    <link href="/메인페이지/아이돌봄서비스_메인페이지.css" rel="stylesheet">
-    <link href="/메인페이지/메인화면_header_bottom.css" rel="stylesheet">
-    <link rel="stylesheet" href="아이돌봄사업소개.css">
-    <link rel="stylesheet" href="서비스유형소개.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta charset="utf-8" />
+  <title>아이돌봄 서비스</title>
+  <link href="/메인페이지/아이돌봄서비스_메인페이지.css" rel="stylesheet">
+  <link href="/메인페이지/메인화면_header_bottom.css" rel="stylesheet">
+  <link rel="stylesheet" href="아이돌봄사업소개.css">
+  <link rel="stylesheet" href="서비스유형소개.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="/게시판/아이돌봄사업/아이돌봄사업소개.css">
+  <script src="/_헤더/jquery-3.7.1.min.js"></script>
 </head>
 
 <body id="main">
-
-    <!-- 1. 헤더 -->
-    <header>
-        <div class="logo-area">
-            <img alt="아이돌봄 로고" src="./img/아이돌봄서비스-메인로고.png">
-            <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
-        </div>
-
-        <nav>
-            <ul class="menu">
-                <li class="menu-item">
-                    <a href="#">아이돌봄 사업</a>
-                    <ul class="submenu">
-                        <li><a href="아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
-                        <li><a href="#">아이돌봄 사업현황</a></li>
-                        <li><a href="서비스유형소개.html">서비스 유형 소개</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a href="#">서비스 이용</a>
-                    <ul class="submenu">
-                        <li><a href="서비스신청안내.html">정부지원 신청안내</a></li>
-                        <li><a href="#">신청 전 사전 준비안내</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a href="#">정보마당</a>
-                    <ul class="submenu">
-                        <li><a href="#">공지사항</a></li>
-                        <li><a href="자주하는질문.html">자주하는 질문</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a href="/게시판/글쓰기.html">자유게시판</a>
-                </li>
-            </ul>
-        </nav>
-
-        <div class="user-area">
-            <div class="translate-wrapper">
-                <button id="translateBtn">
-                    <img src="img/번역버튼.png" style="width: 24px; height: 24px;">
-                </button>
-                <div id="languageDropdown" class="language-box hidden">
-                    <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
-                    <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
-                    <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
-                </div>
-            </div>
-
-            <form class="search-form" onsubmit="handleSearch(event)">
-                <input type="text" class="search-box" placeholder="search...." id="searchInput" />
-                <button type="submit" class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-
-            <div id="google_translate_element"></div>
-
-            <a href="/로그인/로그인.html" id="login-link">
-                <button class="login-btn">로그인</button>
-            </a>
-
-            <div id="user-info" style="display: none;">
-                <a href="/마이페이지/mypage.html">
-                    <strong id="user-name">사용자</strong>
-                    <div class="user-avatar">👧🏻</div>
-                </a>
-                <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- 2. 메인 -->
-    <div id="content">
-        <main>
-
-            <div class="section">
-                <h2>영아종일제 서비스란?</h2>
-                <p>아이돌봄 서비스는 부모의 맞벌이 등으로 인해 양육 공백이 발생한 가정에 전문적인 돌봄 서비스를 제공합니다.</p>
-            </div>
-
-            <div class="section">
-                <h2>서비스 개요</h2>
-                <table>
-                    <tr>
-                        <th>서비스명</th>
-                        <td>영아종일제 아이돌봄 서비스</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>이용대상</th>
-                        <td>생후 3개월 이상 - 만 36개월 이하 영아</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>정부지원 시간</th>
-                        <td>월 80시간~200시간 이내</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>이용요금</th>
-                        <td>시간당 12,180원</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th>활동내용</th>
-                        <td>영아 돌봄과 관련된 활동 전반</td>
-                        <td id="td" style="opacity: 1;">※가사활동은 제외</td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="section">
-                <h2>돌봄 활동 범위</h2>
-                <ul>
-                    <li>놀이 및 학습 지원</li>
-                    <li>식사 및 간식 돌봄</li>
-                    <li>기저귀 교체 및 위생 관리</li>
-                    <li>야외 활동 동반</li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2>서비스 이용요금</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>항목</th>
-                            <th>내용</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>이용시간</td>
-                            <td>08:00 ~ 20:00</td>
-                        </tr>
-                        <tr>
-                            <td>기본요금</td>
-                            <td>시간당 10,000원</td>
-                        </tr>
-                        <tr>
-                            <td>야간할증</td>
-                            <td>20:00 이후, 1.5배</td>
-                        </tr>
-                        <tr>
-                            <td>휴일할증</td>
-                            <td>주말 및 공휴일, 1.5배</td>
-                        </tr>
-                        <tr>
-                            <td>아종 추가할인</td>
-                            <td>둘째 영아 10% 할인</td>
-                        </tr>
-                        <tr>
-                            <td>다자녀할인</td>
-                            <td>셋째 이상 20% 할인</td>
-                        </tr>
-                        <tr>
-                            <td>취소수수료</td>
-                            <td>당일 취소 시 50%</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="section">
-                <h2>주의사항</h2>
-                <p class="note">※ 서비스 예약은 최소 하루 전까지 가능하며, 야간 및 휴일 이용 시 추가 요금이 부과됩니다.</p>
-            </div>
-        </main>
+  <header>
+    <div class="logo-area">
+      <img alt="아이돌봄 로고" src="/img/아이돌봄서비스-메인로고.png">
+      <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
     </div>
 
-    <!-- 3. 푸터 -->
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#">개인정보처리방침</a> |
-                <a href="#">이용약관</a> |
-                <a href="#">안내센터 1588-1234</a>
-            </div>
-            <div class="footer-info">
-                <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
-                <img src="img/여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
-            </div>
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업</a>
+          <ul class="submenu">
+            <li><a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
+            <li><a href="/미완성페이지.html">아이돌봄 사업현황</a></li>
+            <li><a href="/게시판/아이돌봄사업/서비스유형소개.html">서비스 유형 소개</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/서비스신청안내.html">서비스 이용</a>
+          <ul class="submenu">
+            <li><a href="/게시판/아이돌봄사업/서비스신청안내.html">정부지원 신청안내</a></li>
+            <li><a href="/미완성페이지.html">신청 전 사전 준비안내</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/자주하는질문.html">정보마당</a>
+          <ul class="submenu">
+            <li><a href="/미완성페이지.html">공지사항</a></li>
+            <li><a href="/게시판/아이돌봄사업/자주하는질문.html">자주하는 질문</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/자유게시판/자유게시판.html">자유게시판</a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <div class="user-area">
+      <div class="translate-wrapper">
+        <button id="translateBtn">
+          <img src="/img/번역버튼.png" style="width: 24px; height: 24px;">
+        </button>
+        <div id="languageDropdown" class="language-box hidden">
+          <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+          <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+          <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
         </div>
-    </footer>
+      </div>
 
-    <script src="/메인페이지/메인페이지.js"></script>
-    <script src="/번역api/translate.js"></script>
-    <script src="../로그인/로그인.js"></script>
-    <script src="./아이돌봄사업.js"></script>
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="search...." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
 
+      <div id="google_translate_element"></div>
+
+      <a href="/로그인/로그인.html" id="login-link">
+        <button class="login-btn">로그인</button>
+      </a>
+      <div id="user-info" style="display: none;">
+        <a id="user_link" href="/마이페이지(사용자)/마이페이지(사용자).html">
+          <strong id="user-name">사용자</strong>
+          <!-- <div class="user-avatar">👤</div> -->
+          <div class="user-avatar">👧🏻</div>
+        </a>
+        <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. 메인 -->
+  <div id="content">
+    <main>
+
+      <div class="section">
+        <h2>영아종일제 서비스란?</h2>
+        <p>아이돌봄 서비스는 부모의 맞벌이 등으로 인해 양육 공백이 발생한 가정에 전문적인 돌봄 서비스를 제공합니다.</p>
+      </div>
+
+      <div class="section">
+        <h2>서비스 개요</h2>
+        <table>
+          <tr>
+            <th>서비스명</th>
+            <td>영아종일제 아이돌봄 서비스</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>이용대상</th>
+            <td>생후 3개월 이상 - 만 36개월 이하 영아</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>정부지원 시간</th>
+            <td>월 80시간~200시간 이내</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>이용요금</th>
+            <td>시간당 12,180원</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>활동내용</th>
+            <td>영아 돌봄과 관련된 활동 전반</td>
+            <td>※가사활동은 제외</td>
+          </tr>
+        </table>
+        <p>○ 생후 3개월이 경과하지 않은 영아의 경우에도 신청이 가능하나 사고 등 발생 가능성이 높음에 대한 이용가정의 확인을 계약서에 별도로 명시해야 합니다.</p>
+        <p>○ 정부지원 시간 초과 시 전액 본인 부담으로 서비스 이용이 가능합니다.</p>
+        <p>○ 종합형 서비스를 제외한 모든 돌봄 서비스에 가사 활동은 포함되지 않습니다.</p>
+        <p>○ 아이돌봄서비스는 예산 사업으로, 예산 및 신규 수요 등에 따라 지원 대상, 지원 시간, 지원 금액 등의 변경이 있을 수 있습니다.</p>
+        <p>○ 장애의 정도가 심한 장애인의 경우에는 아이돌봄서비스 제공이 불가합니다. ‘장애 아동보호 지원법, 상이 장애인 가족 양육지원 서비스’를 이용하시기 바랍니다.</p>
+        <p>○ 부 또는 모가 장애의 정도가 심한 장애인에 해당하는 경우 시간제 돌봄 정부지원 시간 한도로 연 1,080시간으로 확대 지원합니다.</p>
+        <p>※ 특례 적용 시 시간제 90시간을 영아종일제 1개월로 환산하여 상호 공제</p>
+        <p>○ 동일 아동에 대해 영아종일제와 시간제 서비스는 중복 지원이 불가하며, 서비스 종류(시간제 <-> 종일제)를 변경 시 정부지원 시간 및 기간의 변동이 생길 수 있으므로, 반드시
+            사전에 서비스 제공 기관으로 문의해주시기 바랍니다.</p>
+        <p>※ 시간제와 영아종일제간 전환 시 시간제 80시간을 영아종일제 1개월로 환산하여 상호 공제</p>
+
+      </div>
+
+      <div class="section">
+        <h2>돌봄 활동 범위</h2>
+        <h3>영아종일제 서비스</h3>
+        <ul>
+          <li>이유식 먹이기, 젖병 소독, 기저귀 갈기, 목욕 등 영아 돌봄과 관련된 활동 전반 (건강, 영양, 위생, 교육 등)</li>
+          <li>돌봄 중 아동의 고열, 부득이 긴급상황 발생 시 이용자가 운행하는 차량이나 도보, 택시 및 대중교통을 통해 병원 동행 가능 (단, 서비스 제공 기관 및 아이돌보미와 사전
+            협의 필요하며 발생한 비용에 대해서는 이용자가 전액 부담)</li>
+          <li>돌봄 대상 아동의 관찰 사항(일상생활, 아동 발달, 건강, 특이사항) 등을 매일 이용 가정에 전달</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>서비스 이용요금</h2>
+        <!-- <p><a href="#">이용요금</a> | <a href="#">이용요금 모의계산</a></p> -->
+
+        <table border="1" cellspacing="0" cellpadding="5">
+          <tr>
+            <th>구분</th>
+            <th>내용</th>
+          </tr>
+          <tr>
+            <td>이용 시간</td>
+            <td>(기본) 1회 3시간 이상 신청, (추가) 최소 30분 단위</td>
+          </tr>
+          <tr>
+            <td>기본 요금</td>
+            <td>평일 주간<br>12,180원 / 시간</td>
+          </tr>
+          <tr>
+            <td>야간 활동</td>
+            <td>오후 10시 ~ 오전 6시<br>기본요금의 50%를 증액</td>
+          </tr>
+          <tr>
+            <td>휴일 활동</td>
+            <td>일요일, 「관공서의 공휴일에 관한 규정」에 따른 공휴일, 근로자의 날<br>기본요금의 50%를 증액</td>
+          </tr>
+          <tr>
+            <td>아동 추가 할인</td>
+            <td>
+              1명의 아이돌보미가 동일 시간대에 2명 이상의 아동을 함께 돌보는 경우<br>
+              - 동시에 돌봄 진행 시<br>
+              - 자녀가 두 명일 경우: 25% 할인 적용<br>
+              - 자녀가 세 명일 경우: 33.3% 할인 적용<br>
+              - 자녀가 네 명일 경우: 37.5% 할인 적용<br>
+              - 자녀가 다섯 명일 경우: 40% 할인 적용
+            </td>
+          </tr>
+          <tr>
+            <td>다자녀 할인</td>
+            <td>
+              중위소득 200% 이하(가, 나, 다, 라형) 중 아래 조건에 맞는 가구에 할인 혜택이 적용됩니다.<br>
+              ※ 마형 제외<br>
+              - 두 자녀 이상 다자녀 가정에 본인 부담금의 10% 추가 지원<br>
+              ※ 가구 소득 변경(구성원 및 거주지 변경)에 따라 서비스 유형별 정부지원 범위가 달라질 수 있습니다.<br>
+              (추가 할인) 본인 부담금의 10%
+            </td>
+          </tr>
+          <tr>
+            <td>취소 수수료</td>
+            <td>이용계약 체결 기준에 따름</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="section">
+        <h2>주의사항</h2>
+        <p class="note">※ 서비스 예약은 최소 하루 전까지 가능하며, 야간 및 휴일 이용 시 추가 요금이 부과됩니다.</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- 3. 푸터 -->
+  <div id="footer"></div>
+
+  <script>
+    $(function () {
+      $('#footer').load("/_푸터/푸터.html");
+    })
+  </script>
+
+  <script src="/메인페이지/메인페이지.js"></script>
+  <script src="/번역api/translate.js"></script>
+  <script src="/로그인/공통로그인기능.js"></script>
+  <script src="./아이돌봄사업.js"></script>
+  <script src="/게시판/아이돌봄사업/아이돌봄사업소개.js"></script>
 </body>
 
 </html>

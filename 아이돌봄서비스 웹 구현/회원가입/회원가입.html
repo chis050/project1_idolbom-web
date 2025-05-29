@@ -3,40 +3,69 @@
 <html lang="ko">
 
 <head>
-    <meta charset="utf-8" />
-    <title>회원가입</title>
-    <link href="../공통메인/메인화면_header_bottom.css" rel="stylesheet" />
-    <link rel="stylesheet" href="회원가입.css" /> <!-- 이 부분 반드시 필요 -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta charset="utf-8" />
+  <title>회원가입</title>
+  <link href="../메인페이지/메인화면_header_bottom.css" rel="stylesheet" />
+  <link rel="stylesheet" href="회원가입.css" /> <!-- 이 부분 반드시 필요 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="/게시판/아이돌봄사업/아이돌봄사업소개.css">
+  <script src="/_헤더/jquery-3.7.1.min.js"></script>
+  <script src="/캡차api/캡차.js"></script>
 </head>
 
-<body>
-    <header>
+<body id="main">
+  <!-- 1. 헤더 -->
+  <header>
     <div class="logo-area">
-      <img alt="아이돌봄 로고" src="../공통메인/아이돌봄서비스-메인로고.png" />
-      <a href="메인페이지.html"><span>아이 돌봄 서비스</span></a>
+      <img alt="아이돌봄 로고" src="/img/아이돌봄서비스-메인로고.png">
+      <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
     </div>
 
-    <nav class="menu">
-      <a href="../게시판/공지사항.html">공지사항</a>
-      <a href="../게시판/정보마당.html">정보마당</a>
-      <a href="../게시판/사용자이용.html">사용자이용</a>
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이 돌봄 사업</a>
+          <ul class="submenu">
+            <li><a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이 돌봄 사업소개</a></li>
+            <li><a href="/미완성페이지.html">아이 돌봄 사업현황</a></li>
+            <li><a href="/게시판/아이돌봄사업/서비스유형소개.html">서비스 유형 소개</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/서비스신청안내.html">서비스 이용</a>
+          <ul class="submenu">
+            <li><a href="/게시판/아이돌봄사업/서비스신청안내.html">정부지원 신청안내</a></li>
+            <li><a href="/미완성페이지.html">신청 전 사전 준비안내</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/자주하는질문.html">정보마당</a>
+          <ul class="submenu">
+            <li><a href="/미완성페이지.html">공지사항</a></li>
+            <li><a href="/게시판/아이돌봄사업/자주하는질문.html">자주하는 질문</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/자유게시판/자유게시판.html">자유게시판</a>
+        </li>
+
+      </ul>
     </nav>
 
     <div class="user-area">
       <div class="translate-wrapper">
         <button id="translateBtn">
-          <img src="번역버튼.png" style="width: 24px; height: 24px;">
+          <img src="/img/번역버튼.png" style="width: 24px; height: 24px;">
         </button>
         <div id="languageDropdown" class="language-box hidden">
-          <div class="lang-option" onclick="setLanguage('kr')">KR</div>
-          <div class="lang-option" onclick="setLanguage('en')">EN</div>
-          <div class="lang-option" onclick="setLanguage('cn')">CN</div>
+          <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+          <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+          <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
         </div>
       </div>
 
       <form class="search-form" onsubmit="handleSearch(event)">
-        <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+        <input type="text" class="search-box" placeholder="search...." id="searchInput" />
         <button type="submit" class="search-btn">
           <i class="fas fa-search"></i>
         </button>
@@ -44,103 +73,100 @@
 
       <div id="google_translate_element"></div>
 
-      <a href="../로그인/로그인.html" id="login-link">
+      <a href="/로그인/로그인.html" id="login-link">
         <button class="login-btn">로그인</button>
       </a>
-
       <div id="user-info" style="display: none;">
-        <strong id="user-name">사용자</strong>
-        <div class="user-avatar">👤</div>
+        <a href="/메인페이지/메인페이지.html">
+          <strong id="user-name">사용자</strong>
+          <!-- <div class="user-avatar">👤</div> -->
+          <div class="user-avatar">👧🏻</div>
+        </a>
         <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
       </div>
     </div>
   </header>
 
-    <div class="signup-container">
-        <form id="signupForm" class="signup-form">
-            <h2>회원가입</h2>
-            <label for="user_name">이름</label>
-            <input type="text" id="user_name" placeholder="홍길동" requiered>
-            <small class="message"></small>
+  <!-- 2. 메인 -->
+  <div class="signup-container">
+    <form id="signupForm" class="signup-form" method="POST" action="/verify">
+      <h2>회원가입</h2>
+      <label for="user_name">이름</label>
+      <input type="text" id="user_name" placeholder="홍길동" requiered>
+      <small class="message"></small>
 
-            <label for="rrn">주민등록번호</label>
-            <input type="text" id="rrn" placeholder="990101-1234567" requiered maxlength="14">
-            <small class="message"></small>
+      <label for="rrn">주민등록번호</label>
+      <input type="text" id="rrn" placeholder="990101-1234567" requiered maxlength="14">
+      <small class="message"></small>
 
-            <label for="login_id">아이디</label>
-            <div class="row">
-                <input id="login_id" placeholder="아이디" required="" type="text" requiered minlength="4" maxlength="12">
-                <button class="check-btn" type="button">중복확인</button>
-            </div>
-            <small class="message">4~12자 영문 소문자/숫자 조합 가능</small>
+      <label for="login_id">아이디</label>
+      <div class="row">
+        <input id="login_id" placeholder="아이디" required="" type="text" requiered minlength="4" maxlength="12">
+        <button class="check-btn" type="button">중복확인</button>
+      </div>
+      <small class="message">4~12자 영문 소문자/숫자 조합 가능</small>
 
-            <label for="pw">비밀번호</label>
-            <input id="pw" placeholder="비밀번호를 입력하세요" required="" type="password" requiered minlength="4" maxlength="12">
-            <small>4~12자 영문 대소문자/숫자 조합 가능</small>
-            <label for="confirm-password">비밀번호 확인</label>
-            <input id="confirm-password" placeholder="비밀번호를 입력하세요" required type="password" minlength="4" maxlength="12">
-            <small id="pw_message" class="message"></small>
+      <label for="pw">비밀번호</label>
+      <input id="pw" placeholder="비밀번호를 입력하세요" required="" type="password" requiered minlength="4" maxlength="12">
+      <small>4~12자 영문 대소문자/숫자 조합 가능</small>
+      <label for="confirm-password">비밀번호 확인</label>
+      <input id="confirm-password" placeholder="비밀번호를 입력하세요" required type="password" minlength="4" maxlength="12">
+      <small id="pw_message" class="message"></small>
 
-            <label for="email">이메일</label>
-            <div class="row">
-                <input id="email" placeholder="이메일" required type="text" />
-                <span>@</span>
-                <input id="email-domain" placeholder="직접 입력" required type="text" />
-                <select id="domain-select">
-                    <option value="custom" selected>직접 입력</option>
-                    <option value="gmail.com">gmail.com</option>
-                    <option value="naver.com">naver.com</option>
-                    <option value="hanmail.net">hanmail.net</option>
-                </select>
-            </div>
-            <small class="message"></small>
-
-            <label for="phone">휴대폰 번호</label>
-            <div class="row">
-                <input id="phone" placeholder="010-1111-2222" required type="tel" />
-                <button class="check-btn" type="button">인증번호 발급</button>
-            </div>
-            <button id="signUpBtn" class="submit-btn" type="submit">가입하기</button>
-            <small class="message"></small>
-        </form>
-    </div>
-
-    <script>
-        function handleSearch(e) {
-            e.preventDefault(); alert('검색 기능은 준비 중입니다.');
-        };
-    </script>
-    <script src="입력제한.js"></script>
-    <script src="회원가입.js"></script>
-    <script src="../번역api/translate.js"></script>
-
-    <!-- 수정한 거 -->
-    <!-- 
-        1. 회원 가입 form태그 안에 이름, 주민등록번호 박스 넣었음
-        2. 로그인, 로그아웃 // 회원가입 버튼 id 속성추가 변경
-        3. 아이디의 id속성 바꿈 email -> login_id
-        4. 비밀번호 id속성 바꿈 password -> pw
-        5. 이메일 선택 옵션 삭제, 직접 입력 최상단
-            -> 직접 입력 시에만 입력 가능하게 함
-        6. CSS일부 수정
-            -> .check-btn에 padding 10 -> 14로 변경(인풋 폼이랑 크기가 달랐음)
-            -> .check-btn에 margin-bottom: 10px; 추가
-        7. small 텍스트 왼쪽마진 10px줌
-            -> .signup-form small에 margin-left: 10px; 추가
-     -->
-    <!-- 
-    <div class="row">
-        <input id="email" placeholder="이메일" required="" type="text" />
+      <label for="email">이메일</label>
+      <div class="row">
+        <input id="email" placeholder="이메일" required type="text" />
         <span>@</span>
-        <select>
-            <option>선택</option>
-            <option>gmail.com</option>
-            <option>naver.com</option>
-            <option>hanmail.net</option>
-            <option>직접 입력</option>
+        <input id="email-domain" placeholder="직접 입력" required type="text" />
+        <select id="domain-select">
+          <option value="custom" selected>직접 입력</option>
+          <option value="gmail.com">gmail.com</option>
+          <option value="naver.com">naver.com</option>
+          <option value="hanmail.net">hanmail.net</option>
         </select>
-        </div>
-    -->
+      </div>
+      <small class="message"></small>
+
+      <label for="phone">휴대폰 번호</label>
+      <div class="row">
+        <input id="phone" placeholder="010-1111-2222" required type="tel" />
+        <button class="check-btn" type="button">인증번호 발급</button>
+      </div>
+
+      <label for="captcha">캡차 인증</label>
+      <img id="captcha_img" src="" alt="캡차" />
+      <button type="button" onclick="loadCaptchaImage()">새로고침</button><br><br>
+
+      <input type="text" id="captcha_input" placeholder="위 글자를 입력하세요" required />
+      <button id="captchaBtn" class="captcha-btn" type="button" onclick="verifyCaptchaInput()">확인</button>
+
+      <button id="signUpBtn" class="submit-btn" type="submit">가입하기</button>
+    </form>
+
+  </div>
+
+  <script>
+    function handleSearch(e) {
+      e.preventDefault(); alert('검색 기능은 준비 중입니다.');
+    };
+  </script>
+
+  <!-- 3. 푸터 -->
+  <div id="footer"></div>
+
+  <script>
+    $(function () {
+      $('#footer').load("/_푸터/푸터.html");
+    })
+  </script>
+
+  <script src="입력제한.js"></script>
+  <script src="회원가입.js"></script>
+  <script src="/메인페이지/메인페이지.js"></script>
+  <script src="/게시판/아이돌봄사업/아이돌봄사업소개.js"></script>
+  <script src="/번역api/translate.js"></script>
+  <script src="/캡차api/캡차.js" de></script>
+  <script src="/회원가입/captcha_code.js"></script>
 </body>
 
 </html>

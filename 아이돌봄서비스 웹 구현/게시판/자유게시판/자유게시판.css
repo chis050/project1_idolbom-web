@@ -1,0 +1,138 @@
+:root {
+    --main-color: #7DCD8C;
+    --bg-color: #f9fdfb;
+    --border-color: #ddd;
+    --hover-color: #e6f5ec;
+    --text-color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 16px;
+}
+
+.board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.board-header h2 {
+    font-size: 1.4rem;
+    color: var(--main-color);
+}
+
+.write-btn {
+    background-color: var(--main-color);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.write-btn:hover {
+    background-color: #64b57a;
+}
+
+/* 게시판 전체 컨테이너 */
+#post-list {
+  width: 100%;
+  margin-top: 30px;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 표 형태의 게시판 */
+.board-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid #4CAF50;
+  font-size: 15px;
+}
+
+/* 헤더 */
+.board-table thead th {
+  background-color: #e6f5ec;
+  padding: 12px 8px;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+/* 본문 */
+.board-table tbody td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: center;
+  color: #444;
+}
+
+/* 제목은 왼쪽 정렬 */
+.board-table .title-cell {
+  text-align: left;
+  padding-left: 15px;
+}
+
+/* 제목 hover 시 밑줄 */
+.board-table .title-cell a {
+  color: #333;
+  text-decoration: none;
+}
+
+.board-table .title-cell a:hover {
+  text-decoration: underline;
+  color: #2e7d32;
+}
+
+/* 글쓰기 버튼 정렬 */
+.board-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.write-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.write-btn:hover {
+  background-color: #388e3c;
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pagination button {
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 6px 12px;
+  margin: 0 4px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination button.active {
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+}
+
+.pagination button:disabled {
+  background-color: #eee;
+  color: #aaa;
+  cursor: not-allowed;
+}

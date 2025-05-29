@@ -9,29 +9,55 @@
     <!-- 외부 라이브러리 -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="캘린더_스타일.css" />
-    <link href="../메인페이지/메인화면_header_bottom.css" rel="stylesheet" />
-    <script src="../메인페이지/메인페이지.js"></script>
-
+    <link rel="stylesheet" href="/마이페이지_캘린더/캘린더_스타일.css" />
+    <link href="/메인페이지/메인화면_header_bottom.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/게시판/아이돌봄사업/아이돌봄사업소개.css">
+    <script src="/_헤더/jquery-3.7.1.min.js"></script>
 </head>
 
 <body id="main">
-    <!-- ✅ 헤더 영역 -->
+    <!-- 1. 헤더 -->
     <header>
         <div class="logo-area">
-            <img alt="아이돌봄 로고" src="./img/아이돌봄서비스-메인로고.png">
-            <a href="../메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
+            <img alt="아이돌봄 로고" src="/img/아이돌봄서비스-메인로고.png">
+            <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
         </div>
 
-        <nav class="menu">
-            <a href="../게시판/공지사항.html">공지사항</a>
-            <a href="../게시판/정보마당.html">정보마당</a>
-            <a href="../게시판/사용자이용.html">사용자이용</a>
+        <nav>
+            <ul class="menu">
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업</a>
+                    <ul class="submenu">
+                        <li><a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
+                        <li><a href="/미완성페이지.html">아이돌봄 사업현황</a></li>
+                        <li><a href="/게시판/아이돌봄사업/서비스유형소개.html">서비스 유형 소개</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/서비스신청안내.html">서비스 이용</a>
+                    <ul class="submenu">
+                        <li><a href="/게시판/아이돌봄사업/서비스신청안내.html">정부지원 신청안내</a></li>
+                        <li><a href="/미완성페이지.html">신청 전 사전 준비안내</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/자주하는질문.html">정보마당</a>
+                    <ul class="submenu">
+                        <li><a href="/미완성페이지.html">공지사항</a></li>
+                        <li><a href="/게시판/아이돌봄사업/자주하는질문.html">자주하는 질문</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/자유게시판/자유게시판.html">자유게시판</a>
+                </li>
+
+            </ul>
         </nav>
 
         <div class="user-area">
             <div class="translate-wrapper">
                 <button id="translateBtn">
-                    <img src="img/번역버튼.png" style="width: 24px; height: 24px;">
+                    <img src="/img/번역버튼.png" style="width: 24px; height: 24px;">
                 </button>
                 <div id="languageDropdown" class="language-box hidden">
                     <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
@@ -49,31 +75,53 @@
 
             <div id="google_translate_element"></div>
 
-            <a href="../로그인/로그인.html" id="login-link">
+            <a href="/로그인/로그인.html" id="login-link">
                 <button class="login-btn">로그인</button>
             </a>
             <div id="user-info" style="display: none;">
-                <strong id="user-name">사용자</strong>
-                <!-- <div class="user-avatar">👤</div> -->
-                <div class="user-avatar">👧🏻</div>
+                <a href="/메인페이지/메인페이지.html">
+                    <strong id="user-name">사용자</strong>
+                    <!-- <div class="user-avatar">👤</div> -->
+                    <div class="user-avatar">👧🏻</div>
+                </a>
                 <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
             </div>
         </div>
     </header>
 
-    <main>
-        <!-- ✅ 캘린더 영역 -->
-        <script src="./dist/index.global.js"></script>
-        <script src="마이페이지_캘린더.js" defer></script>
-        <div id="calendar"></div>
+    <main style="display: flex; gap: 30px;">
+        <section style="flex: 1;">
+            <!-- ✅ 캘린더 영역 -->
+            <script src="./dist/index.global.js"></script>
+            <script src="마이페이지_캘린더.js" defer></script>
+            <div id="calendar"></div>
 
-        <!-- ✅ 일정 카드 리스트 -->
-        <script src="더미데이터_카드.js"></script>
-        <section id="event-list" class="event-list">
-            <!-- JavaScript에서 일정 데이터를 받아서 여기에 카드로 삽입 -->
+            <!-- ✅ 일정 카드 리스트 -->
+            <script src="더미데이터_카드.js"></script>
+            <section id="event-list" class="event-list" defer>
+                <!-- JavaScript에서 일정 데이터를 받아서 여기에 카드로 삽입 -->
+            </section>
+            <div id="mapModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close-btn" onclick="closeModal()">&times;</span>
+                    <div id="map-view" style="height: 400px;"></div>
+                </div>
+            </div>
         </section>
     </main>
-    <script src="../번역api/translate.js"></script>
+
+    <!-- 3. 푸터 -->
+    <div id="footer"></div>
+
+    <script>
+        $(function () {
+            $('#footer').load("/_푸터/푸터.html");
+        })
+    </script>
+
+    <script src="/번역api/translate.js"></script>
+    <script src="/메인페이지/메인페이지.js"></script>
+    <script src="/로그인/공통로그인기능.js"></script>
 </body>
 
 </html>

@@ -15,7 +15,7 @@ body {
 #content {
   width: 90%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 80px;
   padding: 2rem 0;
 }
 
@@ -63,7 +63,7 @@ nav .submenu {
   pointer-events: none;          /* 클릭 막기 */
   
   flex-direction: column;
-  background-color: var(--bg-color);
+  background-color: white;
   border-radius: 8px;
   overflow: hidden;
   min-width: 10rem;

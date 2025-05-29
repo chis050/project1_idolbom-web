@@ -1,6 +1,6 @@
 document.querySelectorAll('.menu-item > a').forEach(item => {
   item.addEventListener('click', e => {
-    e.preventDefault(); // 링크 이동 막기
+
     const submenu = item.nextElementSibling;
     if (submenu.style.display === 'block') {
       submenu.style.display = 'none';

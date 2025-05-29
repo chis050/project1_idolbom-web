@@ -19,19 +19,3 @@ const dummyEvents = [
     avatar: '🐰'
   }
 ];
-
-window.addEventListener('DOMContentLoaded', () => {
-  const listEl = document.getElementById('event-list');
-
-  dummyEvents.forEach(event => {
-    const card = document.createElement('div');
-    card.className = 'event-card';
-    card.innerHTML = `
-      <div><strong class="avatar">${event.avatar}</strong> <strong>${event.name}</strong> (${event.age}세)</div>
-      <div><strong>일정:</strong> ${event.date} ${event.time}</div>
-      <div><strong>주소:</strong> ${event.address}</div>
-      <div><strong>유의사항:</strong> ${event.notes}</div>
-    `;
-    listEl.appendChild(card);
-  });
-});

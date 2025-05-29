@@ -1,24 +1,49 @@
-  <header>
+<header>
     <div class="logo-area">
-      <img alt="아이돌봄 로고" src="./img/아이돌봄서비스-메인로고.png">
-      <a href="메인페이지.html"><span>아이 돌봄 서비스</span></a>
+      <img alt="아이돌봄 로고" src="/img/아이돌봄서비스-메인로고.png">
+      <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
     </div>
 
-    <nav class="menu">
-      <a href="../게시판/공지사항.html">공지사항</a>
-      <a href="../게시판/정보마당.html">정보마당</a>
-      <a href="../게시판/사용자이용.html">사용자이용</a>
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업</a>
+          <ul class="submenu">
+            <li><a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
+            <li><a href="/미완성페이지.html">아이돌봄 사업현황</a></li>
+            <li><a href="/게시판/아이돌봄사업/서비스유형소개.html">서비스 유형 소개</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/서비스신청안내.html">서비스 이용</a>
+          <ul class="submenu">
+            <li><a href="/게시판/아이돌봄사업/서비스신청안내.html">정부지원 신청안내</a></li>
+            <li><a href="/미완성페이지.html">신청 전 사전 준비안내</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/자주하는질문.html">정보마당</a>
+          <ul class="submenu">
+            <li><a href="/미완성페이지.html">공지사항</a></li>
+            <li><a href="/게시판/아이돌봄사업/자주하는질문.html">자주하는 질문</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/자유게시판/자유게시판.html">자유게시판</a>
+        </li>
+
+      </ul>
     </nav>
 
     <div class="user-area">
       <div class="translate-wrapper">
         <button id="translateBtn">
-          <img src="./img/번역버튼.png" style="width: 24px; height: 24px;">
+          <img src="/img/번역버튼.png" style="width: 24px; height: 24px;">
         </button>
         <div id="languageDropdown" class="language-box hidden">
-          <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">KR</div>
-          <div class="lang-option" id='lang-en' onclick="setLanguage('en')">EN</div>
-          <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">CN</div>
+          <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+          <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+          <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
         </div>
       </div>
 
@@ -31,13 +56,15 @@
 
       <div id="google_translate_element"></div>
 
-      <a href="../로그인/로그인.html" id="login-link">
+      <a href="/로그인/로그인.html" id="login-link">
         <button class="login-btn">로그인</button>
       </a>
       <div id="user-info" style="display: none;">
-        <strong id="user-name">사용자</strong>
-        <!-- <div class="user-avatar">👤</div> -->
-        <div class="user-avatar">👧🏻</div>
+        <a href="/메인페이지/메인페이지.html">
+          <strong id="user-name">사용자</strong>
+          <!-- <div class="user-avatar">👤</div> -->
+          <div class="user-avatar">👧🏻</div>
+        </a>
         <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
       </div>
     </div>

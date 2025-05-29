@@ -1,0 +1,79 @@
+.dashboard-content-wrapper {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: stretch;
+  margin: 40px 0;
+}
+
+.dashboard-card {
+  flex: 1 1 0;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 6px 16px rgba(50, 150, 110, 0.07);
+  padding: 30px 18px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 250px;
+  max-width: 350px;
+  transition: box-shadow 0.2s;
+}
+
+.dashboard-card:hover {
+  box-shadow: 0 10px 24px rgba(50, 150, 110, 0.15);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.chart-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #32a37b;
+  letter-spacing: -0.5px;
+  text-align: center;
+}
+
+.chart-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard-card canvas {
+  width: 100% !important;
+  height: 230px !important;
+  max-width: 280px;
+  background: #f9fafb;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(180,180,180,0.03);
+  margin-top: 10px;
+}
+
+/* 셀렉터 위치 조정 */
+#rangeSelector {
+  margin-bottom: 6px;
+  border-radius: 12px;
+  padding: 4px 10px;
+  border: 1px solid #b5d2c5;
+  background: #eafaf2;
+}
+
+/* 반응형 */
+@media (max-width: 900px) {
+  .dashboard-content-wrapper {
+    flex-direction: column;
+    gap: 22px;
+    align-items: center;
+  }
+  .dashboard-card {
+    max-width: 95vw;
+    min-width: unset;
+    width: 100%;
+  }
+  .dashboard-card canvas {
+    max-width: 95vw;
+    height: 200px !important;
+  }
+}

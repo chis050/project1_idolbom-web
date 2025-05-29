@@ -84,8 +84,7 @@ select {
 
 .submit-btn,
 .cancel-btn {
-  flex: 1;
-  padding: 12px;
+  padding: 12px 30px;
   border: none;
   border-radius: 30px;
   font-size: 16px;

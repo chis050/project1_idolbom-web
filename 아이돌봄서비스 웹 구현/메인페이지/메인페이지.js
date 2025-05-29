@@ -25,44 +25,42 @@ function shootStars(e) {
 // 로그인/로그아웃 처리
 function handleServiceClick(type) {
   const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+  const role = sessionStorage.getItem('role');
   if (!isLoggedIn) {
     alert('로그인이 필요합니다. 로그인 페이지로 이동합니다.');
     window.location.href = `../로그인/로그인.html?redirect=${encodeURIComponent(window.location.href)}`;
     return;
-  } 
-  window.location.href = `../돌봄서비스 신청(캘린더에서 날짜 선택)/ex돌보미신청정보.html`
-  // window.location.href = `../아이돌봄서비스신청/아이돌봄서비스신청.html?type=${type}`;
-  // if (type === 'applyService') {
-  //   window.location.href = encodeURI('../아이돌봄서비스신청/아이돌봄서비스신청.html');
-  // } else if (type === 'applySitter') {
-  //   window.location.href = encodeURI('../아이돌보미신청/아이돌보미신청.html');
-  // }
+  }
+
+  // type에 따라 고정된 링크로 이동
+  if (type === 'parent') {
+    window.location.href = '/돌봄서비스 신청(캘린더에서 날짜 선택)/ex돌보미신청정보.html';
+  } else if (type === 'sitter') {
+    window.location.href = '/돌보미신청(돌보미 서류제출)/돌보미신청(돌보미서류제출).html';
+  }
 }
 
-// // ✅ 로그인 상태에 따라 UI 업데이트
-window.addEventListener('#main', () => {
-  const isLoggedIn = sessionStorage.setItem('isLoggedIn') === 'true';
-  const loginLink = document.getElementById('login-link');
-  const userInfo = document.getElementById('user-info');
-  const userName = document.getElementById('user-name');
+// role에 따라 마이페이지 링크 설정
+function setMyPageLink() {
+  const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+  const role = sessionStorage.getItem('role');
+  const myPageLink = document.getElementById('user_link');
+
+  if (!myPageLink) return;
 
   if (isLoggedIn) {
-    loginLink.style.display = 'none';
-    userInfo.style.display = 'flex';
-    userName.textContent = sessionStorage.getItem("nickname") || "사용자";
+    if (role === '1') {
+      myPageLink.href = '/마이페이지(사용자)/마이페이지(사용자).html';
+    } else if (role === '2') {
+      myPageLink.href = '/마이페이지(돌보미)/마이페이지(돌보미).html';
+    }
   } else {
-    loginLink.style.display = 'block';
-    userInfo.style.display = 'none';
+    myPageLink.href = '/로그인/로그인.html';
   }
-});
-
-function handleLogout() {
-  // sessionStorage.clear();
-  sessionStorage.removeItem('isLoggedIn');
-  sessionStorage.removeItem('username');
-  window.location.reload(); // 다시 로드해서 UI 리셋
 }
 
+// 예시: DOMContentLoaded 또는 로그인/로그아웃 직후
+document.addEventListener('DOMContentLoaded', setMyPageLink);
 
 // ✅ 전역 등록 (onclick 속성에서 쓸 수 있게)
 window.setLanguage = setLanguage;
@@ -86,6 +84,3 @@ document.addEventListener('DOMContentLoaded', () => {
     dropdown.classList.toggle('hidden');
   });
 });
-
-
-

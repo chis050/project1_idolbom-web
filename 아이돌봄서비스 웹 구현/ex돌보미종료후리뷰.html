@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>서비스 종료 안내</title>
+  <link rel="stylesheet" href="메인화면_only header.css" />
+  <style>
+    :root {
+      --main-color: #7DCD8C;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .wrapper {
+      max-width: 720px;
+      height: 600px;
+      margin: 60px auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .background-illustration {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      width: 200px;
+      opacity: 0.08;
+      z-index: 0;
+    }
+
+    .header {
+      font-size: 18px;
+      color: #444;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 6px 0;
+      color: #222;
+    }
+
+    .desc {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .review-prompt {
+      background: #f4fdf6;
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 16px;
+      max-width: 520px;
+    }
+
+    .review-prompt strong {
+      color: #222;
+    }
+
+    .btn-group {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 160px;
+    }
+
+    .btn.primary {
+      background-color: var(--main-color);
+      color: white;
+      font-weight: bold;
+    }
+
+    .btn.secondary {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+
+    /* 리뷰 모달 */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .review-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 28px;
+      width: 360px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .review-box h3 {
+      margin-bottom: 16px;
+      font-size: 20px;
+    }
+
+    .stars {
+      font-size: 28px;
+      color: var(--main-color);
+      margin: 16px 0;
+      cursor: pointer;
+    }
+
+    .checkbox-group {
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .checkbox-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    textarea {
+      width: 100%;
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      margin-top: 16px;
+      width: 100%;
+      background-color: var(--main-color);
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo-area">
+      <img src="아이돌봄서비스-메인로고.png" alt="아이돌봄 로고">
+      <span>아이돌봄</span>
+    </div>
+    <nav>
+      <a href="#">공지사항</a>
+      <a href="#">정보마당</a>
+      <a href="#">사용자이용</a>
+    </nav>
+    <div class="user-area">
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="검색어 입력..." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+      <div id="google_translate_element"></div>
+      <button class="logout-btn">로그아웃</button>
+      <strong>내향아이들 님</strong>
+      <div class="user-avatar">👤</div>
+    </div>
+  </header>
+
+  <!-- 종료 안내 박스 -->
+  <div class="wrapper">
+    <img src="your-image.png" class="background-illustration" />
+    <div class="content">
+      <div class="header">📅 5월 22일 14:00 ~ 18:00</div>
+      <div class="title">Sophia님과의 서비스가 종료되었어요.</div>
+      <div class="desc">돌보미 서비스가 안전하게 마무리되었어요.</div>
+
+      <div class="review-prompt">
+        ✅ <strong>리뷰 한 줄이 더 나은 돌봄을 만듭니다.</strong>
+        <div>당신의 경험이 다음 가족에게 큰 도움이 될 수 있어요.</div>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn primary" onclick="openModal()">리뷰 남기기</button>
+        <button class="btn secondary" onclick="alert('리뷰를 건너뛰었습니다.')">나중에 하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 리뷰 모달 -->
+  <div class="modal" id="reviewModal">
+    <div class="review-box">
+      <h3>리뷰 남기기</h3>
+      <div class="stars" id="stars">
+        <span data-score="1">☆</span>
+        <span data-score="2">☆</span>
+        <span data-score="3">☆</span>
+        <span data-score="4">☆</span>
+        <span data-score="5">☆</span>
+      </div>
+
+      <div id="questionText"><strong>어떤 점이 좋았나요?</strong></div>
+      <div class="checkbox-group" id="checkboxContainer"></div>
+
+      <textarea id="freeComment" placeholder="후기를 작성해주세요"></textarea>
+      <button class="submit-btn" onclick="submitReview()">제출하기</button>
+    </div>
+  </div>
+
+  <!-- JS 로직 -->
+  <script>
+    const modal = document.getElementById("reviewModal");
+    const stars = document.querySelectorAll("#stars span");
+    const checkboxContainer = document.getElementById("checkboxContainer");
+    const questionText = document.getElementById("questionText");
+    let selectedScore = 0;
+
+    const goodPoints = ["친절해요", "전문성이 있어요", "응답이 빨라요", "시간을 잘 지켜요"];
+    const badPoints = ["시간 약속을 안 지켰어요", "설명이 부족했어요", "아이가 불편해했어요", "기타 문제"];
+
+    function openModal() {
+      modal.style.display = "flex";
+    }
+
+    stars.forEach(star => {
+      star.addEventListener("click", () => {
+        selectedScore = parseInt(star.dataset.score);
+        updateStars(selectedScore);
+        updateOptions(selectedScore);
+      });
+    });
+
+    function updateStars(score) {
+      stars.forEach(s => {
+        s.textContent = s.dataset.score <= score ? "★" : "☆";
+      });
+    }
+
+    function updateOptions(score) {
+      checkboxContainer.innerHTML = "";
+      const options = score >= 4 ? goodPoints : badPoints;
+      questionText.textContent = score >= 4 ? "어떤 점이 좋았나요?" : "어떤 점이 아쉬웠나요?";
+      options.forEach(option => {
+        const label = document.createElement("label");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.value = option;
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(" " + option));
+        checkboxContainer.appendChild(label);
+      });
+    }
+
+    function submitReview() {
+      const checked = Array.from(checkboxContainer.querySelectorAll("input:checked")).map(cb => cb.value);
+      const comment = document.getElementById("freeComment").value;
+      alert(`⭐️ 별점: ${selectedScore}\n✅ 선택: ${checked.join(", ")}\n💬 후기: ${comment}`);
+      modal.style.display = "none";
+    }
+  </script>
+
+</body>
+
+</html>

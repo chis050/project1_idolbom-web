@@ -6,46 +6,48 @@
     <title>아이돌봄 서비스</title>
     <link href="/메인페이지/아이돌봄서비스_메인페이지.css" rel="stylesheet">
     <link href="/메인페이지/메인화면_header_bottom.css" rel="stylesheet">
+    <link rel="stylesheet" href="아이돌봄사업소개.css">
     <link rel="stylesheet" href="자주하는질문.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+    <link rel="stylesheet" href="/게시판/아이돌봄사업/아이돌봄사업소개.css">
+    <script src="/_헤더/jquery-3.7.1.min.js"></script>
 </head>
 
 <body id="main">
     <!-- 1. 헤더 -->
     <header>
         <div class="logo-area">
-            <img alt="아이돌봄 로고" src="./img/아이돌봄서비스-메인로고.png">
+            <img alt="아이돌봄 로고" src="/img/아이돌봄서비스-메인로고.png">
             <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
         </div>
 
         <nav>
             <ul class="menu">
                 <li class="menu-item">
-                    <a href="#">아이돌봄 사업</a>
+                    <a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업</a>
                     <ul class="submenu">
-                        <li><a href="아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
-                        <li><a href="#">아이돌봄 사업현황</a></li>
-                        <li><a href="서비스유형소개.html">서비스 유형 소개</a></li>
+                        <li><a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
+                        <li><a href="/미완성페이지.html">아이돌봄 사업현황</a></li>
+                        <li><a href="/게시판/아이돌봄사업/서비스유형소개.html">서비스 유형 소개</a></li>
                     </ul>
                 </li>
                 <li class="menu-item">
-                    <a href="#">서비스 이용</a>
+                    <a href="/게시판/아이돌봄사업/서비스신청안내.html">서비스 이용</a>
                     <ul class="submenu">
-                        <li><a href="서비스신청안내.html">정부지원 신청안내</a></li>
-                        <li><a href="#">신청 전 사전 준비안내</a></li>
+                        <li><a href="/게시판/아이돌봄사업/서비스신청안내.html">정부지원 신청안내</a></li>
+                        <li><a href="/미완성페이지.html">신청 전 사전 준비안내</a></li>
                     </ul>
                 </li>
                 <li class="menu-item">
-                    <a href="#">정보마당</a>
+                    <a href="/게시판/아이돌봄사업/자주하는질문.html">정보마당</a>
                     <ul class="submenu">
-                        <li><a href="#">공지사항</a></li>
-                        <li><a href="자주하는질문.html">자주하는 질문</a></li>
+                        <li><a href="/미완성페이지.html">공지사항</a></li>
+                        <li><a href="/게시판/아이돌봄사업/자주하는질문.html">자주하는 질문</a></li>
                     </ul>
                 </li>
                 <li class="menu-item">
-                    <a href="/게시판/글쓰기.html">자유게시판</a>
+                    <a href="/게시판/자유게시판/자유게시판.html">자유게시판</a>
                 </li>
 
             </ul>
@@ -54,7 +56,7 @@
         <div class="user-area">
             <div class="translate-wrapper">
                 <button id="translateBtn">
-                    <img src="img/번역버튼.png" style="width: 24px; height: 24px;">
+                    <img src="/img/번역버튼.png" style="width: 24px; height: 24px;">
                 </button>
                 <div id="languageDropdown" class="language-box hidden">
                     <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
@@ -76,7 +78,7 @@
                 <button class="login-btn">로그인</button>
             </a>
             <div id="user-info" style="display: none;">
-                <a href="/마이페이지/mypage.html">
+                <a id="user_link" href="/마이페이지(사용자)/마이페이지(사용자).html">
                     <strong id="user-name">사용자</strong>
                     <!-- <div class="user-avatar">👤</div> -->
                     <div class="user-avatar">👧🏻</div>
@@ -123,25 +125,67 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>결제/환불</td>
-                                <td><a href="#">환불 신청은 어떻게 하나요?</a></td>
-                                <td>2025-05-26</td>
+                                <td>사이트 이용</td>
+                                <td><a href="#">정회원 신청방법을 알고 싶습니다.</a></td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>아이돌봄서비스</td>
-                                <td><a href="#">아이돌보미는 어떤 교육을 받나요?</a></td>
-                                <td>2025-05-25</td>
+                                <td>아이 돌봄서비스</td>
+                                <td><a href="#">동시돌봄 신청서를 취소한 경우 취소수수료는 얼마가 부과되나요?</a></td>
+                                <td>-</td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>사이트 이용</td>
-                                <td><a href="#">비밀번호를 잊어버렸어요. 어떻게 찾나요?</a></td>
-                                <td>2025-05-24</td>
+                                <td>아이 돌봄서비스</td>
+                                <td><a href="#">특별한 사유가 있는 경우 취소수수료를 면제 받을 수 있나요?</a></td>
+                                <td>-</td>
                             </tr>
-                            <!-- 더 많은 항목 추가 가능 -->
+                            <tr>
+                                <td>4</td>
+                                <td>아이 돌봄서비스</td>
+                                <td><a href="#">외국 국적의 아동도 아이돌봄 서비스를 신청할 수 있나요?</a></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>아이 돌봄서비스</td>
+                                <td><a href="#">아이돌봄서비스는 수시로 신청할 수 있나요?</a></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>결제/환불</td>
+                                <td><a href="#">국민행복카드 발급은 꼭 필요한가요?</a></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>정부지원</td>
+                                <td><a href="#">사업자 등록을 한지 얼마 되지 않아, 소득증빙자료가 없을 경우에는 어떻게 해야 하나요?</a></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>정부지원</td>
+                                <td><a href="#">정부지원 자격 대상자에 해당되지 않아도 아이돌봄 서비스를 신청·이용할 수 있나요?</a></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>아이 돌봄서비스</td>
+                                <td><a href="#">아이돌봄서비스 이용금으로 연말소득공제 가능하나요?</a></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>아이 돌봄서비스</td>
+                                <td><a href="#">저는 단기서비스만 신청 가능한데 왜 그런가요?</a></td>
+                                <td>-</td>
+                            </tr>
                         </tbody>
                     </table>
+
                 </div>
             </section>
 
@@ -149,24 +193,18 @@
     </div>
 
     <!-- 3. 푸터 -->
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#">개인정보처리방침</a> |
-                <a href="#">이용약관</a> |
-                <a href="#">안내센터 1588-1234</a>
-            </div>
-            <div class="footer-info">
-                <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
-                <img src="img/여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
-            </div>
-        </div>
-    </footer>
+    <div id="footer"></div>
+
+    <script>
+        $(function () {
+            $('#footer').load("/_푸터/푸터.html");
+        })
+    </script>
 
     <script src="/메인페이지/메인페이지.js"></script>
     <script src="/번역api/translate.js"></script>
-    <script src="../로그인/로그인.js"></script>
-    <script src="./아이돌봄사업.js"></script>
+    <script src="/로그인/공통로그인기능.js"></script>
+    <script src="/게시판/아이돌봄사업/아이돌봄사업소개.js"></script>
 </body>
 
 </html>

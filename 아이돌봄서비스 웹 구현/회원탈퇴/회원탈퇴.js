@@ -1,3 +1,8 @@
+// Supabase 설정
+const supabaseUrl = 'https://kdmvxndklggzyynexiyu.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtkbXZ4bmRrbGdnenl5bmV4aXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2NDUxMjUsImV4cCI6MjA2MzIyMTEyNX0.iYwGk2isQQxzkvK51S99V21cOZowTooCyzM9jTqcK7U';
+const db = supabase.createClient(supabaseUrl, supabaseKey);
+
 // '회원탈퇴' 입력 확인
 document.querySelector('#withdraw-checkBtn').addEventListener('click', () => {
 
@@ -21,10 +26,11 @@ document.querySelector('#withdraw-checkBtn').addEventListener('click', () => {
 });
 
 // '회원탈퇴' 동의 버튼 클릭
-document.querySelector('.withdraw-button').addEventListener('click', () => {
+document.querySelector('.withdraw-button').addEventListener('click', async () => {
 
     const withdrawText = document.getElementById('withdraw-text').value.trim();
     const agreeChecked = document.querySelector('.withdraw-agree input[type="checkbox"]').checked;
+    const user_id = sessionStorage.getItem('user_id')
 
     if (!agreeChecked) {
         alert("회원 탈퇴 동의에 체크해주세요.");
@@ -32,8 +38,14 @@ document.querySelector('.withdraw-button').addEventListener('click', () => {
     } else if (withdrawText === '' && withdrawText !== '회원탈퇴') {
         alert("회원탈퇴 입력을 완료해주세요.");
     } else {
+        const { error } = await db
+            .from('user')
+            .delete()
+            .eq('user_id', user_id)
+        sessionStorage.clear()
         alert("회원 탈퇴가 완료되었습니다.");
-        window.location.href = '../메인페이지/메인화면.html';
+
+        window.location.href = '/메인페이지/메인페이지.html';
     }
 });
 

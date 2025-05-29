@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>포인트샵</title>
+    <link rel="stylesheet" href="/메인페이지/메인화면_header_bottom.css">
+    <link href="../메인페이지/아이돌봄서비스_메인페이지.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/게시판/아이돌봄사업/아이돌봄사업소개.css">
+    <link rel="stylesheet" href="포인트샵.css">
+    <script src="/_헤더/jquery-3.7.1.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- 1. 헤더 -->
+    <header>
+        <div class="logo-area">
+            <img alt="아이돌봄 로고" src="/img/아이돌봄서비스-메인로고.png">
+            <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이 돌봄 사업</a>
+                    <ul class="submenu">
+                        <li><a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이 돌봄 사업소개</a></li>
+                        <li><a href="/미완성페이지.html">아이 돌봄 사업현황</a></li>
+                        <li><a href="/게시판/아이돌봄사업/서비스유형소개.html">서비스 유형 소개</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/서비스신청안내.html">서비스 이용</a>
+                    <ul class="submenu">
+                        <li><a href="/게시판/아이돌봄사업/서비스신청안내.html">정부지원 신청안내</a></li>
+                        <li><a href="/미완성페이지.html">신청 전 사전 준비안내</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/자주하는질문.html">정보마당</a>
+                    <ul class="submenu">
+                        <li><a href="/미완성페이지.html">공지사항</a></li>
+                        <li><a href="/게시판/아이돌봄사업/자주하는질문.html">자주하는 질문</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/자유게시판/자유게시판.html">자유게시판</a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="user-area">
+            <div class="translate-wrapper">
+                <button id="translateBtn">
+                    <img src="/img/번역버튼.png" style="width: 24px; height: 24px;">
+                </button>
+                <div id="languageDropdown" class="language-box hidden">
+                    <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+                    <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+                    <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
+                </div>
+            </div>
+
+            <form class="search-form" onsubmit="handleSearch(event)">
+                <input type="text" class="search-box" placeholder="search...." id="searchInput" />
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+
+            <div id="google_translate_element"></div>
+
+            <a href="/로그인/로그인.html" id="login-link">
+                <button class="login-btn">로그인</button>
+            </a>
+            <div id="user-info" style="display: none;">
+                <a href="/마이페이지(사용자)/마이페이지(사용자).html">
+                    <strong id="user-name">사용자</strong>
+                    <!-- <div class="user-avatar">👤</div> -->
+                    <div class="user-avatar">👧🏻</div>
+                </a>
+                <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="title">포인트샵</div>
+
+        <div style="text-align: center; margin-bottom: 16px;">
+            내 보유 포인트: <strong id="myPoints">129300</strong>P
+        </div>
+
+        <div class="grid" id="product-grid"></div>
+
+        <div class="bottom-button">
+            <button id="showMoreBtn">상품 전체 보기 →</button>
+        </div>
+    </div>
+
+    <!-- 모달 -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">상품명</h3>
+            <p id="modalPrice">가격</p>
+            <button onclick="closeModal()">확인</button>
+        </div>
+    </div>
+
+    <!-- 3. 푸터 -->
+    <div id="footer"></div>
+
+    <script>
+        $(function () {
+            $('#footer').load("/_푸터/푸터.html");
+        })
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let myPoints = 129300;
+
+        const productList = [
+            { name: "CU 상품권", original: 5000, discount: 4750, image: "cu상품권.jfif" },
+            { name: "배민 상품권", original: 10000, discount: 9500, image: "배민상품권.png" },
+            { name: "문화상품권", original: 5000, discount: 4750, image: "문화상품권 5천원.jfif" },
+            { name: "네이버페이 포인트", original: 5000, discount: 4750, image: "네이버페이 5천원.png" },
+            { name: "교보문고 상품권", original: 10000, discount: 9500, image: "교보문고 상품권.png" },
+            { name: "올리브영 상품권", original: 10000, discount: 9500, image: "올리브영 상품권.jfif" },
+            { name: "GS25 상품권", original: 5000, discount: 4750, image: "gs25.jfif" },
+            { name: "스타벅스 카드", original: 10000, discount: 9500, image: "스타벅스 만원권.jfif" },
+            { name: "이마트24 상품권", original: 5000, discount: 4750, image: "이마트24상품권.jfif" }
+        ];
+
+        const productGrid = document.getElementById("product-grid");
+
+        productList.forEach((product, index) => {
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            const img = document.createElement("img");
+            img.src = `../Pointshopimg/${product.image}`;
+            img.alt = product.name;
+            img.className = "image-placeholder";
+
+            const name = document.createElement("div");
+            name.className = "product-name";
+            name.textContent = product.name;
+
+            const price = document.createElement("div");
+            price.className = "price";
+            price.innerHTML = `<del>${product.original.toLocaleString()}원</del> <span class="discounted">${product.discount.toLocaleString()}원</span>`;
+
+            const button = document.createElement("button");
+            button.className = "buy-button";
+            button.textContent = "구매";
+
+            if (myPoints < product.discount) {
+                button.disabled = true;
+            } else {
+                button.addEventListener("click", () => buyProduct(product.name, product.discount, button));
+            }
+
+            card.appendChild(img);
+            card.appendChild(name);
+            card.appendChild(price);
+            card.appendChild(button);
+            productGrid.appendChild(card);
+        });
+
+        function buyProduct(name, price, buttonElement) {
+            // SweetAlert 확인창
+            Swal.fire({
+                title: `${name}을(를) 구매하시겠습니까?`,
+                text: `가격: ${price.toLocaleString()}P`,
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: '구매',
+                cancelButtonText: '취소'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // 포인트 차감
+                    myPoints -= price;
+                    document.getElementById("myPoints").textContent = myPoints;
+
+                    // 버튼 비활성화
+                    buttonElement.disabled = true;
+                    buttonElement.style.backgroundColor = "#ccc";
+                    buttonElement.style.cursor = "not-allowed";
+
+                    // 성공 알림
+                    Swal.fire({
+                        icon: 'success',
+                        title: '구매 완료!',
+                        text: `${name}을(를) 성공적으로 구매했습니다.`,
+                        confirmButtonColor: '#32a37b'
+                    });
+                }
+            });
+        }
+
+        document.getElementById("showMoreBtn").addEventListener("click", () => {
+            document.querySelectorAll(".card.hidden").forEach(card => card.classList.remove("hidden"));
+            document.getElementById("showMoreBtn").style.display = "none";
+        });
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+    </script>
+
+    <script src="/번역api/translate.js"></script>
+    <script src="/로그인/공통로그인기능.js"></script>
+    <script src="/메인페이지/메인페이지.js"></script>
+</body>
+
+</html>

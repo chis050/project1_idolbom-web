@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 로그아웃 처리
-    window.handleLogout = function() {
+    window.handleLogout = function () {
         sessionStorage.clear();
         updateAuthUI();
         window.location.reload();
@@ -47,8 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
             sessionStorage.setItem("user_id", user[0].user_id);
             sessionStorage.setItem("login_id", user[0].login_id);
             sessionStorage.setItem("nickname", user[0].nickname);
+            sessionStorage.setItem("role", user[0].role);
+            sessionStorage.setItem('email',user[0].email);
             alert("로그인 성공!");
-            window.location.href = '../메인페이지/메인페이지.html';
+            window.location.href = '/메인페이지/메인페이지.html';
         } else {
             alert("아이디 또는 비밀번호가 잘못되었습니다.");
         }
@@ -61,22 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 비밀번호 보기/숨기기
-    const pwInput = document.getElementById("pw");
-    const eyeBtn = document.getElementById("eye");
-    if (pwInput && eyeBtn) {
-        eyeBtn.addEventListener("click", () => {
-            if (pwInput.type === "password") {
-                pwInput.type = "text";
-                eyeBtn.textContent = "./img/eyeClose.png";
-            } else {
-                pwInput.type = "password";
-                eyeBtn.textContent = "./img/eyeClose.png";
-            }
-        });
-    }
+    const pwInput = document.querySelector("#pw");
+    const eyeIcon = document.querySelector("#eye img");
 
-    // 페이지 로드 시 UI 상태 반영
-    updateAuthUI();
+    const pwchange = () => {
+        if (pwInput.type === "password") {
+            pwInput.type = "text";
+            eyeIcon.src = "../로그인/img/eyeClose.png"; // 비밀번호 보임 상태일 때 이미지
+            eyeIcon.alt = "비밀번호 숨기기";
+        } else {
+            pwInput.type = "password";
+            eyeIcon.src = "../로그인/img/eyeOpen.png"; // 비밀번호 숨김 상태일 때 이미지
+            eyeIcon.alt = "비밀번호 보기";
+        }
+    };
+
+    eyeIcon.addEventListener("click", pwchange);
+
 });
-
-

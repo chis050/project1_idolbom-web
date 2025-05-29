@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #f0f2f5;
+}
+
+.mypage-wrapper {
+    display: flex;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(60, 60, 100, 0.12);
+    overflow: hidden;
+}
+
+.mypage-sidebar {
+    width: 300px;
+    background: linear-gradient(135deg, #E8F9F4 0%, #CDEDE3 100%);
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-info {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.profile-info .user-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: #fff;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: #7DCD8C;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.profile-info .user-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.profile-info .user-email {
+    font-size: 14px;
+    color: #555;
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.menu-item {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    color: #333;
+}
+
+.menu-item:hover {
+    background: #d8f5e5;
+}
+
+.menu-item.active {
+    background: #7DCD8C;
+    color: white;
+    font-weight: bold;
+}
+
+.mypage-content {
+    flex: 1;
+    padding: 40px;
+    background: #f8fafc;
+}
+
+.content-tab {
+    display: none;
+}
+
+.content-tab.active {
+    display: block;
+}
+
+.section {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.section h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.card-list .card-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.card-item {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+.card-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-item h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.card-item p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+.card-meta {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #999;
+}

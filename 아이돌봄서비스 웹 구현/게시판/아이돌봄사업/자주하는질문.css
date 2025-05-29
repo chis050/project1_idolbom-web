@@ -1,4 +1,14 @@
 /* 자주하는질문.css */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.logo-area, .user-area {
+  display: flex;
+  align-items: center;
+}
 
 body {
   font-family: 'Noto Sans KR', sans-serif;
@@ -43,6 +53,7 @@ body {
 
 .faq-search-form {
   display: flex;
+  padding: 30px;
   justify-content: center;
   margin-bottom: 20px;
 }

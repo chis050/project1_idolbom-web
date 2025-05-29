@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
         // 2. 입력값 수집
         const username = document.getElementById('user_name').value;
         const rrn = document.getElementById('rrn').value;
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 pw: password,
                 email: fullEmail,
                 phone: phone,
-                nickname : login_id
+                nickname: login_id
             }
         ]);
 

@@ -1,3 +1,6 @@
+const supabaseUrl = 'https://kdmvxndklggzyynexiyu.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtkbXZ4bmRrbGdnenl5bmV4aXl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc2NDUxMjUsImV4cCI6MjA2MzIyMTEyNX0.iYwGk2isQQxzkvK51S99V21cOZowTooCyzM9jTqcK7U';
+const db = supabase.createClient(supabaseUrl, supabaseKey);
 
 document.addEventListener('DOMContentLoaded', () => {
   const ageSelect = document.getElementById('age');
@@ -97,7 +100,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  submitBtn.addEventListener('click', () => {
+  submitBtn.addEventListener('click', async () => {
+    let login_id = sessionStorage.getItem('login_id')
+    const { data, error } = await db
+      .from('user')
+      .update({ role: 2 })
+      .eq('login_id', login_id)
+    sessionStorage.setItem("role", "2");
+
     Swal.fire({
       icon: 'success',
       title: '신청 완료!',
@@ -105,10 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
       confirmButtonText: '확인'
     }).then((result) => {
       if (result.isConfirmed) {
-        window.location.href = '../마이페이지/mypage.html';
+        window.location.href = '/마이페이지(돌보미)/마이페이지(돌보미).html';
       }
-
-
     });
   });
 });

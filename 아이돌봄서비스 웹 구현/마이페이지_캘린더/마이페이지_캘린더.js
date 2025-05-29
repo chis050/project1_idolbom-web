@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 constraint: 'businessHours',
                 color: '#b39ddb'
             },
-  
+
             {
                 title: 'Business Lunch',
                 start: '2023-01-03T13:00:00',
@@ -101,4 +101,54 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     calendar.render();
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+
+    if (window.__calendarInitialized__) return;  // 이미 실행된 경우 종료
+    window.__calendarInitialized__ = true;
+
+    const listEl = document.getElementById('event-list');
+
+    dummyEvents.forEach(event => {
+        const card = document.createElement('div');
+        card.className = 'event-card';
+        card.innerHTML = `
+      <div><strong class="avatar">${event.avatar}</strong> <strong>${event.name}</strong> (${event.age}세)</div>
+      <div><strong>일정:</strong> ${event.date} ${event.time}</div>
+      <div>
+        <strong>주소:</strong>
+        <span class="clickable-address" style="color:#007BFF; cursor:pointer;" data-address="${event.address}">
+          ${event.address}
+        </span>
+      </div>
+      <div><strong>유의사항:</strong> ${event.notes}</div>
+    `;
+        listEl.appendChild(card);
+    });
+
+    listEl.addEventListener('click', (e) => {
+        if (e.target.classList.contains('clickable-address')) {
+            const address = e.target.dataset.address;
+
+            fetch('http://127.0.0.1:5000/show_map', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ address })
+            })
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('map-view').innerHTML = html;
+                    document.getElementById('mapModal').classList.remove('hidden');
+                });
+        }
+    });
+});
+
+function closeModal() {
+    document.getElementById('mapModal').classList.add('hidden');
+}
+
+document.getElementById('mapModal').addEventListener('click', function (e) {
+    if (e.target.id === 'mapModal') closeModal();
 });

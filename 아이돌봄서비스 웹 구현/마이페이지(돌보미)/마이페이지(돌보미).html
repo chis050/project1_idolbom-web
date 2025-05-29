@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <title>아이돌봄 서비스</title>
+  <link href="/메인페이지/메인화면_header_bottom.css" rel="stylesheet" />
+  <link href="/메인페이지/아이돌봄서비스_메인페이지.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="/게시판/아이돌봄사업/아이돌봄사업소개.css">
+  <link rel="stylesheet" href="마이페이지(돌보미).css">
+  <script src="/_헤더/jquery-3.7.1.min.js"></script>
+</head>
+
+<body id="main">
+  <!-- 1. 헤더 -->
+  <header>
+    <div class="logo-area">
+      <img alt="아이돌봄 로고" src="/img/아이돌봄서비스-메인로고.png">
+      <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
+    </div>
+
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업</a>
+          <ul class="submenu">
+            <li><a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
+            <li><a href="/미완성페이지.html">아이돌봄 사업현황</a></li>
+            <li><a href="/게시판/아이돌봄사업/서비스유형소개.html">서비스 유형 소개</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/서비스신청안내.html">서비스 이용</a>
+          <ul class="submenu">
+            <li><a href="/게시판/아이돌봄사업/서비스신청안내.html">정부지원 신청안내</a></li>
+            <li><a href="/미완성페이지.html">신청 전 사전 준비안내</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/자주하는질문.html">정보마당</a>
+          <ul class="submenu">
+            <li><a href="/미완성페이지.html">공지사항</a></li>
+            <li><a href="/게시판/아이돌봄사업/자주하는질문.html">자주하는 질문</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/자유게시판/자유게시판.html">자유게시판</a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <div class="user-area">
+      <div class="translate-wrapper">
+        <button id="translateBtn">
+          <img src="/img/번역버튼.png" style="width: 24px; height: 24px;">
+        </button>
+        <div id="languageDropdown" class="language-box hidden">
+          <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+          <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+          <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
+        </div>
+      </div>
+
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="search...." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
+
+      <div id="google_translate_element"></div>
+
+      <a href="/로그인/로그인.html" id="login-link">
+        <button class="login-btn">로그인</button>
+      </a>
+      <div id="user-info" style="display: none;">
+        <a id="user_link" href="/마이페이지(사용자)/마이페이지(사용자).html">
+          <strong id="user-name">사용자</strong>
+          <!-- <div class="user-avatar">👤</div> -->
+          <div class="user-avatar">👧🏻</div>
+        </a>
+        <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. 메인 -->
+  <main>
+    <div class="mypage-wrapper">
+      <!-- 사이드바 -->
+      <aside class="mypage-sidebar">
+        <div class="profile-info">
+          <div class="user-avatar">👤</div>
+          <div class="user-name" id="id">Sophia</div>
+          <div class="user_email" id="email">hello1234@email.com</div>
+        </div>
+        <div class="menu-list">
+          <button class="menu-item active" data-target="tab-info">내 정보</button>
+          <button class="menu-item" data-target="tab-reviews">평가 목록</button>
+          <button class="menu-item" data-target="tab-points">포인트샵</button>
+          <button class="menu-item" data-target="tab-activity">활동 내역</button>
+          <button class="menu-item" data-redirect="../마이페이지_캘린더/마이페이지_캘린더.html">돌보미 캘린더</button>
+          <button class="menu-item" data-target="tab-settings">설정</button>
+        </div>
+      </aside>
+
+      <!-- 콘텐츠 -->
+      <div style="flex: 1;">
+        <!-- 내 정보 -->
+        <div id="tab-info" class="content-tab active">
+          <section class="mypage-content">
+            <div class="section">
+              <!-- 닉네임 -->
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; background: #f5f7f9; padding: 20px 24px; border-radius: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                <div>
+                  <div style="font-size: 14px; color: #888; margin-bottom: 4px;">닉네임</div>
+                  <div style="font-size: 17px; font-weight: 600; color: #222;" id="nickname">길동쨩</div>
+                </div>
+                <button
+                  style="background-color: #e3e8ec; color: #333; border: none; padding: 8px 16px; border-radius: 8px; font-size: 14px; cursor: pointer;">수정</button>
+              </div>
+
+              <!-- 이메일 -->
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; background: #f5f7f9; padding: 20px 24px; border-radius: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-top: 16px;">
+                <div>
+                  <div style="font-size: 14px; color: #888; margin-bottom: 4px;">이메일</div>
+                  <div style="font-size: 17px; font-weight: 600; color: #222;" class="user_email" id="email2">hello1234@email.com</div>
+                </div>
+                <button
+                  style="background-color: #e3e8ec; color: #333; border: none; padding: 8px 16px; border-radius: 8px; font-size: 14px; cursor: pointer;">수정</button>
+              </div>
+
+              <!-- 비밀번호 -->
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; background: #f5f7f9; padding: 20px 24px; border-radius: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); margin-top: 16px;">
+                <div>
+                  <div style="font-size: 14px; color: #888; margin-bottom: 4px;">비밀번호</div>
+                  <div style="font-size: 17px; font-weight: 600; color: #bbb;">••••••••</div>
+                </div>
+                <button
+                  style="background-color: #e3e8ec; color: #333; border: none; padding: 8px 16px; border-radius: 8px; font-size: 14px; cursor: pointer;">변경</button>
+              </div>
+
+              <!-- 회원탈퇴 -->
+              <div style="text-align: right; margin-top: 12px;">
+                <button style="color: #e53935; background: none; border: none; font-size: 14px; cursor: pointer;"
+                  onclick="window.location.href='/회원탈퇴/회원탈퇴.html'">회원탈퇴</button>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- 평가 목록 -->
+        <div id="tab-reviews" class="content-tab">
+          <section class="mypage-content">
+            <div class="section">
+              <h2>평가 목록</h2>
+              <div style="margin-bottom: 16px; font-size: 36px; font-weight: bold; color: #333;">
+                4.8 ⭐⭐⭐⭐⭐ <span style="font-size: 18px; color: #888;">총 4건</span>
+              </div>
+              <div style="font-size: 14px;">
+                <div style="margin-bottom: 12px;"><strong>misuk</strong> (6일 전) ⭐⭐⭐⭐⭐<br>매우 만족스러웠습니다. 외국인 분이 와주셔서 아이가
+                  영어도 배우고, 1석 2조네요.</div>
+                <div style="margin-bottom: 12px;"><strong>malsuk</strong> (8일 전) ⭐⭐⭐⭐<br>외국인 돌보미 처음엔 선입견이 있었는데 아이가 너무
+                  좋아해요.</div>
+                <div style="margin-bottom: 12px;"><strong>eunsuk</strong> (5일 전) ⭐⭐⭐⭐<br>처음엔 불안했는데 선생님 너무 잘해주세요! 정리도
+                  해주시고 아이랑도 잘 놀아줘요.</div>
+                <div><strong>jiwon</strong> (7일 전) ⭐⭐⭐⭐⭐<br>정말 아이 돌봄 전문가처럼 잘 대해주셨어요.</div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- 포인트샵 -->
+        <div id="tab-points" class="content-tab">
+          <section class="mypage-content">
+            <div class="section">
+              <h2>포인트 카드</h2>
+              <div
+                style="background: #d4f2dc; border-radius: 12px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); margin-bottom: 24px; max-width: 360px;">
+                <div style="font-weight: bold; font-size: 18px;">💳 내멤버십 카드번호</div>
+                <div style="font-size: 20px; letter-spacing: 2px;">1234 - 5678 - 9123 - 4567</div>
+                <div style="display: flex; justify-content: space-between; font-size: 16px; margin-top: 12px;">
+                  <div>가용 포인트</div>
+                  <div><strong>129,000P</strong></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 14px;">
+                  <div>가용 예정</div>
+                  <div style="color: #4caf50;">+300P</div>
+                </div>
+                <hr>
+                <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: bold;">
+                  <div>보유 포인트</div>
+                  <div>129,300P</div>
+                </div>
+              </div>
+
+              <a href="/포인트샵/포인트샵.html"><h2>포인트 사용</h2></a>
+              <div style="display: flex; gap: 16px; margin-bottom: 32px;">
+
+              </div>
+
+              <h2>포인트 최근 내역</h2>
+              <div style="font-size: 14px;">
+                <div
+                  style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee;">
+                  <div>25년 5월 13일 리뷰 포인트 적립</div>
+                  <div style="color: #4caf50;">+300P</div>
+                </div>
+                <div
+                  style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee;">
+                  <div>25년 5월 11일 우수 돌보미 적립</div>
+                  <div style="color: #4caf50;">+500P</div>
+                </div>
+                <div
+                  style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee;">
+                  <div>25년 5월 9일 등급별 혜택 5% 적립</div>
+                  <div style="color: #4caf50;">+100P</div>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+                  <div>25년 5월 7일 포인트샵 사용</div>
+                  <div style="color: #f44336;">-5,400P</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- 활동 내역 -->
+        <div id="tab-activity" class="content-tab">
+          <section class="mypage-content">
+            <div class="section">
+              <h2>최근 활동 내역</h2>
+              <ul style="list-style: none; padding: 0; margin: 0;">
+                <li style="padding: 12px 0; border-bottom: 1px solid #eee;">
+                  <strong>[돌봄 신청]</strong> 5월 25일 – "김토끼 아이 돌봄 서비스" ✅
+                </li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #eee;">
+                  <strong>[돌봄 신청]</strong> 5월 22일 – "박사자 아이 돌봄 서비스" ✅
+                </li>
+                <li style="padding: 12px 0;">
+                  <strong>[돌봄 신청]</strong> 5월 20일 – "임팔라 아이 돌봄 서비스" ✅
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        <!-- 설정 -->
+        <div id="tab-settings" class="content-tab">
+          <section class="mypage-content">
+            <div class="section">
+              <h2>설정</h2>
+              <div style="display: flex; flex-direction: column; gap: 16px;">
+                <label style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>이메일 알림 수신</span>
+                  <input type="checkbox" checked style="transform: scale(1.4);" />
+                </label>
+                <label style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>SMS 알림 수신</span>
+                  <input type="checkbox" style="transform: scale(1.4);" />
+                </label>
+                <label style="display: flex; justify-content: space-between; align-items: center;">
+                  <span>개인정보 보호 강화 모드</span>
+                  <input type="checkbox" style="transform: scale(1.4);" />
+                </label>
+              </div>
+            </div>
+          </section>
+        </div>
+  </main>
+
+  <!-- 3. 푸터 -->
+  <div id="footer"></div>
+
+  <script>
+    $(function () {
+      $('#footer').load("/_푸터/푸터.html");
+    })
+  </script>
+
+  <script src="/메인페이지/메인페이지.js"></script>
+  <script src="마이페이지(돌보미).js"></script>
+  <script src="/번역api/translate.js"></script>
+  <script src="/로그인/공통로그인기능.js"></script>
+  <script src="/게시판/아이돌봄사업/아이돌봄사업소개.js"></script>
+</body>
+
+</html>

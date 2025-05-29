@@ -47,14 +47,16 @@ a {
 .card h3 {
     margin-top: 0;
     font-size: 20px;
+    color: black;
 }
 
 .card p {
     margin: 6px 0;
+    color: black;
 }
 
 .rating {
-    color: #f39c12;
+    color: #f39c12 !important;
     font-weight: bold;
 }
 

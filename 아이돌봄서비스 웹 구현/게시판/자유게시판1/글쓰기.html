@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title>아이돌봄 글쓰기</title>
+    <link href="/메인페이지/아이돌봄서비스_메인페이지.css" rel="stylesheet">
+    <link href="/메인페이지/메인화면_header_bottom.css" rel="stylesheet">
+    <link rel="stylesheet" href="../아이돌봄사업/아이돌봄사업소개.css">
+    <link rel="stylesheet" href="글쓰기.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="/게시판/아이돌봄사업/아이돌봄사업소개.css">
+    <script src="/_헤더/jquery-3.7.1.min.js"></script>
+</head>
+
+<body id="main">
+    <!-- 1. 헤더 -->
+    <header>
+        <div class="logo-area">
+            <img alt="아이돌봄 로고" src="/img/아이돌봄서비스-메인로고.png">
+            <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이 돌봄 사업</a>
+                    <ul class="submenu">
+                        <li><a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이 돌봄 사업소개</a></li>
+                        <li><a href="/미완성페이지.html">아이 돌봄 사업현황</a></li>
+                        <li><a href="/게시판/아이돌봄사업/서비스유형소개.html">서비스 유형 소개</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/서비스신청안내.html">서비스 이용</a>
+                    <ul class="submenu">
+                        <li><a href="/게시판/아이돌봄사업/서비스신청안내.html">정부지원 신청안내</a></li>
+                        <li><a href="/미완성페이지.html">신청 전 사전 준비안내</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/자주하는질문.html">정보마당</a>
+                    <ul class="submenu">
+                        <li><a href="/미완성페이지.html">공지사항</a></li>
+                        <li><a href="/게시판/아이돌봄사업/자주하는질문.html">자주하는 질문</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/자유게시판/자유게시판.html">자유게시판</a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="user-area">
+            <div class="translate-wrapper">
+                <button id="translateBtn">
+                    <img src="/img/번역버튼.png" style="width: 24px; height: 24px;">
+                </button>
+                <div id="languageDropdown" class="language-box hidden">
+                    <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+                    <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+                    <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
+                </div>
+            </div>
+
+            <form class="search-form" onsubmit="handleSearch(event)">
+                <input type="text" class="search-box" placeholder="search...." id="searchInput" />
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+
+            <div id="google_translate_element"></div>
+
+            <a href="/로그인/로그인.html" id="login-link">
+                <button class="login-btn">로그인</button>
+            </a>
+            <div id="user-info" style="display: none;">
+                <a id="user_link" href="/마이페이지(사용자)/마이페이지(사용자).html">
+                    <strong id="user-name">사용자</strong>
+                    <!-- <div class="user-avatar">👤</div> -->
+                    <div class="user-avatar">👧🏻</div>
+                </a>
+                <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- 2. 메인 -->
+    <div class="write-container">
+        <!-- 게시판 선택 -->
+        <div class="dropdown">
+            <div class="dropdown-btn">게시판을 선택해주세요</div>
+            <div class="dropdown-list">
+                <div>공지사항</div>
+                <div>정보마당</div>
+                <div>자유게시판</div>
+            </div>
+        </div>
+
+        <!-- 제목 입력 -->
+        <input type="text" class="title-input" placeholder="제목을 입력해주세요.">
+
+        <!-- 에디터 툴바 -->
+        <div id="toolbar">
+            <span class="ql-formats">
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-underline"></button>
+                <button class="ql-strike"></button>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-list" value="ordered"></button>
+                <button class="ql-list" value="bullet"></button>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-link"></button>
+            </span>
+            <span class="ql-formats">
+                <select class="ql-color"></select>
+                <select class="ql-size"></select>
+            </span>
+        </div>
+
+        <!-- 에디터 본문 -->
+        <!-- <div id="editor" style="height: 300px; background: white;"></div> -->
+        <div id="editor"></div>
+
+        <!-- 파일 첨부 -->
+        <div style="margin-top: 20px;">
+            <label style="font-size:14px; font-weight:bold;">📎 파일 첨부</label><br>
+            <input type="file" id="fileInput" multiple accept="image/*" />
+        </div>
+
+        <div class="footer-info">※ 욕설 및 부적절한 내용은 삭제될 수 있어요.</div>
+
+        <!-- 버튼 -->
+        <div class="btn-group">
+            <button class="btn back" onclick="goBack()">이전</button>
+            <button class="btn submit" onclick="submitPost()">완료</button>
+        </div>
+
+        <!-- 관리자 비밀번호 입력 모달 -->
+        <div id="admin-modal"
+            style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(0,0,0,0.4); z-index:100;">
+            <div
+                style="background:white; width: 300px; margin:15% auto; padding:20px; border-radius:12px; text-align:center;">
+                <h4 style="font-size:16px; color:#333;">📢 공지사항은 관리자 권한이 필요합니다</h4>
+                <p style="font-size:14px; margin:12px 0 8px;">관리자 비밀번호</p>
+                <div style="position:relative;">
+                    <input type="password" id="admin-password"
+                        style="width:80%; padding:8px 34px 8px 10px; font-size:14px; border:1px solid #ccc; border-radius:6px;" />
+                    <button id="toggle-password"
+                        style="position:absolute; right:8px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer;">👁</button>
+                </div>
+                <div style="margin-top:16px;">
+                    <button onclick="confirmAdminPassword()"
+                        style="background-color:#7DCD8C; color:white; border:none; padding:6px 18px; border-radius:6px; font-size:14px;">확인</button>
+                    <button onclick="closeAdminModal()"
+                        style="margin-left:10px; background:#ccc; border:none; padding:6px 18px; border-radius:6px; font-size:14px;">취소</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/메인페이지/메인페이지.js"></script>
+    <script src="/번역api/translate.js"></script>
+    <script src="/로그인/공통로그인기능.js"></script>
+    <script src="/아이돌봄사업/아이돌봄사업소개.js"></script>
+    <script src="글쓰기.js"></script>
+    <script src="/게시판/아이돌봄사업/아이돌봄사업소개.js"></script>
+
+</body>
+
+</html>

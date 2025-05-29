@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>주소 기반 지도 보기</title>
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; margin: 2em; }
+        form { margin-bottom: 2em; }
+        input[type="text"] { padding: 0.5em; width: 300px; border-radius: 6px; border: 1px solid #7DCD8C; }
+        button { background: #7DCD8C; color: #fff; border: none; padding: 0.5em 1.2em; border-radius: 6px; cursor: pointer; }
+        button:hover { background: #4ca96b; }
+        .map-area { margin-top: 2em; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(125,205,140,0.08);}
+    </style>
+</head>
+<body>
+    <h2>주소로 위치 찾기</h2>
+    <form method="POST">
+        <input type="text" name="address" placeholder="예: 서울특별시 종로구 세종대로 110" required value="{{ address }}">
+        <button type="submit">지도 보기</button>
+    </form>
+
+    <div class="map-area">
+        {% if map_html %}
+            {{ map_html|safe }}
+        {% endif %}
+    </div>
+</body>
+</html>

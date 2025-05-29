@@ -9,52 +9,53 @@
   <link rel="stylesheet" href="아이돌봄사업소개.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+  <link rel="stylesheet" href="/게시판/아이돌봄사업/아이돌봄사업소개.css">
+  <script src="/_헤더/jquery-3.7.1.min.js"></script>
 </head>
 
 <body id="main">
   <!-- 1. 헤더 -->
   <header>
     <div class="logo-area">
-      <img alt="아이돌봄 로고" src="./img/아이돌봄서비스-메인로고.png">
+      <img alt="아이돌봄 로고" src="/img/아이돌봄서비스-메인로고.png">
       <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
     </div>
 
     <nav>
-  <ul class="menu">
-    <li class="menu-item">
-      <a href="#">아이돌봄 사업</a>
-      <ul class="submenu">
-        <li><a href="아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
-        <li><a href="#">아이돌봄 사업현황</a></li>
-        <li><a href="서비스유형소개.html">서비스 유형 소개</a></li>
-      </ul>
-    </li>
-    <li class="menu-item">
-      <a href="#">서비스 이용</a>
-      <ul class="submenu">
-        <li><a href="서비스신청안내.html">정부지원 신청안내</a></li>
-        <li><a href="#">신청 전 사전 준비안내</a></li>
-      </ul>
-    </li>
-    <li class="menu-item">
-      <a href="#">정보마당</a>
-      <ul class="submenu">
-        <li><a href="#">공지사항</a></li>
-        <li><a href="자주하는질문.html">자주하는 질문</a></li>
-      </ul>
-    </li>
-    <li class="menu-item">
-      <a href="/게시판/글쓰기.html">자유게시판</a>
-    </li>
+      <ul class="menu">
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업</a>
+          <ul class="submenu">
+            <li><a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
+            <li><a href="/미완성페이지.html">아이돌봄 사업현황</a></li>
+            <li><a href="/게시판/아이돌봄사업/서비스유형소개.html">서비스 유형 소개</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/서비스신청안내.html">서비스 이용</a>
+          <ul class="submenu">
+            <li><a href="/게시판/아이돌봄사업/서비스신청안내.html">정부지원 신청안내</a></li>
+            <li><a href="/미완성페이지.html">신청 전 사전 준비안내</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/자주하는질문.html">정보마당</a>
+          <ul class="submenu">
+            <li><a href="/미완성페이지.html">공지사항</a></li>
+            <li><a href="/게시판/아이돌봄사업/자주하는질문.html">자주하는 질문</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/자유게시판/자유게시판.html">자유게시판</a>
+        </li>
 
-  </ul>
-</nav>
+      </ul>
+    </nav>
 
     <div class="user-area">
       <div class="translate-wrapper">
         <button id="translateBtn">
-          <img src="img/번역버튼.png" style="width: 24px; height: 24px;">
+          <img src="/img/번역버튼.png" style="width: 24px; height: 24px;">
         </button>
         <div id="languageDropdown" class="language-box hidden">
           <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
@@ -76,7 +77,7 @@
         <button class="login-btn">로그인</button>
       </a>
       <div id="user-info" style="display: none;">
-        <a href="/마이페이지/mypage.html">
+        <a id="user_link" href="/마이페이지(사용자)/마이페이지(사용자).html">
           <strong id="user-name">사용자</strong>
           <!-- <div class="user-avatar">👤</div> -->
           <div class="user-avatar">👧🏻</div>
@@ -86,15 +87,19 @@
     </div>
   </header>
 
+  <!-- 2. 메인 -->
   <div id="content">
     <main>
       <section class="service-intro">
         <h1>아이돌봄 사업</h1>
         <nav class="breadcrumb">
-          <span><strong>아이돌봄서비스</strong></span> &gt; <span><strong>아이돌봄사업</strong></span> &gt; <span><strong>아이돌봄 사업소개</strong></span>
+          <span><strong>홈</strong></span> &gt; <span><strong>아이돌봄사업</strong></span> &gt; <span><strong>아이돌봄
+              사업소개</strong></span>
         </nav>
         <div class="intro-box">
-          <p>부모의 맞벌이 등으로 양육 공백이 발생한 가정의 만 12세 이하 아동을 대상으로 아이돌보미가 찾아가는 돌봄 서비스를 제공합니다.</p>
+          <h2>아이돌봄 서비스란?</h2>
+          <p>부모의 맞벌이 등으로 양육 공백이 발생한 가정의 만 12세 이하 아동을 대상으로 아이돌보미가 찾아가는 돌봄 서비스를 제공하여 부모의 양육부담을 경감하고 저출산 해소에 기여하고자 만들었습니다.
+          </p>
         </div>
       </section>
 
@@ -106,14 +111,17 @@
           <div class="card">
             <h3>아동의 안전한 보호</h3>
             <p>영아 및 방과 후 아동 돌봄</p>
+            <p>개별 가정 특성 및 아동 발달을 고려하여 아동의 집에서 아이돌봄서비스 제공공</p>
           </div>
           <div class="card">
             <h3>부모의 일·가정 양립</h3>
             <p>취업 부모 지원</p>
+            <p>야간.주말 등 틈새 시간 '일시돌봄' 및 '영아 종일 돌봄' 등 수요자가 원하는 서비스 확충</p>
           </div>
           <div class="card">
             <h3>돌봄 자원 창출</h3>
             <p>아이돌보미 양성 및 교육</p>
+            <p>육아.돌봄 의사가 있는 자들에게 교육지원과 능력개발을 제공하여 사회서비스 수요와 연계 활성화</p>
           </div>
         </div>
       </section>
@@ -145,24 +153,18 @@
   </div>
 
   <!-- 3. 푸터 -->
-  <footer class="main-footer">
-    <div class="footer-content">
-      <div class="footer-links">
-        <a href="#">개인정보처리방침</a> |
-        <a href="#">이용약관</a> |
-        <a href="#">안내센터 1588-1234</a>
-      </div>
-      <div class="footer-info">
-        <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
-        <img src="img/여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
-      </div>
-    </div>
-  </footer>
+  <div id="footer"></div>
+
+  <script>
+    $(function () {
+      $('#footer').load("/_푸터/푸터.html");
+    })
+  </script>
 
   <script src="/메인페이지/메인페이지.js"></script>
   <script src="/번역api/translate.js"></script>
-  <script src="../로그인/로그인.js"></script>
-  <script src="./아이돌봄사업.js"></script>
+  <script src="/로그인/공통로그인기능.js"></script>
+  <script src="/게시판/아이돌봄사업/아이돌봄사업소개.js"></script>
 </body>
 
 </html>

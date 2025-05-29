@@ -7,11 +7,10 @@
 
 body {
     font-family: 'SUIT', sans-serif;
-    background-color: var(--bg-color);
+    background-color: f0f0f0;
     color: var(--text-color);
     line-height: 1.6;
     margin: 0;
-    padding: 20px;
 }
 
 h1,

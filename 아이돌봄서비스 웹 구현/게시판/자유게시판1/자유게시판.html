@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title>아이돌봄 서비스</title>
+    <link href="/메인페이지/메인화면_header_bottom.css" rel="stylesheet">
+    <link rel="stylesheet" href="/게시판/아이돌봄사업/아이돌봄사업소개.css">
+    <link rel="stylesheet" href="자유게시판.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="../아이돌봄사업/자주하는질문.css">
+    <script src="/_헤더/jquery-3.7.1.min.js"></script>
+</head>
+
+<body id="main">
+    <!-- 1. 헤더 -->
+    <header>
+        <div class="logo-area">
+            <img alt="아이돌봄 로고" src="/img/아이돌봄서비스-메인로고.png">
+            <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
+        </div>
+
+        <nav>
+            <ul class="menu">
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업</a>
+                    <ul class="submenu">
+                        <li><a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
+                        <li><a href="/미완성페이지.html">아이돌봄 사업현황</a></li>
+                        <li><a href="/게시판/아이돌봄사업/서비스유형소개.html">서비스 유형 소개</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/서비스신청안내.html">서비스 이용</a>
+                    <ul class="submenu">
+                        <li><a href="/게시판/아이돌봄사업/서비스신청안내.html">정부지원 신청안내</a></li>
+                        <li><a href="/미완성페이지.html">신청 전 사전 준비안내</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/아이돌봄사업/자주하는질문.html">정보마당</a>
+                    <ul class="submenu">
+                        <li><a href="/미완성페이지.html">공지사항</a></li>
+                        <li><a href="/게시판/아이돌봄사업/자주하는질문.html">자주하는 질문</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item">
+                    <a href="/게시판/자유게시판/자유게시판.html">자유게시판</a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <div class="user-area">
+            <div class="translate-wrapper">
+                <button id="translateBtn">
+                    <img src="/img/번역버튼.png" style="width: 24px; height: 24px;">
+                </button>
+                <div id="languageDropdown" class="language-box hidden">
+                    <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+                    <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+                    <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
+                </div>
+            </div>
+
+            <form class="search-form" onsubmit="handleSearch(event)">
+                <input type="text" class="search-box" placeholder="search...." id="searchInput" />
+                <button type="submit" class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+
+            <div id="google_translate_element"></div>
+
+            <a href="/로그인/로그인.html" id="login-link">
+                <button class="login-btn">로그인</button>
+            </a>
+            <div id="user-info" style="display: none;">
+                <a id="user_link" href="/마이페이지(사용자)/마이페이지(사용자).html">
+                    <strong id="user-name">사용자</strong>
+                    <!-- <div class="user-avatar">👤</div> -->
+                    <div class="user-avatar">👧🏻</div>
+                </a>
+                <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. 메인 -->
+    <div id="content">
+        <main>
+            <div class="container">
+                <div class="board-header">
+                    <h2>자유게시판</h2>
+                    <button class="write-btn" onclick="location.href='글쓰기.html'">글쓰기</button>
+                </div>
+
+
+
+
+                <table class="faq-table">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>날짜</th>
+                            <th>조회수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr onclick="location.href='view.html'">
+                            <td>10</td>
+                            <td>아이 돌봄 후기 공유해요!</td>
+                            <td>돌보미맘</td>
+                            <td>2025-05-27</td>
+                            <td>122</td>
+                        </tr>
+                        <tr onclick="location.href='view.html'">
+                            <td>9</td>
+                            <td>오늘 가입했어요~</td>
+                            <td>행복한아빠</td>
+                            <td>2025-05-26</td>
+                            <td>98</td>
+                        </tr>
+                        <!-- 반복문 돌리기기 -->
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <button>&laquo;</button>
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>&raquo;</button>
+                </div>
+                <form class="faq-search-form" onsubmit="handleFaqSearch(event)">
+                    <input type="text" class="faq-search-box" placeholder="검색어를 입력하세요..." id="faqSearchInput" />
+                    <button type="submit" class="faq-search-btn">검색</button>
+                </form>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- 3. 푸터 -->
+    <div id="footer"></div>
+
+    <script>
+        $(function () {
+            $('#footer').load("/_푸터/푸터.html");
+        })
+    </script>
+
+    <script src="/메인페이지/메인페이지.js"></script>
+    <script src="/번역api/translate.js"></script>
+    <script src="/로그인/공통로그인기능.js"></script>
+    <script src="/게시판/아이돌봄사업/아이돌봄사업소개.js"></script>
+
+</body>
+
+</html>

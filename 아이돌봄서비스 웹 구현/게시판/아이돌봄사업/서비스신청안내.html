@@ -2,165 +2,164 @@
 <html lang="ko">
 
 <head>
-    <meta charset="utf-8" />
-    <title>아이돌봄 서비스</title>
-    <link href="/메인페이지/아이돌봄서비스_메인페이지.css" rel="stylesheet">
-    <link href="/메인페이지/메인화면_header_bottom.css" rel="stylesheet">
-    <link rel="stylesheet" href="아이돌봄사업소개.css">
-    <link rel="stylesheet" href="서비스신청안내.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta charset="utf-8" />
+  <title>아이돌봄 서비스</title>
+  <link href="/메인페이지/아이돌봄서비스_메인페이지.css" rel="stylesheet">
+  <link href="/메인페이지/메인화면_header_bottom.css" rel="stylesheet">
+  <link rel="stylesheet" href="아이돌봄사업소개.css">
+  <link rel="stylesheet" href="서비스신청안내.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&amp;display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="/게시판/아이돌봄사업/아이돌봄사업소개.css">
+  <script src="/_헤더/jquery-3.7.1.min.js"></script>
+
 </head>
 
 <body id="main">
-
-    <!-- 1. 헤더 -->
-    <header>
-        <div class="logo-area">
-            <img alt="아이돌봄 로고" src="./img/아이돌봄서비스-메인로고.png">
-            <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
-        </div>
-
-        <nav>
-            <ul class="menu">
-                <li class="menu-item">
-                    <a href="#">아이돌봄 사업</a>
-                    <ul class="submenu">
-                        <li><a href="아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
-                        <li><a href="#">아이돌봄 사업현황</a></li>
-                        <li><a href="서비스유형소개.html">서비스 유형 소개</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a href="#">서비스 이용</a>
-                    <ul class="submenu">
-                        <li><a href="서비스신청안내.html">정부지원 신청안내</a></li>
-                        <li><a href="#">신청 전 사전 준비안내</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a href="#">정보마당</a>
-                    <ul class="submenu">
-                        <li><a href="#">공지사항</a></li>
-                        <li><a href="자주하는질문.html">자주하는 질문</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item">
-                    <a href="/게시판/글쓰기.html">자유게시판</a>
-                </li>
-            </ul>
-        </nav>
-
-        <div class="user-area">
-            <div class="translate-wrapper">
-                <button id="translateBtn">
-                    <img src="img/번역버튼.png" style="width: 24px; height: 24px;">
-                </button>
-                <div id="languageDropdown" class="language-box hidden">
-                    <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
-                    <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
-                    <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
-                </div>
-            </div>
-
-            <form class="search-form" onsubmit="handleSearch(event)">
-                <input type="text" class="search-box" placeholder="search...." id="searchInput" />
-                <button type="submit" class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-
-            <div id="google_translate_element"></div>
-
-            <a href="/로그인/로그인.html" id="login-link">
-                <button class="login-btn">로그인</button>
-            </a>
-
-            <div id="user-info" style="display: none;">
-                <a href="/마이페이지/mypage.html">
-                    <strong id="user-name">사용자</strong>
-                    <div class="user-avatar">👧🏻</div>
-                </a>
-                <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
-            </div>
-        </div>
-    </header>
-
-    <!-- 2. 메인 -->
-    <div id="content">
-        <main>
-            <h1>아이돌봄서비스 정기서비스 안내</h1>
-
-            <div class="section">
-                <h2>정기서비스란?</h2>
-                <p>정기서비스는 정해진 일정에 맞춰 정기적으로 아이돌보미 서비스를 제공하는 프로그램입니다. 일상적 돌봄이 필요한 가정을 위해 지속적인 지원을 제공합니다.</p>
-            </div>
-
-            <div class="section">
-                <h2>정기서비스 안내사항</h2>
-                <div class="cards">
-                    <div class="card">
-                        <h3>이용대상</h3>
-                        <p>맞벌이, 한부모, 다자녀 가정 등 정기적인 돌봄이 필요한 가정</p>
-                    </div>
-                    <div class="card">
-                        <h3>서비스 시간</h3>
-                        <p>평일 08:00~20:00 (야간, 휴일 서비스는 별도 문의)</p>
-                    </div>
-                    <div class="card">
-                        <h3>결제 방식</h3>
-                        <p>이용요금 선결제 및 정산</p>
-                    </div>
-                    <div class="card">
-                        <h3>변경/취소</h3>
-                        <p>서비스 변경 및 취소는 최소 하루 전까지 가능</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section">
-                <h2>서비스 절차</h2>
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div>서비스 신청: 홈페이지 또는 전화로 신청 접수</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div>아이돌보미 연계: 맞춤형 아이돌보미 배정</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div>이용요금 결제: 선결제 및 결제 확인</div>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div>서비스 이용: 일정에 맞춘 정기 돌봄 서비스 제공</div>
-                </div>
-            </div>
-
-        </main>
+  <header>
+    <div class="logo-area">
+      <img alt="아이돌봄 로고" src="/img/아이돌봄서비스-메인로고.png">
+      <a href="/메인페이지/메인페이지.html"><span>아이 돌봄 서비스</span></a>
     </div>
 
-    <!-- 3. 푸터 -->
-    <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#">개인정보처리방침</a> |
-                <a href="#">이용약관</a> |
-                <a href="#">안내센터 1588-1234</a>
-            </div>
-            <div class="footer-info">
-                <p>점심시간: 12:00 ~ 13:00 | 서울시 종로구 세종대로 209 정부서울청사 17층(03171)</p>
-                <img src="img/여성가족부로고.png" alt="여성가족부 로고" class="footer-logo" />
-            </div>
+    <nav>
+      <ul class="menu">
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업</a>
+          <ul class="submenu">
+            <li><a href="/게시판/아이돌봄사업/아이돌봄사업소개.html">아이돌봄 사업소개</a></li>
+            <li><a href="/미완성페이지.html">아이돌봄 사업현황</a></li>
+            <li><a href="/게시판/아이돌봄사업/서비스유형소개.html">서비스 유형 소개</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/서비스신청안내.html">서비스 이용</a>
+          <ul class="submenu">
+            <li><a href="/게시판/아이돌봄사업/서비스신청안내.html">정부지원 신청안내</a></li>
+            <li><a href="/미완성페이지.html">신청 전 사전 준비안내</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/아이돌봄사업/자주하는질문.html">정보마당</a>
+          <ul class="submenu">
+            <li><a href="/미완성페이지.html">공지사항</a></li>
+            <li><a href="/게시판/아이돌봄사업/자주하는질문.html">자주하는 질문</a></li>
+          </ul>
+        </li>
+        <li class="menu-item">
+          <a href="/게시판/자유게시판/자유게시판.html">자유게시판</a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <div class="user-area">
+      <div class="translate-wrapper">
+        <button id="translateBtn">
+          <img src="/img/번역버튼.png" style="width: 24px; height: 24px;">
+        </button>
+        <div id="languageDropdown" class="language-box hidden">
+          <div class="lang-option" id='lang-kr' onclick="setLanguage('kr')">K R</div>
+          <div class="lang-option" id='lang-en' onclick="setLanguage('en')">E N</div>
+          <div class="lang-option" id='lang-cn' onclick="setLanguage('cn')">C N</div>
         </div>
-    </footer>
+      </div>
 
-    <script src="/메인페이지/메인페이지.js"></script>
-    <script src="/번역api/translate.js"></script>
-    <script src="../로그인/로그인.js"></script>
-    <script src="./아이돌봄사업.js"></script>
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input type="text" class="search-box" placeholder="search...." id="searchInput" />
+        <button type="submit" class="search-btn">
+          <i class="fas fa-search"></i>
+        </button>
+      </form>
 
+      <div id="google_translate_element"></div>
+
+      <a href="/로그인/로그인.html" id="login-link">
+        <button class="login-btn">로그인</button>
+      </a>
+      <div id="user-info" style="display: none;">
+        <a id="user_link" href="/마이페이지(사용자)/마이페이지(사용자).html">
+          <strong id="user-name">사용자</strong>
+          <!-- <div class="user-avatar">👤</div> -->
+          <div class="user-avatar">👧🏻</div>
+        </a>
+        <button class="logout-btn" onclick="handleLogout()">로그아웃</button>
+      </div>
+    </div>
+  </header>
+
+
+
+
+  <!-- 2. 메인 -->
+  <div id="content">
+    <main>
+      <h1>아이 돌봄 서비스 정기서비스 안내</h1>
+
+      <div class="section">
+        <h2>정기서비스란?</h2>
+        <p>정기서비스는 정해진 일정에 맞춰 정기적으로 아이돌보미 서비스를 제공하는 프로그램입니다. 일상적 돌봄이 필요한 가정을 위해 지속적인 지원을 제공합니다.</p>
+      </div>
+
+      <div class="section">
+        <h2>정기서비스 안내사항</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>이용대상</h3>
+            <p>맞벌이, 한부모, 다자녀 가정 등 정기적인 돌봄이 필요한 가정</p>
+          </div>
+          <div class="card">
+            <h3>서비스 시간</h3>
+            <p>평일 08:00~20:00 (야간, 휴일 서비스는 별도 문의)</p>
+          </div>
+          <div class="card">
+            <h3>결제 방식</h3>
+            <p>이용요금 선결제 및 정산</p>
+          </div>
+          <div class="card">
+            <h3>변경/취소</h3>
+            <p>서비스 변경 및 취소는 최소 하루 전까지 가능</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>서비스 절차</h2>
+        <div class="step">
+          <div class="step-number">1</div>
+          <div>서비스 신청: 홈페이지 또는 전화로 신청 접수</div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div>아이 돌보미 연계: 맞춤형 아이 돌보미 배정</div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div>이용요금 결제: 선결제 및 결제 확인</div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div>서비스 이용: 일정에 맞춘 정기 돌봄 서비스 제공</div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- 3. 푸터 -->
+  <div id="footer"></div>
+
+  <script>
+    $(function () {
+      $('#footer').load("/_푸터/푸터.html");
+    })
+  </script>
+
+  <script src="/메인페이지/메인페이지.js"></script>
+  <script src="/번역api/translate.js"></script>
+  <script src="/로그인/공통로그인기능.js"></script>
+  <script src="../아이돌봄사업/아이돌봄사업소개.js"></script>
+  <script src="/게시판/아이돌봄사업/아이돌봄사업소개.js"></script>
 </body>
 
 </html>

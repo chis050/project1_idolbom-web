@@ -1,227 +1,3 @@
-:root {
-  --main-color: #7DCD8C;
-  --subtle-bg: #f0f0f0;
-  --section-padding: 60px;
-  --section-title-bg: #e9f8ef;
-}
-
-.btn-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background-color: #f9f9f9;
-  margin: 0;
-  padding: 40px 20px;
-  line-height: 1.6;
-  color: #333;
-}
-
-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 32px;
-  background: #fff;
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
-  margin-bottom: 32px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  gap: 40px;
-}
-
-.logo-area {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  justify-content: flex-start;
-  flex: 1;
-}
-
-.logo-area img {
-  height: 70px;
-  vertical-align: middle;
-}
-
-.logo-area span {
-  font-size: 28px;
-  font-weight: 800;
-  color: var(--main-color);
-  letter-spacing: -1px;
-  line-height: 1;
-}
-
-nav {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  font-size: 18px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #222;
-  font-weight: 600;
-  transition: color 0.2s;
-}
-
-.user-area {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 10px;
-  flex: 1;
-}
-
-.search-form {
-  position: relative;
-}
-
-.search-box {
-  padding: 6px 30px 6px 10px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  font-size: 13px;
-  outline: none;
-  width: 140px;
-}
-
-
-.search-btn {
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: var(--main-color);
-  font-size: 14px;
-  cursor: pointer;
-  padding: 0;
-}
-
-.search-btn i {
-  font-size: 14px;
-}
-
-#google_translate_element {
-  margin-left: 10px;
-  transform: scale(0.9);
-  transform-origin: top right;
-}
-
-.logout-btn {
-  background: none;
-  border: none;
-  color: #888;
-  font-size: 14px;
-  cursor: pointer;
-  margin-right: 4px;
-}
-
-.user-avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #e8f0fe;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: var(--main-color);
-}
-
-#translateBtn {
-  top: 20px;
-  width: 40x;
-  height: 40px;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  background-image: url('images/translate-icon.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
-}
-
-.translate-wrapper {
-  position: relative; /* 기준 기준점 */
-  display: inline-block;
-}
-
-
-.language-box {
-  margin-top: 8px;
-  border: 2px solid #80cc99;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 60px;
-  text-align: center;
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: bold;
-  color: #555;
-  overflow: hidden;
-}
-
-.lang-option {
-  padding: 10px 0;
-  cursor: pointer;
-  border-top: 1px solid #80cc99;
-}
-
-.lang-option:first-child {
-  border-top: none;
-}
-
-.hidden {
-  display: none;
-}
-
-
-.main-footer {
-    background-color: #e2f7ef;
-    padding: 20px 0;
-    text-align: center;
-    font-size: 14px;
-    color: #646464;
-    border-top: 1px solid #ccc;
-}
-
-.footer-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.footer-links {
-    margin-bottom: 8px;
-}
-
-.footer-links a {
-    color: #32a37b;
-    text-decoration: none;
-    margin: 0 6px;
-}
-
-.footer-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-}
-
-.footer-logo {
-    height: 80px;
-    margin-top: 4px;
-}
-
-/* =========================== */
-
 * {
     box-sizing: border-box;
     font-family: 'Noto Sans KR', sans-serif;
@@ -240,11 +16,12 @@ body {
 }
 
 .btn-link {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
+
 .btn-link .service-btn {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .mascot {
@@ -531,6 +308,7 @@ body {
 }
 
 .dashboard-section {
+    background-color: #f9fdfb;
     padding: 60px 0;
 }
 
@@ -563,149 +341,105 @@ body {
     text-align: left;
 }
 
+.service-info-section div {
+    padding: 60px 0;
+    padding: 0 80px;
+    justify-content: center;
+    margin: 0 auto;
+    padding-bottom: 80px;
+    background-color: #f9fdfb;
+}
 
-.dashboard-card {
-    background-color: white;
-    border: 2px dashed #c6e4d8;
+/* 대시보드 셀렉터 스타일 */
+.dashboard-section select {
+    padding: 14px;
+    border: 1px solid #ccc;
     border-radius: 12px;
-    padding: 20px 16px;
-    width: 240px;
-    min-height: 200px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
+    background: #fff;
+    font-size: 15px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
 }
-
-.dashboard-card img {
-    width: 80px;
-    height: auto;
-    margin-bottom: 16px;
-}
-
-.dashboard-card .card-title {
-    font-weight: bold;
-    color: #32a37b;
-    margin-bottom: 12px;
-    font-size: 16px;
-}
-
-.dashboard-card p {
-    font-size: 14px;
-    line-height: 1.6;
-    word-break: keep-all;
-    white-space: normal;
-    text-align: left;
-}
-
-@media (max-width: 768px) {
-    .dashboard-content-wrapper {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .dashboard-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .dashboard-side-box {
-        width: 100%;
-        margin-top: 20px;
-    }
-}
-
-.dashboard-content-wrapper {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    /* 카드 : 서비스팁 : 새공간 */
-    gap: 40px;
-    width: 100%;
-}
-
-.dashboard-cards {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* 2열 카드 */
-    gap: 20px;
-    flex: 1;
-    width: 100%;
-    /* 고정 너비 제거 */
-    min-height: 200px;
-}
-
-.dashboard-side-box {
-
-    background-color: #fef9e7;
-    border: 2px dashed #f7cfa7;
-    border-radius: 12px;
-    padding: 20px;
-    width: 260px;
-    min-height: 100%;
-    /* 높이 통일 */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    font-size: 14px;
-    line-height: 1.6;
-    color: #444;
-}
-
-.dashboard-extra-box {
-    background-color: #f0f9ff;
-    border: 2px dashed #a7d3f7;
-    border-radius: 12px;
-    padding: 20px;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #333;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-
-    width: 220px;
-    /* 너비 고정 */
-    word-break: keep-all;
-    /* 단어 단위 줄바꿈 */
-    white-space: normal;
-    /* 줄바꿈 허용 */
-}
-
-/* ==== 추가 스타일 ==== */
-
 
 /* 🌟 개선된 CSS 보정 스타일 */
 
 /* 1. green-oval 가운데 정렬 */
 .green-oval {
-  justify-content: center !important;
-  padding-bottom: 30px !important;
+    justify-content: center !important;
+    padding-bottom: 30px !important;
 }
 
 /* 2. 아이콘 크기 조정 */
 .service-icon {
-  width: 40px !important;
-  margin-bottom: 12px !important;
+    width: 40px !important;
+    margin-bottom: 12px !important;
 }
 
 /* 3. 마스코트 위치 모바일 대응 */
 @media (max-width: 768px) {
-  .mascot {
-    top: 80px !important;
-    width: 100px !important;
-  }
+    .mascot {
+        top: 80px !important;
+        width: 100px !important;
+    }
 }
 
 /* 4. 카드박스 반응형 개선 */
 .card-box {
-  flex-wrap: wrap !important;
-  text-align: center !important;
+    flex-wrap: wrap !important;
+    text-align: center !important;
 }
 
 /* 5. 푸터 개선 */
 .main-footer {
-  font-size: 12px !important;
-  padding: 16px 0 !important;
+    font-size: 12px !important;
+    padding: 16px 0 !important;
 }
 
-/* 6. 대시보드 이미지 간격 */
-.dashboard-card img {
-  margin-bottom: 20px !important;
+/* 대시보드 관련 css */
+/* 대시보드 셀렉트해서 보기 */
+.dashboard-card {
+    display: none;
+}
+
+/* 활성화된 대시보드 카드 */
+/* active가 붙은 속성은 화면에 보여짐 */
+.dashboard-card.active {
+    display: block;
+}
+
+/* 대시보드 스타일 */
+
+
+/* 최하단 서비스 팁, 이용안내 */
+#service-info {
+    margin: 0;
+}
+
+#service-guide {
+    margin: 0;
+}
+
+.dashboard-side-box {
+    background-color: white;
+    border: 2px dashed #c6e4d8;
+    min-height: 200px;
+    flex: 1 1 0;
+    min-width: 200px;
+    max-width: 400px;
+    box-sizing: border-box;
+    border-radius: 24px;
+    padding: 28px;
+    margin: 0;
+}
+
+/* 부모 div를 가로 정렬로해서 좌우로 오게 하기 */
+.dashboard-side-box-container {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 32px;
+    /* 카드 사이 간격 */
+    float: left;
+    align-items: stretch;
+    width: 100%;
+    margin-top: 0;
 }
